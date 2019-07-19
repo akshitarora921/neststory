@@ -36,14 +36,14 @@ router.post("/new", async (req, res) => {
 });
 
 router.get("/data", (req, res, next) => {
-  const sql = `select * from banner`;
+  const sql = `select * from banner order by id desc limit 4`;
   db.query(sql, (err, result) => {
     if (err) {
       console.log("sql err", err);
       res.status(409).send("error in query function");
     } else {
-      console.log(result);
-      res.status(200).send(result);
+      console.log("Resultsssss",JSON.stringify(result));
+      res.status(200).send(JSON.stringify(result));
     }
   });
 });

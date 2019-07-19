@@ -1,0 +1,92 @@
+.sidenav {
+  height: 83%;
+  width: 0;
+  position: fixed;
+  z-index: 3;
+  left: 0;
+  background-color: #eee;
+  overflow-x: auto;
+  transition: 0.3s;
+
+  overflow-x: hidden;
+  /* padding: 10px 0 10px 0; */
+}
+
+/* .sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #111;
+    display: block;
+    transition: 0.3s;
+  } */
+
+.sidenav a:hover {
+  color: oranged;
+}
+.navbar-header {
+  position: relative;
+  background-color: orangered;
+  font-weight: bold;
+  font-size: 1.2em;
+  color: white;
+  padding: 5px 0 5px 0;
+}
+.navbar-heading {
+  position: relative;
+  margin-top: 5px;
+  bottom: 0px;
+  border: 1px solid orangered;
+  font-weight: bold;
+  font-size: 1.2em;
+}
+.list {
+  list-style: none;
+  font-size: 1.2em;
+}
+.navbar-footer {
+  bottom: 0;
+  background-color: orangered;
+  font-weight: bold;
+  font-size: 1.2em;
+  color: white;
+
+  /* padding: 5px 5px 5px 0; */
+}
+
+footer-heading {
+  background-color: orangered;
+  font-weight: bold;
+  font-size: 1.2em;
+  color: white;
+}
+/*   
+  .hr{
+      color:orangered
+  } */
+
+.sidenav .closebtn {
+  position: absolute;
+  text-decoration: none;
+  top: 0;
+  right: 10px;
+  color: white;
+  font-size: 28px;
+  /* margin-left: 50px; */
+  display: block;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {
+    padding-top: 15px;
+  }
+  .sidenav a {
+    font-size: 18px;
+  }
+}
+.akshit {
+  font-size: 30px;
+  cursor: pointer;
+}
+
+

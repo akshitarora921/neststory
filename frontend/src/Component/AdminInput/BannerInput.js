@@ -98,7 +98,7 @@ class BannerInput extends React.Component {
           </div>
 
           <div className="form-group">
-            <button onClick={this.handleSubmitBanner} className="btn-submit">
+            <button onClick={this.handleSubmitBanner} className="btn-submit btn btn-primary">
               upload
             </button>
           </div>

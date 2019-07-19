@@ -36,7 +36,7 @@ router.post("/new", async (req, res) => {
         console.log("Upload err: ", err);
         res.status(409).send("err");
       } else {
-        const sql = `insert into latest_stories (image, news_heading, news_content, author, date_of_publish, trending  ) values("${lsFileName}", "${req.body.lsHeading}","${req.body.lsContent}","${req.body.lsAuthor}", DATE '${getDate()}',"${req.body.lsTrending}")`;
+        const sql = `insert into latest_stories (image, news_heading, news_content, author, date_of_publish, trending) values("${lsFileName}", "${req.body.lsHeading}","${req.body.lsContent}","${req.body.lsAuthor}", DATE '${getDate()}',"${req.body.lsTrending}")`;
         db.query(sql, (err, result) => { 
           if (err) {
             console.log("sql err", err);
@@ -51,11 +51,14 @@ router.post("/new", async (req, res) => {
   });
   
   router.get("/data", (req, res, next) => {
-    const sql = `select * from banner`;
+    const sql = `select * from latest_stories order by id desc `;
     db.query(sql, (err, result) => {
       if (err) {
         res.status(409).send("error in query function");
-      } 
+      } else {
+        console.log(result);
+        res.status(200).send(result);
+      }
     });
   });
   

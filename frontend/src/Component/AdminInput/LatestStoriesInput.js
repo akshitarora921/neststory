@@ -106,10 +106,10 @@ handleSubmitLS = e => {
           {/* Input content */}
           <div className="form-group">
             <label>Content</label>
-            <input
+            <textarea
+              row="4"
               onChange={this.handleChangeLS}
               name="lsContent"
-              type="text"
               className="form-control"
               placeholder="Content"
             />
@@ -162,7 +162,7 @@ handleSubmitLS = e => {
           <div className="form-group">
             <button
             onClick={this.handleSubmitLS}
-            className="btn-submit">upload</button>
+            className="btn-submit btn btn-primary">upload</button>
           </div>
         </form>
       </div>

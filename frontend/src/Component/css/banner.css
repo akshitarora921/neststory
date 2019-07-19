@@ -1,0 +1,15 @@
+.banner{
+  padding-top:7.7%;
+}
+.bannerImage {
+  height: 200px;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  border: 1px solid white;
+}
+.bannerHeading{
+    position: absolute;
+    bottom: 8px;
+    left: 16px;
+    color: white
+}
