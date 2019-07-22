@@ -29,8 +29,7 @@ class BannerInput extends React.Component {
     formData.append("bannerCaption", this.state.bannerCaption);
     formData.append("bannerIsVideo", this.state.bannerIsVideo);
     // console.log("banner form data value", formData.values());
-    axios
-      .post("http://localhost:3001/banner/new", formData, {
+    axios.post("http://localhost:3001/banner/new", formData, {
         header: { "Content-Type": "multipart/form-data" }
       })
       .then(() => {

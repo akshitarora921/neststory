@@ -41,7 +41,7 @@ router.post("/new", async (req, res) => {
         req.files.videosFile[0].filename
       }", "${req.body.videosHeading}","${
         req.body.videosAuthor
-      }", DATE '${getDate()}',"${req.files.videosFile[0].filename}")`;
+      }", DATE '${getDate()}',"${req.files.videosFile[1].filename}")`;
       db.query(sql, (err, result) => {
         if (err) {
           console.log("sql err", err);

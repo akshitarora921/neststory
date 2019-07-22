@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const db = require("../bin/db");
 const multer = require("multer");
+const path = require("path");
 
 const storageStrategy = multer.diskStorage({
   destination: "./public/image/banner",
@@ -10,18 +11,20 @@ const storageStrategy = multer.diskStorage({
     console.log("===>", bannerFileName);
     cb(null, bannerFileName);
   }
-});
+})
 const upload = multer({
   storage: storageStrategy
 }).single("bannerFile");
 
 router.post("/new", async (req, res) => {
+  console.log(req)
   await upload(req, res, err => {
     if (err) {
       console.log("Upload err: ", err);
       res.status(409).send("err");
     } else {
-      const sql = `insert into banner (image, caption, isVideo ) values("${bannerFileName}", "${req.body.bannerCaption}",${req.body.bannerIsVideo})`;
+      //PLEASE ALWAYS REFRESH IF USING WITH FRONTEND ELSE IT WILL GIVE ERROR
+      const sql = `insert into banner (image, caption, isVideo ) values("${req.file.filename}", "${req.body.bannerCaption}",${req.body.bannerIsVideo})`;
       db.query(sql, (err, result) => {
         if (err) {
           console.log("sql err", err);

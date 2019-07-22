@@ -39,7 +39,7 @@ class Dashboard extends React.Component {
             <ul className="navbar-nav ml-auto  list" onClick={this.makeActive}>
               <li className="navbar-item nav-item">
                 <Link to="/admin/newsheader">
-                  <i class="fas fa-rss" /> News header
+                  <i className="fas fa-rss" /> News header
                 </Link>
               </li>
               <li className="navbar-item nav-item" onClick={this.makeActive}>

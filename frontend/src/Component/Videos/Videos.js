@@ -14,6 +14,7 @@ class Videos extends React.Component {
     let pos = $(".image-container").scrollLeft() + far;
     $(".image-container").animate({ scrollLeft: pos }, 1000);
   }
+  
   componentDidMount() {
     axios.get("http://localhost:3001/videos/data").then(res => {
       let data = res.data;

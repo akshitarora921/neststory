@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const db = require("../bin/db");
 const bcrypt = require("bcrypt");
-// const jwt = require("jsonwebtoken")
+const jwt = require("jsonwebtoken")
 router.post("/signup", (req, res) => {
   if (req.body == null) {
     res.status(404).send("req not recieved");
@@ -53,8 +53,10 @@ router.post("/login",(req, res)=>{
       email: req.body.email,
       password: req.body.password
     };
+    console.log("user data:  ", userData)
     //find if user already exist or not
     let sql = `select * from users where email="${userData.email}"`;
+    console.log("sql", sql)
     db.query(sql, (err, result) => {
       if (err) {
         console.log("sql err", err);
@@ -66,15 +68,23 @@ router.post("/login",(req, res)=>{
           res.status(401).send("user doesnot exist")
         } else {
           //user exists
+          console.log("user exists")
+          console.log("result=",result[0].password)
           if(bcrypt.compareSync(req.body.password,result[0].password))
           {
-            let token = jwt.sign(result, "secret",{
+            let token = jwt.sign(result[0], "secret",{
               expiresIn:1440
             })
+            console.log(token)
+            // res.json({token:token})
           }
+          // else{
+          //   res.send("user downot exist")
+          // }
         }
       }
     });
   }
+
 })
 module.exports = router;

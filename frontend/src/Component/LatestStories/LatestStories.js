@@ -55,7 +55,7 @@ class LatestStories extends React.Component {
                   <div className="row ">
                     <h6>{listitem.news_heading} </h6>
                     <hr className="newsHR " />
-                    <div className="comment more">
+                    <div className="comment more text-justify">
                       <ShowMore
                         text={listitem.news_content}
                         length={400}
