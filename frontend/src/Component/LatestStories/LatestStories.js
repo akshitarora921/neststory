@@ -40,9 +40,12 @@ class LatestStories extends React.Component {
         <hr className="horizontalrule" />
           {/* mapping Starts from Here */}
           {this.state.ls.slice(0, this.props.last).map(listitem => (
-            <div key={listitem.id} className="row mb-4">
+            <div key={listitem.id} 
+            style={{minHeight:"200px"}}
+            className="row mb-4">
               <div
                 style={{
+                  maxHeight:"250px",
                   backgroundImage: `url(http://localhost:3001/image/lateststories/${
                     listitem.image
                   })`

@@ -14,13 +14,13 @@ class LandingPage extends React.Component {
   render() {
     return (
       <div className="home">
-        <Header />
+        {/* <Header /> */}
         <Banner />
         <Ad />
         <LatestStories last={3} />
-        <Videos />
-        <Entrepreneurship />
         <Innovations />
+        <Entrepreneurship />
+        <Videos />
         <Footer />
       </div>
     );

@@ -7,11 +7,11 @@
 }
 
 .playButton{
-    color: #5c5c5c;
+    color: #ddd;
     position: relative;
-    top: 50%;
+    top: 75px;
     left: 50%;
-    transform: translate(-50%, -10%);
+    transform: translate(-50%, -50%); 
 }
 .main {
     text-align: center;

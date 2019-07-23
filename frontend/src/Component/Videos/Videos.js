@@ -2,20 +2,25 @@ import React from "react";
 import "../../fontawesome/css/all.css";
 // import "../App.css";
 import "../css/videos.css";
-import $ from "jquery";
+// import $ from "jquery";
 import axios from "axios";
-import SingleVideo from "./SingleVideo";
+import OwlCarousel from "react-owl-carousel";
+import "owl.carousel/dist/assets/owl.carousel.css";
+import "owl.carousel/dist/assets/owl.theme.default.css";
+
+// import SingleVideo from "./SingleVideo";
 class Videos extends React.Component {
   state = {
     videos: []
   };
-  scroll(direction) {
-    let far = ($(".image-container").width() / 2) * direction;
-    let pos = $(".image-container").scrollLeft() + far;
-    $(".image-container").animate({ scrollLeft: pos }, 1000);
-  }
-  
+  // scroll(direction) {
+  //   let far = ($(".image-container").width() / 2) * direction;
+  //   let pos = $(".image-container").scrollLeft() + far;
+  //   $(".image-container").animate({ scrollLeft: pos }, 1000);
+  // }
+
   componentDidMount() {
+
     axios.get("http://localhost:3001/videos/data").then(res => {
       let data = res.data;
       this.setState({
@@ -24,7 +29,27 @@ class Videos extends React.Component {
     });
   }
 
+
   render() {
+    let options={
+      // loop: true,
+      margin: 10,
+      // nav:true,
+      responsive:{
+          0: {
+              items: 2,
+          },
+          600: {
+              items: 3,
+          },
+          800:{
+            items:4
+          },
+          1000: {
+              items: 5,
+          },
+      },
+  }
     return (
       <div className="Videos">
         <div className="container-fluid">
@@ -44,15 +69,50 @@ class Videos extends React.Component {
           </div>
         </div>
         <hr style={{ border: "1px solid black", marginTop: "-5px" }} />
-        <div className="container-fluid ">
-          {/* image slider starts */}
+        {this.state.videos.length > 0 ? (
+          <OwlCarousel className="owl-theme" {...options}>
+            {this.state.videos.map((video, id) => (
+              // <div className="item"><img src={`http://localhost:3001/image/videos/1563367919764_purple.png`}/></div>
+              <div className="item">
+                {/* <img
+                  alt="not found"
+                  src={`http://localhost:3001/image/videos/${
+                    video.video_thumbnail
+                  }`}
+                /> */}
+                <div
+                 style={{
+                  minHeight:"150px",
+                  borderRadius:"20px",
+                        backgroundImage:
+                          `linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),url(http://localhost:3001/image/videos/${video.video_thumbnail})`
+                      }}>
+                        <i className="far fa-play-circle fa-2x playButton" />
+                      </div>
+                
+                      <div className="h6">{video.heading}</div>
+                    
+                      <small className="text-muted author">
+                        {video.author} | this.props.datePublished
+                      </small>
+              </div>
+            ))}
+
+          
+          </OwlCarousel>
+        ) : (
+          ""
+        )}
+
+        {/* <div className="container-fluid ">
+          {/* image slider starts 
           <div className="main">
             <div className="wrapper">
               <a className="prev" onClick={this.scroll.bind(null, -1)}>
                 &#10094;
               </a>
               <div className="image-container">
-                {/* mydata */}
+                {/* mydata 
                {this.state.videos.map(video => (
                   <div className="videoContainer">
                     <div
@@ -73,7 +133,7 @@ class Videos extends React.Component {
                   </div>
                 ))} 
                
-                {/* mydata end */}
+                {/* mydata end 
 
               </div>
               <a className="next" onClick={this.scroll.bind(null, 1)}>
@@ -81,8 +141,8 @@ class Videos extends React.Component {
               </a>
             </div>
           </div>
-          {/* Image slider ends */}
-        </div>
+          {/* Image slider ends 
+        </div> */}
       </div>
     );
   }

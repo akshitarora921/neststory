@@ -1,4 +1,3 @@
-
 import React from "react";
 
 import axios from "axios";
@@ -8,9 +7,10 @@ class LatestStoriesInput extends React.Component {
     lsFile: "",
     lsHeading: "",
     lsContent: "",
+    category: "",
     lsAuthor: "",
     lsPublishDate: new Date(),
-   lsTrending: ""
+    lsTrending: ""
   };
 
   handleChangeLS = e => {
@@ -19,25 +19,29 @@ class LatestStoriesInput extends React.Component {
     //     [e.target.name]: e
     //   });
     // else
-    if (e.target.name === "lsFile") {
+    if (e.target.name === "category") {
+      this.setState({
+        category: e.target.value
+      });
+      console.log("category:", e.target.value);
+    } else if (e.target.name === "lsFile") {
       this.setState({
         lsFile: e.target.files[0]
       });
-      
     } else {
       this.setState({
         [e.target.name]: e.target.value
       });
     }
   };
-//   handleDateChange=(date=>{
-//       this.setState({
-//           publishDate:date
-//       })
-//   })
+  //   handleDateChange=(date=>{
+  //       this.setState({
+  //           publishDate:date
+  //       })
+  //   })
 
-handleSubmitLS = e => {
-      // e.preventDefault();
+  handleSubmitLS = e => {
+    // e.preventDefault();
     let formData = new FormData();
     formData.append("lsFile", this.state.lsFile);
     formData.append("lsHeading", this.state.lsHeading);
@@ -46,12 +50,13 @@ handleSubmitLS = e => {
     formData.append("lsPublishDate", this.state.lsPublishDate);
     formData.append("lsTrending", this.state.lsTrending);
 
-    console.log("data: ", formData)
-    axios.post("http://localhost:3001/lateststories/new", formData, {
-      headers: {
-        "Content-Type": "multipart/form-data"
-      }
-    })
+    console.log("data: ", formData);
+    axios
+      .post("http://localhost:3001/lateststories/new", formData, {
+        headers: {
+          "Content-Type": "multipart/form-data"
+        }
+      })
       .then(() => {
         console.log("SUCCESS!!");
       })
@@ -76,7 +81,7 @@ handleSubmitLS = e => {
           </div>
         </div>
 
-        <form >
+        <form>
           {/* Input File  */}
           <div className="form-group">
             <div className="form-group">
@@ -91,6 +96,21 @@ handleSubmitLS = e => {
             </div>
           </div>
 
+          {/* category input */}
+          <label>Category</label>
+          <select 
+          name="category"
+          onChange={this.handleChangeLS}
+          className="form-control">
+            Tech | Science | Startup Talks | Innovation | Entertainment | Enviroment | More
+            <option value="tech">Tech</option>
+            <option value="science">Science</option>
+            <option value="startup_talks">Startup Talks </option>
+            <option value="innovation">Innovation</option>
+            <option value="entertainment">Entertainment</option>
+            <option value="enviroment">Enviroment</option>
+          </select>
+          <br/>
           {/* Input heading */}
           <div className="form-group">
             <label>heading</label>
@@ -161,8 +181,11 @@ handleSubmitLS = e => {
 
           <div className="form-group">
             <button
-            onClick={this.handleSubmitLS}
-            className="btn-submit btn btn-primary">upload</button>
+              onClick={this.handleSubmitLS}
+              className="btn-submit btn btn-primary"
+            >
+              upload
+            </button>
           </div>
         </form>
       </div>
