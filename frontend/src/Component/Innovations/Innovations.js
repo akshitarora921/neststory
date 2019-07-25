@@ -68,9 +68,9 @@ class Innovation extends React.Component {
         <hr style={{ border: "1px solid black", marginTop: "-5px" }} />
         {this.state.innovations.length > 0 ? (
           <OwlCarousel className="owl-theme" {...options}>
-         {this.state.innovations.map(innovation => (
+         {this.state.innovations.map((innovation, id) => (
               // <div className="item"><img src={`http://localhost:3001/image/videos/1563367919764_purple.png`}/></div>
-              <div className="item">
+              <div key={id} className="item">
                 {/* <img
                   alt="not found"
                   src={`http://localhost:3001/image/videos/${
@@ -81,6 +81,7 @@ class Innovation extends React.Component {
                  style={{
                   minHeight:"150px",
                   borderRadius:"20px",
+                  backgroundSize: "100% 100%",
                         backgroundImage:
                           `linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),url(http://localhost:3001/image/innovation/${innovation.image})`
                       }}>

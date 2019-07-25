@@ -11,59 +11,58 @@ import Axios from "axios";
 // import "../b.css";
 
 class Header extends React.Component {
-  state={
-    first_name:'',
-    last_name:'',
-    password:'',
-    email:''
-  }
-  handleLoginChange=(e)=>{
+  state = {
+    first_name: "",
+    last_name: "",
+    password: "",
+    email: ""
+    
+  };
+  handleLoginChange = e => {
     this.setState({
-      [e.target.name]:e.target.value
-    })
-  }
-  handleLoginSubmit=(e)=>{
-    e.preventDefault()
-    const today = new Date()
-    let userLoginData={
-      email:this.state.email,
+      [e.target.name]: e.target.value
+    });
+  };
+  handleLoginSubmit = e => {
+    e.preventDefault();
+    const today = new Date();
+    let userLoginData = {
+      email: this.state.email,
       password: this.state.password
-    }
-    console.log("datatakjsafalskf=============" , userLoginData)
-    Axios.post("http://localhost:3001/users/login",userLoginData)
-    .then(res=>{
-      console.log("Logined")
-    })
-    .catch(err=>{
-      console.log("catch error=",err)
-    })
-
-  }
-  handleSignupChange=(e)=>{
+    };
+    // console.log("datatakjsafalskf=============", userLoginData);
+    Axios.post("http://localhost:3001/users/login", userLoginData)
+      .then(res => {
+        console.log(res);
+      })
+      .catch(err => {
+        console.log("catch error=", err);
+      });
+  };
+  handleSignupChange = e => {
     this.setState({
-      [e.target.name]:e.target.value
-    })
-  }
-  handleSignupSubmit=(e)=>{
-    e.preventDefault()
-    const today = new Date()
-    let userSignupData={
-      first_name:this.state.first_name,
-      last_name:this.state.last_name,
-      email:this.state.email,
+      [e.target.name]: e.target.value
+    });
+  };
+  handleSignupSubmit = e => {
+    e.preventDefault();
+    const today = new Date();
+    let userSignupData = {
+      first_name: this.state.first_name,
+      last_name: this.state.last_name,
+      email: this.state.email,
       password: this.state.password,
-      created : today
-    }
-    console.log("datatakjsafalskf=============" , userSignupData)
-    Axios.post("http://localhost:3001/users/signup",userSignupData)
-    .then(res=>{
-      console.log("registered")
-    })
-    .catch(err=>{
-      console.log("catch error=",err)
-    })
-
-  }
+      created: today
+    };
+    console.log("datatakjsafalskf=============", userSignupData);
+    Axios.post("http://localhost:3001/users/signup", userSignupData)
+      .then(res => {
+        console.log("res", res);
+      })
+      .catch(err => {
+        console.log("catch error=", err);
+      });
+  };
   render() {
     const responseFacebook = response => {
       console.log(response);
@@ -75,7 +74,6 @@ class Header extends React.Component {
       console.log(response);
     };
 
-   
     return (
       <Router>
         {/* Modal starts */}
@@ -89,13 +87,14 @@ class Header extends React.Component {
         >
           <div className="modal-dialog modal-lg modal-dialog-centered">
             <div className="modal-content">
-              <div className="container ">
+              <div className="container">
                 <div className="row">
-                  <div className="col-4 back1 ">
+                  <div className="col-lg-4 col-md-5 back1 ">
                     <div className="row">
-                      <div className="h1 topheading">NestStory</div>
+                     <div className="col">
+                        <div className="topheading">Nest Story</div>
+                     </div>
                     </div>
-
                     <div className="row">
                       <div className="col">
                         <div className="h5 update-text">Updates</div>
@@ -142,9 +141,11 @@ class Header extends React.Component {
                               </small>
                             </div>
                             <div className="form-group login-div">
-                              <button type="submit" 
+                              <button
+                                type="submit"
                                 onClick={this.handleLoginSubmit}
-                                className="btn btnLogin ">
+                                className="btn btnLogin "
+                              >
                                 Login
                               </button>
                             </div>
@@ -278,7 +279,11 @@ class Header extends React.Component {
                                   </small> */}
                             </div>
                             <div className="form-group ">
-                              <button type="submit" onClick={this.handleSignupSubmit} className="btn btnLogin ">
+                              <button
+                                type="submit"
+                                onClick={this.handleSignupSubmit}
+                                className="btn btnLogin "
+                              >
                                 Signup
                               </button>
                             </div>
@@ -332,14 +337,19 @@ class Header extends React.Component {
         {/* modal ends */}
         <div style={{ zIndex: "3", position: "fixed" }} className="header">
           <div className="container-fluid headerStyle">
-            <div className="row">
-              <div className="col h1 logo">Nest Story</div>
-              <div className="col-9 col-md-8">
+            <div className="row justify-content-between">
+              <div
+                className="col h1 logo col-sm-12 col-md-3 col-lg-3 text-center"
+                style={{ fontSize: "3.5vw" }}
+              >
+                Nest Story
+              </div>
+              <div className="col-9 col-md-8 col-sm-12">
                 <div className="row newsHeaderStyle">
-                  <div className="col-9 ">
+                  <div className="col-md-8 col-lg-9  col-sm-9 ">
                     <NewsSlider />
                   </div>
-                  <div className="col-3">
+                  <div className="col-lg-3 col-md-4 col-sm-3">
                     <nav className="navbar navbar-expand-lg navbar-expand-md">
                       <div className="navbar-collapse collapse">
                         <ul className="navbar-nav ml-auto ">
@@ -347,7 +357,8 @@ class Header extends React.Component {
                             <div
                               style={{
                                 border: "1px solid black",
-                                padding: "2px"
+                                padding: "2px",
+                                width: "100px"
                               }}
                             >
                               <i className="fas fa-envelope"> Subscribe</i>
@@ -367,47 +378,49 @@ class Header extends React.Component {
                   </div>
                 </div>
                 <div className="row ">
-                  <nav className="navbar navbar-expand-lg navbar-dark">
-                    <div className="collapse navbar-collapse">
-                      <ul className="navbar-nav ml-auto text-center">
-                        <li className="navbar-item">
-                          <Link to="/banner" className="nav-link">
-                            NEWS
-                          </Link>
-                        </li>
-                        <li className="navbar-item">
-                          <Link to="/stories" className="nav-link">
-                            STORIES
-                          </Link>
-                        </li>
-                        <li className="navbar-item">
-                          <a href="#" className="nav-link">
-                            GLOBAL
-                          </a>
-                        </li>
-                        <li className="navbar-item">
-                          <a href="#" className="nav-link">
-                            INNOVATION
-                          </a>
-                        </li>
-                        <li className="navbar-item">
-                          <a href="#" className="nav-link">
-                            INSIGHTS
-                          </a>
-                        </li>
-                        <li className="navbar-item">
-                          <a href="#" className="nav-link">
-                            ENTREPRENEURSHIP
-                          </a>
-                        </li>
-                        <li className="navbar-item">
-                          <a href="#" className="nav-link">
-                            VIDEOS
-                          </a>
-                        </li>
-                      </ul>
-                    </div>
-                  </nav>
+                  <div className="col">
+                    <nav className="navbar navbar-expand-lg navbar-expand-md navbar-expand-sm navbar-dark">
+                      <div className="collapse navbar-collapse">
+                        <ul className="navbar-nav ml-auto text-center">
+                          <li className="navbar-item">
+                            <Link to="/banner" className="nav-link navtext">
+                              NEWS
+                            </Link>
+                          </li>
+                          <li className="navbar-item">
+                            <Link to="/stories" className="nav-link navtext">
+                              STORIES
+                            </Link>
+                          </li>
+                          <li className="navbar-item">
+                            <a href="#" className="nav-link navtext">
+                              GLOBAL
+                            </a>
+                          </li>
+                          <li className="navbar-item navtext">
+                            <a href="#" className="nav-link">
+                              INNOVATION
+                            </a>
+                          </li>
+                          <li className="navbar-item navtext">
+                            <a href="#" className="nav-link">
+                              INSIGHTS
+                            </a>
+                          </li>
+                          <li className="navbar-item navtext">
+                            <a href="#" className="nav-link">
+                              ENTREPRENEURSHIP
+                            </a>
+                          </li>
+                          <li className="navbar-item navtext">
+                            <a href="#" className="nav-link">
+                              VIDEOS
+                            </a>
+                          </li>
+                        </ul>
+                      </div>
+                    </nav>
+                  </div>
                 </div>
               </div>
             </div>

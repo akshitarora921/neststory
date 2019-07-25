@@ -7,7 +7,8 @@ import axios from "axios";
 import OwlCarousel from "react-owl-carousel";
 import "owl.carousel/dist/assets/owl.carousel.css";
 import "owl.carousel/dist/assets/owl.theme.default.css";
-
+import Moment from 'react-moment';
+// import 'moment/locale/fr';
 // import SingleVideo from "./SingleVideo";
 class Videos extends React.Component {
   state = {
@@ -73,7 +74,7 @@ class Videos extends React.Component {
           <OwlCarousel className="owl-theme" {...options}>
             {this.state.videos.map((video, id) => (
               // <div className="item"><img src={`http://localhost:3001/image/videos/1563367919764_purple.png`}/></div>
-              <div className="item">
+              <div key={id} className="item">
                 {/* <img
                   alt="not found"
                   src={`http://localhost:3001/image/videos/${
@@ -84,6 +85,7 @@ class Videos extends React.Component {
                  style={{
                   minHeight:"150px",
                   borderRadius:"20px",
+                  backgroundSize:"100% 100%",
                         backgroundImage:
                           `linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),url(http://localhost:3001/image/videos/${video.video_thumbnail})`
                       }}>
@@ -93,7 +95,7 @@ class Videos extends React.Component {
                       <div className="h6">{video.heading}</div>
                     
                       <small className="text-muted author">
-                        {video.author} | this.props.datePublished
+                        {video.author} | <Moment format='MMMM-YY' locale="en">{video.publish_date}</Moment>
                       </small>
               </div>
             ))}

@@ -1,9 +1,8 @@
-
 .headerStyleadmin {
   background-image: linear-gradient(orangered, black);
   border-bottom: 4px solid red;
   /* border-radius: 0px 0px 75px 75px; */
-  position: fixed
+  position: fixed;
 }
 .logo {
   color: white;
@@ -11,86 +10,31 @@
   margin-left: 50px;
   padding-top: 10px;
   font-size: 60px;
-  
-}
-.newsHeaderStyle {
-  background-color: white;
-  border-radius: 10px 0px 0px 10px;
-}
-.main {
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
 }
 
-.title {
- font-size: 42px;
-}
-
-.news {
-  margin: 10px;
-  display: inline-block;
-  
-}
-
-
-.news-container {
-  margin-top: -3px;
-  vertical-align: middle;
-  display: inline-block;
-  white-space: nowrap;
-  overflow-x: hidden;
-  overflow-y: hidden;
-  width: 90%;
-}
-
-.prev, .next {
-  padding-top: 10px;
-  padding-bottom: 10px;
+.routestyle {
+  padding-top: 12%;
+  /* background-color: #111; */
   height: 100%;
-  cursor: pointer;
-  color: black;
-  transition: 0.6s ease;
+  margin-left: -15px;
+  width: 100%;
+  position: absolute;
 }
-
-.next {
-  margin-left: 5px;
-}
-
-.prev {
-  margin-right: 5px;
-}
-
-.prev:hover, .next:hover {
-  color: white;
-  height: 100%;
-  background-color: rgba(0,0,0,0.8);
-}
-
-.nav-item{
-  padding-left: 10px;
-  font-style: none;
-}
-.routestyle{
-  padding-top:20%;
-  padding-left:30%;
-  width: 100vh;
-}
-
-
 
 /* sidebar */
 .sidenav1 {
-  height: 85%;
-  width: 300px;
+  height: 85vh;
+  width: 25%;
+
   position: fixed;
-  z-index: 1;
+  /* z-index: 1; */
   top: 15%;
   left: 0;
+  border-right: 1px solid orangered;
   background-color: #111;
-  overflow-x: hidden;
-  padding-top: 20px;
+  /* overflow-x: hidden; */
+  /* padding-top: 20px; */
+  /* position: relative; */
 }
 
 .sidenav1 a {
@@ -101,15 +45,15 @@
   display: block;
 }
 
-.active a{
+.active a {
   padding: 6px 8px 6px 16px;
   text-decoration: none;
   font-size: 30px;
-  color:rgba(255, 68, 0, 0.9);
+  color: rgba(255, 68, 0, 0.9);
   display: block;
 }
 
 .sidenav1 a:hover {
   /* color: #f1f1f1; */
-  color:rgba(255, 68, 0, 0.6)
+  color: rgba(255, 68, 0, 0.6);
 }

@@ -27,12 +27,12 @@ class Entrepreneurship extends React.Component {
         <hr style={{ border: "1px solid black", marginTop: "-5px" }} />
         <div className="container-fluid ">
           <div className="row ">
-            {this.state.entpdata.slice(0,1).map(entp=>(
-            <div style={{ border: "5px solid white" }} className="col-4 ">
+            {this.state.entpdata.slice(0,1).map((entp, id)=>(
+            <div key={id} style={{ border: "5px solid white" }} className="col-lg-4 col-sm-12">
               <div className="row ">
                 <div
-                  style={{ border: "5px solid white" }}
                   style={{
+                    border: "5px solid white",
                     height: "200px",
                     width: "200px",
                     backgroundImage:
@@ -53,11 +53,11 @@ class Entrepreneurship extends React.Component {
             ))}
               <div
                 style={{ border: "5px solid white", marginTop: "-5px" }}
-                className="col-8 "
+                className="col-lg-8 col-sm-12 col-xs-12"
               >
-            {this.state.entpdata.slice(1,4).map(entp=>(
+            {this.state.entpdata.slice(1,4).map((entp, id)=>(
 
-              <div style={{ border: "5px solid white" }} className="row ">
+              <div key={id} style={{ border: "5px solid white" }} className="row ">
                 <div
                   style={{
                     height: "200px",
@@ -67,7 +67,7 @@ class Entrepreneurship extends React.Component {
                     backgroundRepeat: "no-repeat",
                     backgroundSize: "100% 100%"
                   }}
-                  className="col-4 "
+                  className="col-lg-4 col-sm-12 col-xs-12 "
                 />
                 <div style={{ marginLeft: "15px" }} className="col ">
                   <div className="row ">

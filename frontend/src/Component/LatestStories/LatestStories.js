@@ -5,6 +5,7 @@ import "../b.css";
 import "../css/lateststories.css";
 import Axios from "axios";
 import ShowMore from "react-simple-show-more";
+import Moment from 'react-moment';
 
 class LatestStories extends React.Component {
   state = {
@@ -42,26 +43,28 @@ class LatestStories extends React.Component {
           {this.state.ls.slice(0, this.props.last).map(listitem => (
             <div key={listitem.id} 
             style={{minHeight:"200px"}}
-            className="row mb-4">
+            className="row mb-4  ">
               <div
                 style={{
+                  backgroundSize: "100% 100%",
                   maxHeight:"250px",
+                  minHeight:"250px",
                   backgroundImage: `url(http://localhost:3001/image/lateststories/${
                     listitem.image
                   })`
                 }}
-                className="col-4 newsimage"
+                className="col-sm-12 col-lg-4 col-md-6 newsimage"
               />
 
-              <div className="col-lg-6 ">
+              <div className="col-lg-6 col-md-6  col-sm-12">
                 <div className="container ">
-                  <div className="row ">
+                  <div >
                     <h6>{listitem.news_heading} </h6>
                     <hr className="newsHR " />
                     <div className="comment more text-justify">
                       <ShowMore
                         text={listitem.news_content}
-                        length={400}
+                        length={500}
                         showMoreLabel=" show More"
                         showLessLabel=" Collapse"
                         tag="a"
@@ -75,17 +78,18 @@ class LatestStories extends React.Component {
                       />
                     </div>
                   </div>
-                  <div className="row ">
-                    <div style={{ marginLeft: "-15px" }} className="col">
+                  <div className="row justify-content-between">
+                    <div className="col-lg-7 col-sm-12">
                       <small>
                         By{" "}
                         <font style={{ color: "#F54A00" }}>
                           {listitem.author}
                         </font>{" "}
-                        | {listitem.date_of_publish} | props.comment.length
+                        |<Moment format='MMMM-YY' locale="en">{listitem.publish_date}</Moment>| length
                         Comments
                       </small>
-                      <div className="trending">
+                    </div>
+                      <div className="trending col-lg-3 ">
                         {" "}
                         TRENDING:
                         <font style={{ color: "#ffffff", fontSize: "small" }}>
@@ -93,11 +97,10 @@ class LatestStories extends React.Component {
                           {listitem.trending}{" "}
                         </font>
                       </div>
-                    </div>
                   </div>
                 </div>
               </div>
-              <div className="col-2" />
+              <div className="col-lg-2 col-sm-12" />
               {/* Advertisement */}
             </div>
           ))}

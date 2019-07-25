@@ -105,10 +105,9 @@ class Sidebar extends React.Component {
         padding: "90px 20px 90px 90px",
         marginTop: "-140px",
         marginLeft: "-160px",
-
         backgroundColor: "white",
         msTransform: "rotate(45deg)" /* IE 9 */,
-        webkitTransform: "rotate(45deg)" /* Safari 3-8 */,
+        WebkitTransform: "rotate(45deg)" /* Safari 3-8 */,
         transform: "rotate(45deg)"
       }}
     >
@@ -116,7 +115,7 @@ class Sidebar extends React.Component {
               style={{
                   marginLeft: "100px",
                   msTransform: "rotate(-45deg)" /* IE 9 */,
-                  webkitTransform: "rotate(-45deg)" /* Safari 3-8 */,
+                  WebkitTransform: "rotate(-45deg)" /* Safari 3-8 */,
                   transform: "rotate(-45deg)",
                   color:"orangered"
               }}
