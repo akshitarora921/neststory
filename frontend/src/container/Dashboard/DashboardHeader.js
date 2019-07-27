@@ -1,11 +1,11 @@
 import React from "react";
 // import DashboardHeader from './DashboardHeader'
-import NewsHeaderInput from "../../component/AdminInput/NewsHeaderInput";
-import BannerInput from "../../component/AdminInput/BannerInput";
-import LatestStoriesInput from "../../component/AdminInput/LatestStoriesInput";
-import InnovationInput from "../../component/AdminInput/InnovationInput";
-import EntrepreneurshipInput from "../../component/AdminInput/EntrepreneurshipInput";
-import VideosInput from "../../component/AdminInput/VideosInput";
+import NewsHeaderInput from "../../component/AdminInput1/NewsHeaderInput";
+import BannerInput from "../../component/AdminInput1/BannerInput";
+import LatestStoriesInput from "../../component/AdminInput1/LatestStoriesInput";
+import InnovationInput from "../../component/AdminInput1/InnovationInput";
+import EntrepreneurshipInput from "../../component/AdminInput1/EntrepreneurshipInput";
+import VideosInput from "../../component/AdminInput1/VideosInput";
 
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import "../../fontawesome/css/all.css";

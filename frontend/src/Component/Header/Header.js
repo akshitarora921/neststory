@@ -1,7 +1,7 @@
 import React from "react";
 import NewsSlider from "./NewsSlider";
 import "../../fontawesome/css/all.css";
-import "../css/header.css";
+import "./header.css";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import GoogleLogin from "react-google-login";
 import FacebookLogin from "react-facebook-login";
@@ -16,13 +16,16 @@ class Header extends React.Component {
     last_name: "",
     password: "",
     email: ""
-    
   };
   handleLoginChange = e => {
     this.setState({
       [e.target.name]: e.target.value
     });
   };
+  componentDidMount() {
+    localStorage.setItem("token", "abc");
+    console.log(localStorage.getItem("token"));
+  }
   handleLoginSubmit = e => {
     e.preventDefault();
     const today = new Date();
@@ -30,10 +33,14 @@ class Header extends React.Component {
       email: this.state.email,
       password: this.state.password
     };
+
     // console.log("datatakjsafalskf=============", userLoginData);
     Axios.post("http://localhost:3001/users/login", userLoginData)
       .then(res => {
-        console.log(res);
+        alert("login successful");
+        localStorage.setItem("user", res.data.data);
+        // console.log("local storage: ", localStorage.getItem('user'))
+        // console.log(res);
       })
       .catch(err => {
         console.log("catch error=", err);
@@ -57,6 +64,8 @@ class Header extends React.Component {
     console.log("datatakjsafalskf=============", userSignupData);
     Axios.post("http://localhost:3001/users/signup", userSignupData)
       .then(res => {
+        localStorage.setItem("token1", "dataatata");
+        console.log("local storage: ", localStorage.getItem("token1"));
         console.log("res", res);
       })
       .catch(err => {
@@ -77,6 +86,8 @@ class Header extends React.Component {
     return (
       <Router>
         {/* Modal starts */}
+
+        {/* login Modal */}
         <div
           className="modal fade bd-example-modal-lg"
           id="login"
@@ -91,9 +102,9 @@ class Header extends React.Component {
                 <div className="row">
                   <div className="col-lg-4 col-md-5 back1 ">
                     <div className="row">
-                     <div className="col">
+                      <div className="col">
                         <div className="topheading">Nest Story</div>
-                     </div>
+                      </div>
                     </div>
                     <div className="row">
                       <div className="col">
@@ -196,6 +207,8 @@ class Header extends React.Component {
             </div>
           </div>
         </div>
+
+        {/* registration/ signup Modal */}
         <div
           className="modal fade bd-example-modal-lg"
           id="new-account"
@@ -235,7 +248,7 @@ class Header extends React.Component {
                       <div className="row">
                         <div className="col-2" />
                         <div className="col-8">
-                          <form className="modalContent">
+                          <form className="modalContent signup-form">
                             <div className="form-group">
                               <input
                                 type="text"
@@ -271,6 +284,7 @@ class Header extends React.Component {
                                 type="password"
                                 onChange={this.handleSignupChange}
                                 name="password"
+                                pattern="[A-Za-z0-9]{6,20}"
                                 className="form-control modalInput"
                                 placeholder="Password"
                               />
@@ -340,9 +354,21 @@ class Header extends React.Component {
             <div className="row justify-content-between">
               <div
                 className="col h1 logo col-sm-12 col-md-3 col-lg-3 text-center"
-                style={{ fontSize: "3.5vw" }}
+                style={{
+                  textDecoration: "none",
+                  fontSize: "3.5vw"
+                }}
               >
-                Nest Story
+                <a
+                  style={{
+                    color: "white",
+                    textDecoration: "none"
+                  }}
+                  href="/"
+                >
+                  {" "}
+                  Nest Story
+                </a>
               </div>
               <div className="col-9 col-md-8 col-sm-12">
                 <div className="row newsHeaderStyle">
@@ -388,9 +414,9 @@ class Header extends React.Component {
                             </Link>
                           </li>
                           <li className="navbar-item">
-                            <Link to="/stories" className="nav-link navtext">
+                            <a href="/stories" className="nav-link navtext">
                               STORIES
-                            </Link>
+                            </a>
                           </li>
                           <li className="navbar-item">
                             <a href="#" className="nav-link navtext">

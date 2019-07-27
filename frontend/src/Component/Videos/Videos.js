@@ -1,7 +1,7 @@
 import React from "react";
 import "../../fontawesome/css/all.css";
 // import "../App.css";
-import "../css/videos.css";
+import "./videos.css";
 // import $ from "jquery";
 import axios from "axios";
 import OwlCarousel from "react-owl-carousel";
@@ -21,7 +21,6 @@ class Videos extends React.Component {
   // }
 
   componentDidMount() {
-
     axios.get("http://localhost:3001/videos/data").then(res => {
       let data = res.data;
       this.setState({
@@ -35,19 +34,20 @@ class Videos extends React.Component {
     let options={
       // loop: true,
       margin: 10,
+      video:true,
       // nav:true,
       responsive:{
           0: {
               items: 2,
           },
           600: {
-              items: 3,
+              items:2,
           },
           800:{
-            items:4
+            items:3,
           },
           1000: {
-              items: 5,
+              items: 4,
           },
       },
   }
@@ -87,7 +87,7 @@ class Videos extends React.Component {
                   borderRadius:"20px",
                   backgroundSize:"100% 100%",
                         backgroundImage:
-                          `linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),url(http://localhost:3001/image/videos/${video.video_thumbnail})`
+                          `linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),url(http://localhost:3001/image/news/${video.video_thumbnail})`
                       }}>
                         <i className="far fa-play-circle fa-2x playButton" />
                       </div>
@@ -95,7 +95,7 @@ class Videos extends React.Component {
                       <div className="h6">{video.heading}</div>
                     
                       <small className="text-muted author">
-                        {video.author} | <Moment format='MMMM-YY' locale="en">{video.publish_date}</Moment>
+                        {video.author} | <Moment format='MMMM-YY' locale="en">{video.date}</Moment>
                       </small>
               </div>
             ))}

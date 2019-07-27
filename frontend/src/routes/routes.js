@@ -3,16 +3,20 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import LandingPage from "../container/landingPage/LandingPage";
 import Dashboard from "../container/Dashboard/Dashboard";
 import Stories from "../container/stories/Stories";
+import Layout from './Layout'
 
-function Routes() {
+ const Routes=()=> {
   return(
-    <Router>
-    <div>
-      <Route path="/" exact component={LandingPage} />
-      <Route path="/admin/" component={Dashboard} />
-      <Route path="/stories/" component={Stories} />
-    </div>
-  </Router>
+    // <Layout>
+      <Router>
+      <div>
+        <Route path="/" exact component={LandingPage} />
+        <Route path="/admin/" component={Dashboard} />
+        <Route path="/stories/" component={Stories} />
+      </div>
+    </Router>
+  // </Layout>
   )
 }
-export default Routes;
+
+export default Routes

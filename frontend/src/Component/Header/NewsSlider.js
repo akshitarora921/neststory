@@ -1,7 +1,7 @@
 import React from "react";
 import axios from "axios";
 // import $ from "jquery";
-import "../css/header.css";
+import "./header.css";
 import OwlCarousel from "react-owl-carousel";
 import "owl.carousel/dist/assets/owl.carousel.css";
 import "owl.carousel/dist/assets/owl.theme.default.css";
@@ -51,7 +51,7 @@ class NewsSlider extends React.Component {
 
 {this.state.newsData.length > 0 ? (<OwlCarousel className="owl-theme" {...options}>
           {this.state.newsData.map((newData,id) => (
-            <div key={id} className="item">{newData.news}</div>
+            <div key={id} className="item">{newData.heading}</div>
           ))}
         </OwlCarousel>):("")}
       </div>

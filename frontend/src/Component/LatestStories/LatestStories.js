@@ -2,7 +2,7 @@ import React from "react";
 import "../../fontawesome/css/all.css";
 // import '../Home.css'
 import "../b.css";
-import "../css/lateststories.css";
+import "./lateststories.css";
 import Axios from "axios";
 import ShowMore from "react-simple-show-more";
 import Moment from 'react-moment';
@@ -18,11 +18,14 @@ class LatestStories extends React.Component {
       this.setState({
         ls: data
       });
-    });
+    })
+    .catch(res=>{
+      console.log("latest stories axios catch:",res)
+    })
   }
   render() {
     return (
-      <div className="latest-stories ">
+      <div style={{marginTop:"8%"}} className="latest-stories">
         <div className="container-fluid ">
         <div className="row">
             {/* heading */}
@@ -40,16 +43,18 @@ class LatestStories extends React.Component {
           </div>
         <hr className="horizontalrule" />
           {/* mapping Starts from Here */}
-          {this.state.ls.slice(0, this.props.last).map(listitem => (
-            <div key={listitem.id} 
+          {this.state.ls.slice(0, this.props.last).map((listitem, id) => (
+            <div key={id} 
             style={{minHeight:"200px"}}
             className="row mb-4  ">
               <div
                 style={{
                   backgroundSize: "100% 100%",
-                  maxHeight:"250px",
-                  minHeight:"250px",
-                  backgroundImage: `url(http://localhost:3001/image/lateststories/${
+                  maxHeight:"75%",
+                  minHeight:"50%",
+                  minWidth:"auto",
+                  // maxWidth:"200px",
+                  backgroundImage: `url(http://localhost:3001/image/news/${
                     listitem.image
                   })`
                 }}
@@ -59,11 +64,11 @@ class LatestStories extends React.Component {
               <div className="col-lg-6 col-md-6  col-sm-12">
                 <div className="container ">
                   <div >
-                    <h6>{listitem.news_heading} </h6>
+                    <h6>{listitem.heading} </h6>
                     <hr className="newsHR " />
                     <div className="comment more text-justify">
                       <ShowMore
-                        text={listitem.news_content}
+                        text={listitem.content}
                         length={500}
                         showMoreLabel=" show More"
                         showLessLabel=" Collapse"
@@ -85,7 +90,7 @@ class LatestStories extends React.Component {
                         <font style={{ color: "#F54A00" }}>
                           {listitem.author}
                         </font>{" "}
-                        |<Moment format='MMMM-YY' locale="en">{listitem.publish_date}</Moment>| length
+                        |<Moment format='MMMM-YY' locale="en">{listitem.date}</Moment>| length
                         Comments
                       </small>
                     </div>

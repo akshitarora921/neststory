@@ -1,3 +1,6 @@
+.latest-stories{
+  padding-left:10px 
+}
 .horizontalrule {
   border: 1px solid black;
   margin-top: -5px;
@@ -8,7 +11,7 @@
 .newsImage {
   background-repeat: no-repeat;
   background-size: 100% 100%;
-  min-width: 100px;
+  min-width: 75px;
   /* max-height: 200px */
 
 }

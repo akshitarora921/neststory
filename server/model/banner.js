@@ -4,42 +4,42 @@ const db = require("../bin/db");
 const multer = require("multer");
 const path = require("path");
 
-const storageStrategy = multer.diskStorage({
-  destination: "./public/image/banner",
-  filename: function(req, file, cb) {
-    bannerFileName = Date.now() + "_" + file.originalname;
-    console.log("===>", bannerFileName);
-    cb(null, bannerFileName);
-  }
-})
-const upload = multer({
-  storage: storageStrategy
-}).single("bannerFile");
+// const storageStrategy = multer.diskStorage({
+//   destination: "./public/image/banner",
+//   filename: function(req, file, cb) {
+//     bannerFileName = Date.now() + "_" + file.originalname;
+//     console.log("===>", bannerFileName);
+//     cb(null, bannerFileName);
+//   }
+// })
+// const upload = multer({
+//   storage: storageStrategy
+// }).single("bannerFile");
 
-router.post("/new", async (req, res) => {
-  console.log(req)
-  await upload(req, res, err => {
-    if (err) {
-      console.log("Upload err: ", err);
-      res.status(409).send("err");
-    } else {
-      //PLEASE ALWAYS REFRESH IF USING WITH FRONTEND ELSE IT WILL GIVE ERROR
-      const sql = `insert into banner (image, caption, isVideo ) values("${req.file.filename}", "${req.body.bannerCaption}",${req.body.bannerIsVideo})`;
-      db.query(sql, (err, result) => {
-        if (err) {
-          console.log("sql err", err);
-          res.status(409).send("error in query function");
-        } else {
-          console.log(result);
-          res.status(200).send(result);
-        }
-      });
-    }
-  });
-});
+// router.post("/new", async (req, res) => {
+//   console.log(req)
+//   await upload(req, res, err => {
+//     if (err) {
+//       console.log("Upload err: ", err);
+//       res.status(409).send("err");
+//     } else {
+//       //PLEASE ALWAYS REFRESH IF USING WITH FRONTEND ELSE IT WILL GIVE ERROR
+//       const sql = `insert into banner (image, caption, isVideo ) values("${req.file.filename}", "${req.body.bannerCaption}",${req.body.bannerIsVideo})`;
+//       db.query(sql, (err, result) => {
+//         if (err) {
+//           console.log("sql err", err);
+//           res.status(409).send("error in query function");
+//         } else {
+//           console.log(result);
+//           res.status(200).send(result);
+//         }
+//       });
+//     }
+//   });
+// });
 
 router.get("/data", (req, res, next) => {
-  const sql = `select * from banner order by id desc limit 4`;
+  const sql = `select image, heading from news order by count desc limit 4`;
   db.query(sql, (err, result) => {
     if (err) {
       console.log("sql err", err);

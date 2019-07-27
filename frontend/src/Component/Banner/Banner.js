@@ -5,7 +5,7 @@ import Sidebar from "../Sidebar/Sidebar";
 import "../../fontawesome/css/all.css";
 // import "../App.css";
 import "../b.css";
-import "../css/banner.css";
+import "./banner.css";
 class Banner extends React.Component {
   state = {
     banners: []
@@ -45,7 +45,7 @@ class Banner extends React.Component {
                 <div
                   key={id}
                   style={{
-                    backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),url(http://localhost:3001/image/banner/${
+                    backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),url(http://localhost:3001/image/news/${
                       banner.image
                     })`
                   }}
@@ -54,7 +54,7 @@ class Banner extends React.Component {
                   {banner.isVideo === 1 && (
                     <i className="far fa-play-circle fa-3x playButton1" />
                   )}
-                  <div className="h6 bannerHeading">{banner.caption}</div>
+                  <div className="h6 bannerHeading">{banner.heading}</div>
                 </div>
               );
             })}
