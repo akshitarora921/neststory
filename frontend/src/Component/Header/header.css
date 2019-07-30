@@ -44,12 +44,11 @@
     transform: rotate(45deg)
 
 }
-
 /* For modals */
 .topheading {
   margin-top: 35%;
   padding: 20px;
-  font-size: 3vw;
+  font-size: 2.8vw;
   margin-left: 10%;
   color: white;
 }

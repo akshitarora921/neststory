@@ -29,7 +29,9 @@ class Banner extends React.Component {
   render() {
     return (
       <div className="banner">
-        <Sidebar />
+        <div className="slidebar">
+          <Sidebar />
+        </div>
         {/* some map function we come and render the photo preview multiple times */}
         {/* props are passed for source and caption */}
         <div className="container-fluid">

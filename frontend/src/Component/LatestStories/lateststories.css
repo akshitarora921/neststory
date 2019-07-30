@@ -1,5 +1,10 @@
 .latest-stories{
-  padding-left:10px 
+  padding-left:10px;
+  padding-right: 10px 
+}
+.latest-stories a{
+  text-decoration: none;
+  color: black
 }
 .horizontalrule {
   border: 1px solid black;

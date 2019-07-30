@@ -2,10 +2,11 @@ import React from "react";
 import "../../fontawesome/css/all.css";
 // import '../Home.css'
 import "../b.css";
+import { Link } from "react-router-dom";
 import "./lateststories.css";
 import Axios from "axios";
 import ShowMore from "react-simple-show-more";
-import Moment from 'react-moment';
+import Moment from "react-moment";
 
 class LatestStories extends React.Component {
   state = {
@@ -13,23 +14,25 @@ class LatestStories extends React.Component {
   };
 
   componentDidMount() {
-    Axios.get("http://localhost:3001/lateststories/data").then(res => {
-      let data = res.data;
-      this.setState({
-        ls: data
+    Axios.get("http://localhost:3001/lateststories/data")
+      .then(res => {
+        let data = res.data;
+        this.setState({
+          ls: data
+        });
+      })
+      .catch(res => {
+        console.log("latest stories axios catch:", res);
       });
-    })
-    .catch(res=>{
-      console.log("latest stories axios catch:",res)
-    })
   }
+
   render() {
     return (
-      <div style={{marginTop:"8%"}} className="latest-stories">
+      <div  className="latest-stories">
         <div className="container-fluid ">
-        <div className="row">
+          <div className="row">
             {/* heading */}
-            <div className="col-2.5 ">
+            <div className="col-lg-2.5 ro ">
               <h2 style={{ color: "#F54A00" }}>Latest Stories</h2>
             </div>
             {/* heading extra text */}
@@ -41,18 +44,22 @@ class LatestStories extends React.Component {
               Enviroment | More
             </div>
           </div>
-        <hr className="horizontalrule" />
+          <hr className="horizontalrule" />
           {/* mapping Starts from Here */}
-          {this.state.ls.slice(0, this.props.last).map((listitem, id) => (
-            <div key={id} 
-            style={{minHeight:"200px"}}
-            className="row mb-4  ">
+          {this.state.ls.slice(0, this.props.last).map((listitem, idi) => (
+            <Link to={`/news/${listitem.id}`}>
+            <div
+              key={idi}
+              style={{ minHeight: "200px" }}
+              className="row mb-4  "
+            >
               <div
                 style={{
-                  backgroundSize: "100% 100%",
-                  maxHeight:"75%",
-                  minHeight:"50%",
-                  minWidth:"auto",
+                  backgroundSize: "cover",
+                  maxHeight: "75%",
+                  minHeight: "200px",
+                  minWidth: "auto",
+                  backgroundPosition:"center",
                   // maxWidth:"200px",
                   backgroundImage: `url(http://localhost:3001/image/news/${
                     listitem.image
@@ -63,7 +70,7 @@ class LatestStories extends React.Component {
 
               <div className="col-lg-6 col-md-6  col-sm-12">
                 <div className="container ">
-                  <div >
+                  <div>
                     <h6>{listitem.heading} </h6>
                     <hr className="newsHR " />
                     <div className="comment more text-justify">
@@ -90,24 +97,28 @@ class LatestStories extends React.Component {
                         <font style={{ color: "#F54A00" }}>
                           {listitem.author}
                         </font>{" "}
-                        |<Moment format='MMMM-YY' locale="en">{listitem.date}</Moment>| length
-                        Comments
+                        |
+                        <Moment format="MMMM-YY" locale="en">
+                          {listitem.date}
+                        </Moment>
+                       
                       </small>
                     </div>
-                      <div className="trending col-lg-3 ">
+                    <div className="trending col-lg-3 ">
+                      {" "}
+                      TRENDING:
+                      <font style={{ color: "#ffffff", fontSize: "small" }}>
                         {" "}
-                        TRENDING:
-                        <font style={{ color: "#ffffff", fontSize: "small" }}>
-                          {" "}
-                          {listitem.trending}{" "}
-                        </font>
-                      </div>
+                        {listitem.trending}{" "}
+                      </font>
+                    </div>
                   </div>
                 </div>
               </div>
               <div className="col-lg-2 col-sm-12" />
               {/* Advertisement */}
             </div>
+            </Link>
           ))}
         </div>
       </div>

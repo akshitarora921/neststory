@@ -1,10 +1,10 @@
 import React from "react";
-import Header from "../../component/Header/Header";
-import Sidebar from "../../component/Sidebar/Sidebar"
+// import Header from "../../component/Header/Header";
+import Sidebar from "../../component/Sidebar/Sidebar";
 import LatestStories from "../../component/LatestStories/LatestStories";
-import Footer from "../../component/Footer/Footer";
+// import Footer from "../../component/Footer/Footer";
 import axios from "axios";
-import "./stories.css"
+import "./stories.css";
 
 class Stories extends React.Component {
   state = {
@@ -29,18 +29,24 @@ class Stories extends React.Component {
   render() {
     return (
       <div>
-        <Header />
-        <div style={{ paddingTop: "7.7%" }}>
-          <Sidebar/>
-          <h2></h2>
+        {/* <Header /> */}
+        <div style={{ paddingTop: "8%", paddingBottom: "5px" }}>
+          <div className="slidebar">
+            <Sidebar />
+          </div>
+
           <LatestStories last={this.state.visible} />
           {this.state.visible < this.state.ls.length && (
-            <button onClick={this.loadMore} type="button" className="btn load-more">
+            <button
+              onClick={this.loadMore}
+              type="button"
+              className="btn load-more"
+            >
               More
             </button>
           )}
         </div>
-        <Footer />
+        {/* <Footer /> */}
       </div>
     );
   }

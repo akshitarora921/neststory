@@ -51,7 +51,7 @@ const path = require("path");
 //   });
   
   router.get("/data", (req, res, next) => {
-    const sql = `select heading, content, image, date, author, trending from news order by id desc `;
+    const sql = `select id, heading, content, image, date, author, trending from news order by id desc `;
     db.query(sql, (err, result) => {
       if (err) {
         res.status(409).send("error in query function");

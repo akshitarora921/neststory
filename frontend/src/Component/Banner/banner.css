@@ -1,12 +1,30 @@
 .banner {
-  padding-top: 7.7%;
+  padding-top: 8.5%;
 }
 .bannerImage {
   height: 200px;
   background-repeat: no-repeat;
-  background-size: 100% 100%;
+  background-size: cover;
+  background-position: center;
   border: 1px solid white;
 }
+.slidebar {
+  visibility: hidden;
+}
+/* .bannerImage {
+  height: 250px;
+  margin-left: -20px;
+  background-repeat: no-repeat;
+  /* background-size: cover;
+  /* border: 1px solid white; 
+}
+
+  .trans-image:hover .bannerImage,
+.trans-image:focus .bannerImage {
+  transition: all .5s;
+  z-index: 3;
+  transform: scale(1);
+} */
 .bannerHeading {
   position: absolute;
   bottom: 8px;
@@ -20,3 +38,11 @@
  right:10px
   /* margin-left: 100px; */
 }
+
+@media screen and (max-width: 600px) {
+ .slidebar {
+    visibility: visible;
+  }
+}
+
+

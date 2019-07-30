@@ -9,3 +9,18 @@ const conn = mysql.createConnection({
 });
 
 module.exports = conn;
+
+// const Sequelize = require('sequelize');
+// const sequelize = new Sequelize('neststory', 'root', 'PASSWORD', {
+//   host: 'localhost',
+//   dialect: 'mysql'
+// });
+// const sequelize = new Sequelize(/* ... */, {
+//   // ...
+//   pool: {
+//     max: 5,
+//     min: 0,
+//     acquire: 30000,
+//     idle: 10000
+//   }
+// });

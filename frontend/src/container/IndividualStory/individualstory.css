@@ -1,0 +1,17 @@
+.heading-div{
+    background-color: orangered;
+    min-height: 15vh ;
+    border-radius: 0 20px 20px 0;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    /* height: 400px; */
+}
+.heading{
+    /* position: absolute; */
+    /* padding-top:auto;
+    padding-bottom: auto; */
+    z-index: 2;
+    color:white;
+    padding-left: 10%;
+}

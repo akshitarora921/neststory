@@ -63,7 +63,7 @@ class Entrepreneurship extends React.Component {
                     height: "200px",
                     width: "200px",
                     backgroundImage:
-                    `linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),url(http://localhost:3001/image/entrepreneurship/${entp.image})`,
+                    `linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),url(http://localhost:3001/image/news/${entp.image})`,
                     backgroundRepeat: "no-repeat",
                     backgroundSize: "100% 100%"
                   }}

@@ -72,7 +72,7 @@ class Videos extends React.Component {
         <hr style={{ border: "1px solid black", marginTop: "-5px" }} />
         {this.state.videos.length > 0 ? (
           <OwlCarousel className="owl-theme" {...options}>
-            {this.state.videos.map((video, id) => (
+            {this.state.videos.slice(0,10).map((video, id) => (
               // <div className="item"><img src={`http://localhost:3001/image/videos/1563367919764_purple.png`}/></div>
               <div key={id} className="item">
                 {/* <img
@@ -83,7 +83,7 @@ class Videos extends React.Component {
                 /> */}
                 <div
                  style={{
-                  minHeight:"150px",
+                  minHeight: "200px",
                   borderRadius:"20px",
                   backgroundSize:"100% 100%",
                         backgroundImage:

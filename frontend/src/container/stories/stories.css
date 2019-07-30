@@ -2,5 +2,15 @@
     color: white;
     background-color: orangered;
     width: 100vh;
+    border-radius: 10px;
     margin-left: 20%;
 }
+
+.slidebar{
+    visibility: hidden;
+}
+@media screen and (max-width: 600px) {
+    .slidebar {
+       visibility: visible;
+     }
+   }

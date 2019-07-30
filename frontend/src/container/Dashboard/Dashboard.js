@@ -105,25 +105,13 @@ class Dashboard extends React.Component {
   
   render() {
     const options = [
-      { value: 'chocolate', label: 'Chocolate' },
-      { value: 'strawberry', label: 'Strawberry' },
-      { value: 'vanilla', label: 'Vanilla' }
+      { value: 'global', label: 'Global' },
+      { value: 'local', label: 'Local' },
+      { value: 'india', label: 'India' }
     ]
     
     return (
       <div style={{ backgroundColor: "#eee" }}>
-        <div
-            style={{ zIndex: "3", position: "fixed" }}
-          className="container-fluid headerStyleadmin"
-        >
-          <div className="row">
-            <div className="col-lg-3 col-md-5 col-sm-12 h1 logo text-center">
-              Nest Story
-            </div>
-           
-          </div>
-        </div>
-
         <div
           style={{ paddingTop: "12%" }}
           className="section-content-block section-process container"

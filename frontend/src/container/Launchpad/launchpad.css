@@ -1,0 +1,92 @@
+.part1 {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.5)),
+  url(../../Assets/modal-back1.png);
+background-size: cover;
+background-position: center;
+color: white;
+}
+.part2 {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.5)),
+    url(../../Assets/modal-back2.png);
+  background-size: cover;
+  background-position: center;
+  color: white;
+}
+
+.circle {
+  display: block;
+  width: 125px;
+  min-height: 125px;
+  border-radius: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+#launchpad {
+  font-size: 6vw;
+  font-weight: bold;
+  vertical-align: middle;
+  color: white;
+  padding-top: 10%;
+  /* position:absolute;  */
+  bottom: 0px;
+}
+#accelerator {
+  font-size: 9vw;
+  font-weight: bold;
+  color: white;
+  /* position:absolute;  */
+  bottom: 0px;
+}
+#fame {
+  font-size: 1.5vw;
+  color: white;
+  padding-top: 60%;
+  /* position:absolute;  */
+  bottom: 0px;
+  /* font-weight: bold */
+}
+.mentor-img {
+  position: absolute;
+  z-index: 2;
+  background-color: aliceblue;
+  display: block;
+  width: 150px;
+  height: 150px;
+  border-radius: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin-left: 25%;
+  /* visibility: hidden; */
+}
+.rect {
+  position: relative;
+  margin-top: 10%;
+  margin-bottom: 3%;
+  width: 400px;
+  height: 75px;
+  background-color: peachpuff;
+  border-radius: 20px;
+}
+.detail {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+.detail p {
+  padding-top: 5px;
+  font-size: 0.9vw;
+  font-weight: bold;
+  color:#222
+}
+.footer-back {
+  margin-top: 2%;
+  margin-bottom: 1%;
+  background-color: #333;
+}
+.footer-navheads {
+  color: white;
+  font-size: 4vw;
+  font-weight: bold;
+}
