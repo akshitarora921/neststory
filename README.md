@@ -1,6 +1,8 @@
 # neststory
-[![Build Status](https://travis-ci.org/crsandeep/simple-react-full-stack.svg?branch=master)](https://travis-ci.org/crsandeep/simple-react-full-stack)
 Alpha version of Neststory
+
+[![Build Status](https://travis-ci.org/crsandeep/simple-react-full-stack.svg?branch=master)](https://travis-ci.org/crsandeep/simple-react-full-stack)
+
 
 Nest Story is an informational website for all techies.
 
