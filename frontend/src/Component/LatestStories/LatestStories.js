@@ -28,52 +28,52 @@ class LatestStories extends React.Component {
 
   render() {
     return (
-      <div  className="latest-stories">
+      <div className="latest-stories">
         <div className="container-fluid ">
           <div className="row">
             {/* heading */}
-            <div className="col-lg-2.5 ro ">
+            <div className="col-lg-2.5  ">
               <h2 style={{ color: "#F54A00" }}>Latest Stories</h2>
             </div>
             {/* heading extra text */}
             <div
-              style={{ marginTop: "12px", fontSize: "13px" }}
+              style={{ marginTop: "12px", fontSize: "1.3vw" }}
               className="col "
             >
-              Tech | Science | Startup Talks | Innovation | Entertainment |
-              Enviroment | More
+              {/* Tech | Science | Startup Talks | Innovation | Entertainment |
+              Enviroment | More */}
             </div>
           </div>
           <hr className="horizontalrule" />
           {/* mapping Starts from Here */}
           {this.state.ls.slice(0, this.props.last).map((listitem, idi) => (
             <Link to={`/news/${listitem.id}`}>
-            <div
-              key={idi}
-              style={{ minHeight: "200px" }}
-              className="row mb-4  "
-            >
               <div
-                style={{
-                  backgroundSize: "cover",
-                  maxHeight: "75%",
-                  minHeight: "200px",
-                  minWidth: "auto",
-                  backgroundPosition:"center",
-                  // maxWidth:"200px",
-                  backgroundImage: `url(http://localhost:3001/image/news/${
-                    listitem.image
-                  })`
-                }}
-                className="col-sm-12 col-lg-4 col-md-6 newsimage"
-              />
+                key={idi}
+                style={{ minHeight: "200px" }}
+                className="row mb-4  "
+              >
+                <div
+                  style={{
+                    // maxHeight: "75%",
+                    minHeight: "200px",
+                    maxHeight: "220px",
+                    minWidth: "auto",
+                    // maxWidth:"200px",
+                    backgroundPosition: "center",
+                    backgroundSize: "cover",
+                    backgroundImage: `url(http://localhost:3001/image/news/${
+                      listitem.image
+                    })`
+                  }}
+                  className="col-12 col-lg-4  newsimage"
+                />
 
-              <div className="col-lg-6 col-md-6  col-sm-12">
-                <div className="container ">
-                  <div>
+                <div className="col-lg-6 col-12 mx-2">
+                  <div className="row">
                     <h6>{listitem.heading} </h6>
-                    <hr className="newsHR " />
-                    <div className="comment more text-justify">
+                    <hr className="newsHR" />
+                    <div className="comment text-justify">
                       <ShowMore
                         text={listitem.content}
                         length={500}
@@ -91,7 +91,7 @@ class LatestStories extends React.Component {
                     </div>
                   </div>
                   <div className="row justify-content-between">
-                    <div className="col-lg-7 col-sm-12">
+                    <div className="col-lg-7 col-12">
                       <small>
                         By{" "}
                         <font style={{ color: "#F54A00" }}>
@@ -101,23 +101,25 @@ class LatestStories extends React.Component {
                         <Moment format="MMMM-YY" locale="en">
                           {listitem.date}
                         </Moment>
-                       
                       </small>
                     </div>
-                    <div className="trending col-lg-3 ">
-                      {" "}
-                      TRENDING:
-                      <font style={{ color: "#ffffff", fontSize: "small" }}>
+                    {listitem.trending.length > 0 ? (
+                      <div className="trending col-lg-3 col-12">
                         {" "}
-                        {listitem.trending}{" "}
-                      </font>
-                    </div>
+                        TRENDING:
+                        <font style={{ color: "#ffffff", fontSize: "small" }}>
+                          {" "}
+                          {listitem.trending}{" "}
+                        </font>
+                      </div>
+                    ) : (
+                      ""
+                    )}
                   </div>
                 </div>
+                <div className="col-lg-2 col-sm-12" />
+                {/* Advertisement */}
               </div>
-              <div className="col-lg-2 col-sm-12" />
-              {/* Advertisement */}
-            </div>
             </Link>
           ))}
         </div>

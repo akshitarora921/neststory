@@ -1,7 +1,12 @@
+.top{
+    padding-top: 8.2%
+}
+
 .heading-div{
     background-color: orangered;
-    min-height: 15vh ;
-    border-radius: 0 20px 20px 0;
+    min-height: 13vh ;
+    margin-bottom: 10px;
+    /* border-radius: 0 20px 20px 0; */
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -11,7 +16,25 @@
     /* position: absolute; */
     /* padding-top:auto;
     padding-bottom: auto; */
-    z-index: 2;
+    /* z-index: 1; */
     color:white;
-    padding-left: 10%;
+    padding-left: 2%;
+}
+
+.related-news{
+    color:black;
+}
+@media screen and (max-width:480px){
+    .top{
+        padding-top:18%
+    }
+   
+    .heading{
+        /* position: absolute; */
+        /* padding-top:auto;
+        padding-bottom: auto; */
+        /* z-index: 2; */
+        color:white;
+        padding-left: 16%;
+    }
 }

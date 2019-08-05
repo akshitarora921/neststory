@@ -1,0 +1,9 @@
+.enp-content{
+    padding-left: 15px;
+}
+
+@media screen and (max-width:520px){
+    .enp-content{
+        padding-left: 0px
+    }
+}

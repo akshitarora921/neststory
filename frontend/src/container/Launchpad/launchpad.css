@@ -1,9 +1,9 @@
 .part1 {
   background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.5)),
-  url(../../Assets/modal-back1.png);
-background-size: cover;
-background-position: center;
-color: white;
+    url(../../Assets/modal-back1.png);
+  background-size: cover;
+  background-position: center;
+  color: white;
 }
 .part2 {
   background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.5)),
@@ -16,37 +16,54 @@ color: white;
 .circle {
   display: block;
   width: 125px;
+  margin-top: 10%;
   min-height: 125px;
   border-radius: 100%;
-  background-position: center;
+  background-color: white;
+  color: black;
+  /* background-position: center;
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: cover; */
+}
+.icon {
+  padding-top: 25%;
 }
 #launchpad {
   font-size: 6vw;
   font-weight: bold;
-  vertical-align: middle;
+  /* vertical-align: middle; */
   color: white;
   padding-top: 10%;
+  /* padding-left:0px;
+  padding-right:0px; */
   /* position:absolute;  */
-  bottom: 0px;
+  /* bottom: 0px; */
 }
 #accelerator {
   font-size: 9vw;
   font-weight: bold;
   color: white;
+  /* padding-left:0px;
+  padding-right:0px; */
   /* position:absolute;  */
-  bottom: 0px;
+  /* bottom: 0px; */
 }
 #fame {
   font-size: 1.5vw;
   color: white;
   padding-top: 60%;
+  /* padding-left:0px;
+  padding-right:0px; */
   /* position:absolute;  */
   bottom: 0px;
   /* font-weight: bold */
 }
+.lp-heading {
+  font-size: 6vw;
+  font-weight: bold;
+}
 .mentor-img {
+  margin-top: 15%;
   position: absolute;
   z-index: 2;
   background-color: aliceblue;
@@ -57,28 +74,36 @@ color: white;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  margin-left: 25%;
+  margin-left: 29%;
   /* visibility: hidden; */
 }
 .rect {
   position: relative;
   margin-top: 10%;
   margin-bottom: 3%;
-  width: 400px;
-  height: 75px;
-  background-color: peachpuff;
+  width: 300px;
+  height: 350px;
+  background-color: #fff;
   border-radius: 20px;
+  border: 2px solid orangered;
 }
 .detail {
   display: flex;
   justify-content: center;
   flex-direction: column;
 }
+
+.detail h6 {
+  margin-top: -15px;
+  /* font-size: 2.5vw; */
+  /* font-weight: 500; */
+  color: #222;
+}
 .detail p {
   padding-top: 5px;
-  font-size: 0.9vw;
-  font-weight: bold;
-  color:#222
+  font-size: 2.5vw;
+  font-weight: 500;
+  color: #222;
 }
 .footer-back {
   margin-top: 2%;
@@ -89,4 +114,77 @@ color: white;
   color: white;
   font-size: 4vw;
   font-weight: bold;
+}
+.mentor-heading {
+  margin-top: 5%;
+  font-size: 50px;
+  font-weight: bold;
+  color: white;
+}
+
+@media screen and (max-width: 480px) {
+  .mentor-img {
+    /* background-color: black; */
+    margin-left: 28% !important;
+    margin-top: 20%;
+  }
+
+  .detail p {
+    padding-top: 5px;
+    font-size: 6.5vw;
+    font-weight: 500;
+    color: #222;
+  }
+  .lp-heading{
+    font-size: 8vw;
+    font-weight: bold;
+    text-align: center !important;
+  }
+
+  .detail h6 {
+    margin-top: -15px;
+    font-size: 3.5vw;
+    /* font-weight: 500; */
+    color: #222;
+  }
+  .launchpad-video {
+    margin-left: 10%;
+  }
+  .mentor-heading {
+    padding-top: 50px;
+    margin-bottom: -20px;
+  }
+  #launchpad {
+    font-size: 30px;
+    font-weight: bold;
+    /* vertical-align: middle; */
+    color: white;
+    padding-top: 15%;
+    /* padding-left:0px;
+    padding-right:0px; */
+    /* position:absolute;  */
+    /* bottom: 0px; */
+  }
+  #accelerator {
+    font-size: 50px;
+    font-weight: bold;
+    color: white;
+    /* padding-left:0px;
+    padding-right:0px; */
+    /* position:absolute;  */
+    /* bottom: 0px; */
+  }
+  #fame {
+    font-size: 10px;
+    color: white;
+    padding-top: 40%;
+    /* padding-left:0px;
+    padding-right:0px; */
+    /* position:absolute;  */
+    bottom: 0px;
+    /* font-weight: bold */
+  }
+  .footer-navheads {
+    font-size: 4.8vw;
+  }
 }

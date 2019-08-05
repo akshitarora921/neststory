@@ -22,11 +22,12 @@ var upload = multer({
 getDate = () => {
   let today = new Date();
   let dd = today.getDate();
-  let mm = today.getMonth();
+  let mm = today.getMonth() + 1; //gives last months so we have to add 1
   let yyyy = today.getFullYear();
   if (dd < 10) dd = "0" + dd;
   if (mm < 10) mm = "0" + mm;
   today = yyyy + "-" + mm + "-" + dd;
+  console.log("date: ", today);
   return today;
 };
 
@@ -54,7 +55,7 @@ router.post("/new", async (req, res) => {
         //   }", "${req.body.zone}","${req.body.tags}","${req.body.category}","${
         //   req.body.subCategory
         //   }","${req.body.trending}")`;
-        res.status(409).json({ err: "image iis not uploaded" });
+        res.status(409).json({ err: "image is not uploaded" });
       } else {
         if (req.files.video == undefined) {
           //not video
@@ -96,15 +97,14 @@ router.post("/new", async (req, res) => {
 router.get("/data/:id", (req, res, next) => {
   const id = req.params.id;
   console.log("i am wierd ", id);
-  const increaseCountSql = `update news set views_count = views_count + 1 where id=${id}`
-  db.query(increaseCountSql,(err, result)=>{
-    if(err){
-      console.log("increaseCountSql Error: ", err)
+  const increaseCountSql = `update news set views_count = views_count + 1 where id=${id}`;
+  db.query(increaseCountSql, (err, result) => {
+    if (err) {
+      console.log("increaseCountSql Error: ", err);
+    } else {
+      console.log("increaseCountSql success: ", result);
     }
-    else{
-      console.log("increaseCountSql success: ", result)
-    }
-  })
+  });
 
   const sql = `select * from news where id=${id} order by id desc`;
   console.log("sql: ", sql);
@@ -122,7 +122,6 @@ router.get("/data/:id", (req, res, next) => {
   });
 });
 
-
 router.get("/data/related/:id", (req, res, next) => {
   const id = req.params.id;
   // const tags = req.params.tags;
@@ -135,18 +134,18 @@ router.get("/data/related/:id", (req, res, next) => {
     if (err) {
       res.status(409).send("error in query function");
     } else {
-      tags= result[0].tags;
-      console.log("Tags", tags)
-      ress = tags.split(",")
-      console.log("Ress", ress)
-      let tagsName=""
+      tags = result[0].tags;
+      console.log("Tags", tags);
+      ress = tags.split(",");
+      console.log("Ress", ress);
+      let tagsName = "";
       ress.forEach(element => {
-        tagsName= tagsName + `"${element}",`
+        tagsName = tagsName + `"${element}",`;
       });
-      tagsName = tagsName.slice(0,-1)
-      console.log("tagsName", tagsName)
+      tagsName = tagsName.slice(0, -1);
+      console.log("tagsName", tagsName);
       const sql = `select * from news where tags in (${tagsName}) order by id desc`;
-      console.log("sqllll ", sql)
+      console.log("sqllll ", sql);
       db.query(sql, (err, result) => {
         if (err) {
           res.status(409).send("error in query function");
@@ -162,6 +161,5 @@ router.get("/data/related/:id", (req, res, next) => {
     }
   });
 });
-
 
 module.exports = router;

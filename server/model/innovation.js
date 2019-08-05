@@ -36,7 +36,7 @@ const multer = require("multer");
 // });
 
 router.get("/data", (req, res, next) => {
-  const sql = `select image, heading from news where category="innovation" order by id desc limit 10`;
+  const sql = `select * from news where category="innovation" order by id desc`;
   db.query(sql, (err, result) => {
     if (err) {
       console.log("sql err", err);

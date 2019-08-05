@@ -40,8 +40,8 @@ class Banner extends React.Component {
               //  console.log(id)
               let styleCol;
               if (id === 0 || id === 3)
-                styleCol = "col-lg-4 col-sm-4 col-xs-12";
-              else styleCol = "col-lg-6 col-sm-6 col-xs-12";
+                styleCol = "col-lg-4 col-12";
+              else styleCol = "col-lg-6 col-12";
               return (
                 //  <div className={`${styleRow}`}>
                 <div

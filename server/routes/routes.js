@@ -11,11 +11,14 @@ const latestStoriesRouter = require("../model/latestStories");
 const innovationRouter = require("../model/innovation");
 const entrepreneurshipRouter = require("../model/entrepreneurship");
 const videosRouter = require("../model/videos");
+const globalNewsRouter = require("../model/globalNews")
+const launchpadRouter = require("../model/launchpad")
 
 
 
 //routers
 router.use("/", indexRouter);
+router.use("/global", globalNewsRouter);
 router.use("/users/login", usersLoginRouter);
 router.use("/users/signup", usersSignupRouter);
 router.use("/news",newsRouter)
@@ -25,5 +28,7 @@ router.use("/lateststories", latestStoriesRouter);
 router.use("/innovation", innovationRouter);
 router.use("/entrepreneurship", entrepreneurshipRouter);
 router.use("/videos", videosRouter);
+router.use("/launchpad", launchpadRouter);
+
 
 module.exports = router

@@ -66,7 +66,7 @@ class Innovation extends React.Component {
               style={{ marginTop: "12px", fontSize: "13px" }}
               className="col "
             >
-              Startup | Agritech | Robotics | Medical | Science | Enviroment
+              {/* Startup | Agritech | Robotics | Medical | Science | Enviroment */}
             </div>
           </div>
         </div>
@@ -75,33 +75,26 @@ class Innovation extends React.Component {
         {this.state.innovations.length > 0 ? (
           <OwlCarousel className="owl-theme" {...options}>
             {this.state.innovations.map((innovation, id) => (
-              // <div className="item"><img src={`http://localhost:3001/image/videos/1563367919764_purple.png`}/></div>
-              <div key={id} className="item">
-                {/* <img
-                  alt="not found"
-                  src={`http://localhost:3001/image/videos/${
-                    video.video_thumbnail
-                  }`}
-                /> */}
-                <div
-                  style={{
-                    minHeight: "200px",
-                    // minWidth:"250px",
-                    borderRadius: "20px",
-                    backgroundSize: "100% 100%",
-                    backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),url(http://localhost:3001/image/news/${
-                      innovation.image
-                    })`
-                  }}
-                >
+              <a href={`/news/${innovation.id}`}>
+                <div key={id} className="item">
                   <div
-                 
-                    className="h6 innovationHeading"
+                    style={{
+                      minHeight: "200px",
+                      // minWidth:"250px",
+                      borderRadius: "20px",
+                      backgroundSize: "cover",
+                      backgroundPosition: "center",
+                      backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),url(http://localhost:3001/image/news/${
+                        innovation.image
+                      })`
+                    }}
                   >
-                    {innovation.heading}
+                    <div className="h6 innovationHeading">
+                      {innovation.heading}
+                    </div>
                   </div>
                 </div>
-              </div>
+              </a>
             ))}
           </OwlCarousel>
         ) : (

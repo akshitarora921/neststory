@@ -7,7 +7,8 @@ import axios from "axios";
 import OwlCarousel from "react-owl-carousel";
 import "owl.carousel/dist/assets/owl.carousel.css";
 import "owl.carousel/dist/assets/owl.theme.default.css";
-import Moment from 'react-moment';
+import Moment from "react-moment";
+import ReactPlayer from "react-player";
 // import 'moment/locale/fr';
 // import SingleVideo from "./SingleVideo";
 class Videos extends React.Component {
@@ -29,28 +30,27 @@ class Videos extends React.Component {
     });
   }
 
-
   render() {
-    let options={
+    let options = {
       // loop: true,
       margin: 10,
-      video:true,
+      video: true,
       // nav:true,
-      responsive:{
-          0: {
-              items: 2,
-          },
-          600: {
-              items:2,
-          },
-          800:{
-            items:3,
-          },
-          1000: {
-              items: 4,
-          },
-      },
-  }
+      responsive: {
+        0: {
+          items: 2
+        },
+        600: {
+          items: 2
+        },
+        800: {
+          items: 3
+        },
+        1000: {
+          items: 4
+        }
+      }
+    };
     return (
       <div className="Videos">
         <div className="container-fluid">
@@ -64,15 +64,15 @@ class Videos extends React.Component {
               style={{ marginTop: "12px", fontSize: "13px" }}
               className="col "
             >
-              Tech | Science | Startup Talks | Innovation | Entertainment |
-              Enviroment | More
+              {/* Tech | Science | Startup Talks | Innovation | Entertainment |
+              Enviroment | More */}
             </div>
           </div>
         </div>
         <hr style={{ border: "1px solid black", marginTop: "-5px" }} />
         {this.state.videos.length > 0 ? (
           <OwlCarousel className="owl-theme" {...options}>
-            {this.state.videos.slice(0,10).map((video, id) => (
+            {this.state.videos.slice(0, 10).map((v, id) => (
               // <div className="item"><img src={`http://localhost:3001/image/videos/1563367919764_purple.png`}/></div>
               <div key={id} className="item">
                 {/* <img
@@ -81,26 +81,42 @@ class Videos extends React.Component {
                     video.video_thumbnail
                   }`}
                 /> */}
-                <div
-                 style={{
-                  minHeight: "200px",
-                  borderRadius:"20px",
-                  backgroundSize:"100% 100%",
-                        backgroundImage:
-                          `linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),url(http://localhost:3001/image/news/${video.video_thumbnail})`
-                      }}>
-                        <i className="far fa-play-circle fa-2x playButton" />
-                      </div>
-                
-                      <div className="h6">{video.heading}</div>
+                {/* <div
+               
+                  className="player-wrapper">
+                  <ReactPlayer
+                    className="react-player"
+                    light
                     
-                      <small className="text-muted author">
-                        {video.author} | <Moment format='MMMM-YY' locale="en">{video.date}</Moment>
-                      </small>
+                          url={`http://localhost:3001/image/news/${v.video}`}                       
+                    width="100%"
+                    height="250px"
+                  />
+                </div> */}
+                <div
+                  style={{
+                    minHeight: "200px",
+                    borderRadius: "20px",
+                    backgroundSize: "cover",
+                    backgroundPosition: "center",
+                    backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),url(http://localhost:3001/image/news/${
+                      v.image
+                    })`
+                  }}
+                >
+                  <i className="far fa-play-circle fa-2x playButton" />
+                </div>
+
+                <div className="h6">{v.heading}</div>
+
+                <small className="text-muted author">
+                  {v.author} |{" "}
+                  <Moment format="MMMM-YY" locale="en">
+                    {v.date}
+                  </Moment>
+                </small>
               </div>
             ))}
-
-          
           </OwlCarousel>
         ) : (
           ""

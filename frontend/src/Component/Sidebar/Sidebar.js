@@ -27,68 +27,68 @@ class Sidebar extends React.Component {
               &times;
             </a>
           </div>
-          <div className="navbar-heading">News</div>
+          <div className="navbar-heading"><a href="/">Homes</a></div>
           <div>
-            <ul className="list">
+            {/* <ul className="list">
               <li>Latest</li>
               <li>Trending</li>
               <li>Politics</li>
               <li>Global</li>
-            </ul>
+            </ul> */}
           </div>
-          <div className="navbar-heading">News</div>
+          <div className="navbar-heading"><a href="/stories">Stories</a></div>
           <div>
-            <ul className="list">
+            {/* <ul className="list">
               <li>Latest</li>
               <li>Trending</li>
               <li>Politics</li>
               <li>Global</li>
-            </ul>
+            </ul> */}
           </div>
-          <div className="navbar-heading">News</div>
+          <div className="navbar-heading"><a href="/global">Global</a></div>
           <div>
-            <ul className="list">
+            {/* <ul className="list">
               <li>Latest</li>
               <li>Trending</li>
               <li>Politics</li>
               <li>Global</li>
-            </ul>
+            </ul> */}
           </div>
-          <div className="navbar-heading">News</div>
+          <div className="navbar-heading"><a href="/innovation">Innovation</a></div>
           <div>
-            <ul className="list">
+            {/* <ul className="list">
               <li>Latest</li>
               <li>Trending</li>
               <li>Politics</li>
               <li>Global</li>
-            </ul>
+            </ul> */}
           </div>
-          <div className="navbar-heading">News</div>
+          <div className="navbar-heading"><a href="/launchpad">Launchpad</a></div>
           <div>
-            <ul className="list">
+            {/* <ul className="list">
               <li>Latest</li>
               <li>Trending</li>
               <li>Politics</li>
               <li>Global</li>
-            </ul>
+            </ul> */}
           </div>
-          <div className="navbar-heading">News</div>
+          <div className="navbar-heading"><a href="/entrepreneurship">Entrepreneurship</a></div>
           <div>
-            <ul className="list">
+            {/* <ul className="list">
               <li>Latest</li>
               <li>Trending</li>
               <li>Politics</li>
               <li>Global</li>
-            </ul>
+            </ul> */}
           </div>
-          <div className="navbar-heading">News</div>
+          <div className="navbar-heading"><a href="/videos">Videos</a></div>
           <div>
-            <ul className="list">
+            {/* <ul className="list">
               <li>Latest</li>
               <li>Trending</li>
               <li>Politics</li>
               <li>Global</li>
-            </ul>
+            </ul> */}
           </div>
          
           <div id="footer" className="navbar-footer">

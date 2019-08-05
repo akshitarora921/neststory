@@ -1,11 +1,8 @@
 import React from "react";
 // import DashboardHeader from './DashboardHeader'
-import NewsHeaderInput from "../../component/AdminInput1/NewsHeaderInput";
-import BannerInput from "../../component/AdminInput1/BannerInput";
-import LatestStoriesInput from "../../component/AdminInput1/LatestStoriesInput";
-import InnovationInput from "../../component/AdminInput1/InnovationInput";
-import EntrepreneurshipInput from "../../component/AdminInput1/EntrepreneurshipInput";
-import VideosInput from "../../component/AdminInput1/VideosInput";
+import DashboardMain from "../../container/Dashboard/DashboardMain";
+import launchpadDash from "../../container/Dashboard/launchpadDash";
+import MentorDash from "../../container/Dashboard/MentorDash";
 
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import "../../fontawesome/css/all.css";
@@ -26,102 +23,57 @@ class Dashboard extends React.Component {
   render() {
     return (
       <Router>
-        <div className="header-admin">
-          <div
-            style={{ zIndex: "3", position: "fixed" }}
-            className="container-fluid headerStyleadmin"
-          >
-            <div className="row">
-              <div className="col-lg-3 col-md-5 col-sm-12 h1 logo text-center">
-                Nestory
-              </div>
-              <div className="col-9 col-md-8 col-sm-12">
-                <div className="row">
-                  <div className="h1 ml-4 mt-2">Dash Board</div>
-                </div>
-              </div>
-            </div>
-          </div>
-
+        <div style={{ paddingTop: "8.2%" }} className="header-admin">
           <div className="container-fluid">
             <div className="row">
-              <div className="col-lg-3">
-                {/* Side nav bar */}
-                <div class="sidenav1 float-left">
+              <div className="col-lg-3 col-12">
+                <div
+                  // style={{ marginLeft: "-15px", marginRight: "-15px" }}
+                  className="sidenav1 float-left"
+                >
                   <ul
                     className="navbar-nav ml-auto list"
                     onClick={this.makeActive}
                   >
                     <li className="navbar-item nav-item">
-                      <Link to="/admin/newsheader">
-                        <i className="fas fa-rss" /> News header
+                      <Link to="/admin/dashboard/news">
+                        <i className="fas fa-rss" /> News
                       </Link>
                     </li>
                     <li
                       className="navbar-item nav-item"
                       onClick={this.makeActive}
                     >
-                      <Link to="/admin/lateststories">
-                        <i class="fas fa-memory" /> Latest Stories
+                      <Link to="/admin/dashboard/launchpad">
+                        <i class="fas fa-memory" /> Launchpad
                       </Link>
                     </li>
                     <li
                       className="navbar-item nav-item"
                       onClick={this.makeActive}
                     >
-                      <Link to="/admin/banner">
-                        <i class="fas fa-map" /> Banner
-                      </Link>
-                    </li>
-                    <li
-                      className="navbar-item nav-item"
-                      onClick={this.makeActive}
-                    >
-                      <Link to="/admin/innovation">
-                        <i class="fas fa-asterisk" /> Innovation
-                      </Link>
-                    </li>
-                    <li
-                      className="navbar-item nav-item"
-                      onClick={this.makeActive}
-                    >
-                      <Link to="/admin/entrepreneurship">
-                        <i class="fas fa-laptop-code" /> Entrepreneurship
-                      </Link>
-                    </li>
-                    <li
-                      className="navbar-item nav-item"
-                      onClick={this.makeActive}
-                    >
-                      <Link to="/admin/videos">
-                        <i class="fas fa-video" /> Videos
+                      <Link to="/admin/dashboard/mentor">
+                        <i class="fas fa-map" /> Mentor
                       </Link>
                     </li>
                   </ul>
                 </div>
               </div>
 
-              <div className="col-lg-9">
-                <div className="routestyle">
+              <div className="col-lg-9 col-12">
+                <div className="routestyle py-4">
                   <Route
-                    path="/admin/newsheader/"
-                    exact
-                    component={NewsHeaderInput}
+                    path="/admin/dashboard/news"
+                    component={DashboardMain}
                   />
                   <Route
-                    path="/admin/lateststories/"
-                    component={LatestStoriesInput}
-                  />
-                  <Route path="/admin/banner/" component={BannerInput} />
-                  <Route
-                    path="/admin/innovation/"
-                    component={InnovationInput}
+                    path="/admin/dashboard/launchpad"
+                    component={launchpadDash}
                   />
                   <Route
-                    path="/admin/entrepreneurship/"
-                    component={EntrepreneurshipInput}
+                    path="/admin/dashboard/mentor"
+                    component={MentorDash}
                   />
-                  <Route path="/admin/videos/" component={VideosInput} />
                 </div>
               </div>
             </div>

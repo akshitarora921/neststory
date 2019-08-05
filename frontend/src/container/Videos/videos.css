@@ -1,10 +1,27 @@
-.category{
-    display: block;
-    height:60px;
-    margin-top:25%;
-    /* width:75%; */
-    background-color:orangered;
-    color:white;
+.category {
+  display: block;
+  height: 55px;
+  margin-top: 25%;
+  /* width:75%; */
+  background-color: orangered;
+  color: white;
+  border-radius: 20px;
+  font-size: 2.2vw;
+}
+.slidebar{
+  visibility: hidden;
+}
+@media screen and (max-width: 736px) {
+  .slidebar {
+    visibility: visible;
+  }
+  .category {
+    margin-top: 5%;
+    margin-bottom: 5%;
+    height: 25px;
+    background-color: orangered;
+    color: white;
     border-radius: 20px;
-    font-size: 2.8vw;
+    font-size: 3.5vw;
+  }
 }

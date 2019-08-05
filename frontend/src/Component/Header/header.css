@@ -4,13 +4,18 @@
   border-radius: 0px 0px 75px 75px;
   position: fixed;
 }
-.logo {
+.logo a {
   color: white;
   font-family: Noto Serif;
   /* margin-left: 50px; */
   padding: 10px;
-  font-size:10vw;
-  text-shadow:  0 0 20px #eee;
+  font-size: vw;
+  text-shadow: 0 0 20px #eee;
+}
+.subscribe{
+    border: 1px solid black;
+    padding: 2px;
+    width:100px;
 }
 .newsHeaderStyle {
   background-color: white;
@@ -24,25 +29,20 @@
 }
 
 .title {
- font-size: 42px;
-}
-.navtext{
-  font-size: 1.5vw
+  font-size: 42px;
 }
 
-.menu-div{
-  
-    position: absolute;
-    z-index: 2;
-    padding: 90px 20px 90px 90px;
-    margin-top: -140px;
-    margin-left: -160px;
-    color:orangered;
-    background-color: white;
-    /* ms-transform: rotate(45deg)  IE 9 ;
+.menu-div {
+  position: absolute;
+  z-index: 2;
+  padding: 90px 20px 90px 90px;
+  margin-top: -140px;
+  margin-left: -160px;
+  color: orangered;
+  background-color: white;
+  /* ms-transform: rotate(45deg)  IE 9 ;
     webkit-transform: rotate(45deg) Safari 3-8; */
-    transform: rotate(45deg)
-
+  transform: rotate(45deg);
 }
 /* For modals */
 .topheading {
@@ -60,12 +60,12 @@
 }
 .modalInput {
   border: 2px solid orangered;
-  height: 8vh;
+  height: 40px;
   border-radius: 25px;
 }
 .other-login {
-  position: relative;
-  margin-top: 38%;
+  /* position: relative; */
+  /* margin-bottom: 150px; */
   color: white;
 }
 .other-login-signup {
@@ -113,11 +113,11 @@
   background-size: cover;
   background-position: center;
 }
-.login-text {
+/* .login-text {
   margin-top: 15%;
   font-weight: 700;
   color: white;
-}
+} */
 .tv {
   margin-left: 12% !important;
   position: relative;
@@ -160,9 +160,78 @@
   }
 }
 
-
-.signup-form input:invalid{
+.signup-form input:invalid {
   background-color: rgba(255, 0, 0, 0.5);
   color: wheat;
-  transition: background-color .5s ease-out
+  transition: background-color 0.5s ease-out;
+}
+.user-nav a{
+  color: black 
+}
+
+
+@media (max-width: 480px) {
+  .user-nav {
+    /* visibility: hidden */
+    position: absolute;
+    margin-left:55%;
+    margin-top:-50px;
+    color: white 
+  }
+  .user-nav a{
+    color: white 
+  }
+  .subscribe{
+    border: 1px solid white;
+    width:100
+  }
+  .tv {
+    margin-left: 12% !important;
+    position: relative;
+    width: 10px;
+    height: 150px;
+    margin: 20px 0 0 20px;
+    background: linear-gradient(orangered, black);
+    /* border-radius: 50% / 10%; */
+    color: white;
+    text-align: center;
+    text-indent: 0.1em;
+    z-index: 1;
+  }
+  .newsHeaderStyle {
+    /* display: block; */
+    /* position: fixed; */
+    border-radius: 0px;
+    height: 30px;
+    height:100;
+    /* bottom: -1px; */
+  }
+  .headerStyle {
+    background-image: linear-gradient(orangered, black);
+    border-bottom: 4px solid red;
+    border-radius: 0px 0px 0px 0px;
+    height: 50px;
+    /* position: fixed; */
+  }
+  .logo a {
+    color: white;
+    font-family: Noto Serif;
+    /* margin-left: 50px; */
+    padding: 10px;
+    font-size: 8vw;
+    text-shadow: 0 0 20px #eee;
+  }
+  .topheading{
+    margin-top:0px;
+    font-size: 50px
+  }
+  .back1{
+    height:120px
+  }
+  .update-text{
+    visibility: hidden
+  }
+  .tv{
+    visibility: hidden
+  }
 }

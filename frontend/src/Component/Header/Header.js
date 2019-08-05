@@ -2,7 +2,7 @@ import React from "react";
 import NewsSlider from "./NewsSlider";
 import "../../fontawesome/css/all.css";
 import "./header.css";
-import { BrowserRouter as Router, Link } from "react-router-dom";
+import { BrowserRouter as Router} from "react-router-dom";
 import GoogleLogin from "react-google-login";
 // import FacebookLogin from "react-facebook-login";
 import Axios from "axios";
@@ -99,9 +99,9 @@ class Header extends React.Component {
             <div className="modal-content">
               <div className="container">
                 <div className="row">
-                  <div className="col-lg-4 col-md-5 back1 ">
+                  <div className="col-lg-4 col-12 back1 ">
                     <div className="row">
-                      <div className="col">
+                      <div className="col-12">
                         <div className="topheading">Nest Story</div>
                       </div>
                     </div>
@@ -120,11 +120,11 @@ class Header extends React.Component {
                       </div>
                     </div> */}
                   </div>
-                  <div className="col-8 back2  ">
+                  <div className="col-lg-8 col-12 back2  ">
                     <div className="container-fluid martopform">
                       <div className="row">
-                        <div className="col-2" />
-                        <div className="col-8">
+                        <div className="col-lg-2 col-1" />
+                        <div className="col-lg-8 col-10">
                           <form className="modalContent">
                             <div className="form-group">
                               <input
@@ -175,13 +175,15 @@ class Header extends React.Component {
                           </form>
                           <div className="col-3" />
                         </div>
-                        <div className="col-2" />
-                        <div className="row">
-                          <div className="col">
-                            <div className="other-login h5 float-left">
-                              Login using
-                              {/* <i className="fab fa-facebook fa-2x fbIcon mt-2" /> */}
-                              <GoogleLogin
+                        <div className="col-lg-2 col-1" />
+                        <div className="row mx-auto">
+                          <div className="col-auto">
+                            <div className="other-login h5">OR</div>
+                          </div>
+                          <div className="row mt-4 mx-auto">
+                          <div className="col-auto">
+                           
+                                <GoogleLogin
                                 clientId="622742830674-776paqvqtco2gflgbgplln8m3n6jtmgm.apps.googleusercontent.com"
                                 buttonText="Login"
                                 onSuccess={responseGoogle}
@@ -195,7 +197,8 @@ class Header extends React.Component {
                                     onClick={componentClicked}
                                     callback={responseFacebook}
                                   />` */}
-                            </div>
+                            
+                          </div>
                           </div>
                         </div>
                       </div>
@@ -222,7 +225,7 @@ class Header extends React.Component {
             <div className="modal-content">
               <div className="container ">
                 <div className="row">
-                  <div className="col-4 back1 ">
+                  <div className="col-lg-4 col-12 back1 ">
                     <div className="row">
                       <div className="h1 topheading">NestStory</div>
                     </div>
@@ -241,11 +244,11 @@ class Header extends React.Component {
                       </div>
                     </div> */}
                   </div>
-                  <div className="col-8 back2  ">
+                  <div className="col-lg-8 col-12 back2  ">
                     <div className="container signup-form">
                       <div className="row">
-                        <div className="col-2" />
-                        <div className="col-8">
+                        <div className="col-lg-2 col-1" />
+                        <div className="col-lg-8 col-10">
                           <form className="modalContent signup-form">
                             <div className="form-group">
                               <input
@@ -315,7 +318,7 @@ class Header extends React.Component {
                             </div>
                           </form>
                         </div>
-                        <div className="col-2" />
+                        <div className="col-lg-2 col-1" />
                         <div className="row">
                           <div className="col">
                             <div className="other-login-signup h5 float-left">
@@ -351,7 +354,7 @@ class Header extends React.Component {
           <div className="container-fluid headerStyle">
             <div className="row justify-content-between">
               <div
-                className="col h1 logo col-sm-12 col-md-3 col-lg-3 text-center"
+                className="h1 logo col-12  col-lg-3 "
                 style={{
                   textDecoration: "none",
                   fontSize: "3.5vw"
@@ -368,23 +371,18 @@ class Header extends React.Component {
                   Nest Story
                 </a>
               </div>
-              <div className="col-9 col-md-8 col-sm-12">
+
+              <div className="col-12 col-lg-9">
                 <div className="row newsHeaderStyle">
-                  <div className="col-md-8 col-lg-9  col-sm-12 ">
+                  <div className="col-12 col-lg-9 ">
                     <NewsSlider />
                   </div>
-                  <div className="col-lg-3 col-md-4 col-sm-0">
-                    <nav className="navbar navbar-expand-lg navbar-expand-md">
+                  <div className="col-lg-3 col-3 user-nav">
+                    <nav className="navbar navbar-expand-lg navbar-expand">
                       <div className="navbar-collapse collapse">
                         <ul className="navbar-nav ml-auto ">
-                          <li className="navbar-item">
-                            <div
-                              style={{
-                                border: "1px solid black",
-                                padding: "2px",
-                                width: "100px"
-                              }}
-                            >
+                          <li className="navbar-item subscribe">
+                            <div>
                               <i className="fas fa-envelope"> Subscribe</i>
                             </div>
                           </li>
@@ -394,7 +392,7 @@ class Header extends React.Component {
                             </a>
                           </li>
                           <li className="navbar-item ml-2  mt-1">
-                            <i className="fas fa-search  " />
+                            <i className="fas fa-search" />
                           </li>
                         </ul>
                       </div>
@@ -403,13 +401,13 @@ class Header extends React.Component {
                 </div>
                 <div className="row ">
                   <div className="col">
-                    <nav className="navbar navbar-expand-lg navbar-expand-md navbar-dark">
+                    <nav className="navbar navbar-expand-lg navbar-dark">
                       <div className="collapse navbar-collapse">
                         <ul className="navbar-nav ml-auto text-center">
                           <li className="navbar-item">
-                            <Link to="/banner" className="nav-link navtext">
-                              NEWS
-                            </Link>
+                            <a href="/" className="nav-link navtext">
+                              HOME
+                            </a>
                           </li>
                           <li className="navbar-item">
                             <a href="/stories" className="nav-link navtext">

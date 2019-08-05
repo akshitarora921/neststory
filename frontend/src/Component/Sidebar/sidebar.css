@@ -1,8 +1,9 @@
 .sidenav {
-  height: 83%;
+
+  height: 90%;
   width: 0;
   position: fixed;
-  z-index: 3;
+  z-index: 10;
   left: 0;
   background-color: #eee;
   overflow-x: auto;
@@ -12,18 +13,11 @@
   /* padding: 10px 0 10px 0; */
 }
 
-/* .sidenav a {
-    padding: 8px 8px 8px 32px;
-    text-decoration: none;
-    font-size: 25px;
+.sidenav a {
     color: #111;
-    display: block;
-    transition: 0.3s;
-  } */
+  }
 
-.sidenav a:hover {
-  color: oranged;
-}
+
 .navbar-header {
   position: relative;
   background-color: orangered;

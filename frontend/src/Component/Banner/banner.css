@@ -1,5 +1,5 @@
 .banner {
-  padding-top: 8.5%;
+  padding-top: 8%;
 }
 .bannerImage {
   height: 200px;
@@ -39,9 +39,12 @@
   /* margin-left: 100px; */
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 480px) {
  .slidebar {
     visibility: visible;
+  }
+  .banner {
+    padding-top: 18%;
   }
 }
 

@@ -1,0 +1,19 @@
+.footer-back1 {
+  background-image: url(../../Assets/footer.png);
+  background-size: cover;
+  background-position: center;
+  height: 100%;
+}
+
+@media screen and (max-width:480px){
+  
+  .footer-back1 {
+    background-image: url(../../Assets/footer.png);
+    background-size:100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 75px;
+    /* padding-bottom: -12px; */
+    /* margin-top: -12px; */
+  }
+}

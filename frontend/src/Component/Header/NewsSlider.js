@@ -27,14 +27,15 @@ class NewsSlider extends React.Component {
   render() {
     let options = {
       loop: true,
-      margin: 10,
-      dots:false,
-      autoplay:true,
+      // autoplaySpeed:1,
+      // margin: 10,
+      dots: false,
+      autoplay: true,
       // nav:true,
-     items:1
+      items: 1
     };
     return (
-      <div className="main mt-1">
+      <div className="main">
         {/* <div className="wrapper">
           <a className="prev" onClick={this.scrollNews.bind(null, -1)}>
             &#10094;
@@ -49,11 +50,18 @@ class NewsSlider extends React.Component {
          
         </div> */}
 
-{this.state.newsData.length > 0 ? (<OwlCarousel className="owl-theme" {...options}>
-          {this.state.newsData.map((newData,id) => (
-            <div key={id} className="item">{newData.heading}</div>
-          ))}
-        </OwlCarousel>):("")}
+        {this.state.newsData.length > 0 ? (
+          <OwlCarousel className="owl-theme" {...options}>
+            {this.state.newsData
+            .map((newData, id) => (
+              <div key={id} className="item">
+                {newData.heading.slice(0,45)+"..."}
+              </div>
+            ))}
+          </OwlCarousel>
+        ) : (
+          ""
+        )}
       </div>
     );
   }

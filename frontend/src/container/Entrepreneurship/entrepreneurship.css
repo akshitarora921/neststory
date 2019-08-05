@@ -1,0 +1,42 @@
+.entrepreneurship{
+    padding-left:10px;
+    padding-right: 10px;
+    overflow-x: hidden;
+  }
+  .entrepreneurship a{
+    text-decoration: none;
+    color: black
+  }
+  .horizontalrule {
+    border: 1px solid black;
+    margin-top: -5px;
+    /* float: left; */
+    margin-left: -15%;
+    width: 100%
+  }
+  .newsImage {
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    min-width: 75px;
+    /* max-height: 200px */
+  
+  }
+  .newsHR {
+    color: "#F54A00";
+    border: 1px solid #f54a00;
+    width: 100%;
+  
+  }
+  .trending {
+    background-color: black;
+    border-radius: 5px;
+    float: right;
+    font-size: small;
+    color: #f54a00;
+    padding: 5px;
+    widows: 30px;
+    height: 30px;
+    text-align: center
+  }
+  

@@ -1,10 +1,12 @@
 import React from "react";
 import axios from "axios";
+import Sidebar from "../../component/Sidebar/Sidebar";
 import OwlCarousel from "react-owl-carousel";
 import "owl.carousel/dist/assets/owl.theme.default.css";
 import "owl.carousel/dist/assets/owl.carousel.css";
-import Sidebar from "../../component/Sidebar/Sidebar";
 import "./individualstory.css";
+
+import { Link } from "react-router-dom";
 //fix and don't render for every page
 // import Header from "../../component/Header/Header";
 // import Footer from "../../component/Footer/Footer"
@@ -45,18 +47,12 @@ class IndividualStories extends React.Component {
       margin: 10,
       autoHeight: true,
       // nav:true,
-      responsive: {
-        0: {
-          items: 2
+      responsive:{
+        100:{
+          items:2
         },
-        600: {
-          items: 2
-        },
-        800: {
-          items: 3
-        },
-        1000: {
-          items: 4
+        700:{
+          items:4
         }
       }
     };
@@ -71,12 +67,15 @@ class IndividualStories extends React.Component {
     //  return(element.id)
     // }))
     return (
-      <div style={{ paddingTop: "8.5%" }}>
+      <div className="top">
         {/* <Header /> */}
-        <Sidebar />
+      
         {/* <h1>{this.state.story.id}</h1> */}
         {/* {this.state.story.map(story1 => ( */}
           <div>
+          <div className="slidebar">
+          <Sidebar />
+        </div>
             <div className="heading-div">
               <h1 className="heading">{this.state.story.heading}</h1>
             </div>
@@ -90,34 +89,38 @@ class IndividualStories extends React.Component {
                       borderRadius: "5px",
                       backgroundPosition: "center",
                       // backgroundSize: " 1000px",
-                      backcgroundRepeat: "no-repeat",
+                      backgroundRepeat: "no-repeat",
                       // backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),url(http://localhost:3001/image/news/${this.state.story.image})`
                       backgroundImage: `url(http://localhost:3001/image/news/${this.state.story.image})`
                     }}
                   />
                 </div>
               {/* </OwlCarousel> */}
-              <h5>{this.state.story.content}</h5>
+              <h6 className="text-justify">{this.state.story.content}</h6>
             </div>
           </div>
          <h2>Related News</h2>           
         {this.state.related.length > 0 ? (
           <OwlCarousel className="owl-theme" {...options}>
             {this.state.related.map((relatedNews, id) => (
-              <div key={id} className="item p-2">
+            <a href={`/news/${relatedNews.id}`}>              
+              <div key={id} className="item  related-news p-2">
                 <div
                   style={{
-                    minHeight: "200px",
+                    minHeight:"175px",
+                    maxHeight: "200px",
                     // minWidth:"250px",
                     borderRadius: "20px",
                     backgroundSize: "100% 100%",
+                    backgroundRepeat:"no-repeat",
                     backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),url(http://localhost:3001/image/news/${
                       relatedNews.image
                     })`
                   }}
                 />
-                <div className="h6 ">{relatedNews.heading}</div>
+                <div className="h6">{relatedNews.heading.slice(1,25)+"..."}</div>
               </div>
+              </a>
             ))}
           </OwlCarousel>
         ) : (

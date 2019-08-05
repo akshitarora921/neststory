@@ -1,35 +1,21 @@
-.headerStyleadmin {
-  background-image: linear-gradient(orangered, black);
-  border-bottom: 4px solid red;
-  /* border-radius: 0px 0px 75px 75px; */
-  position: fixed;
-}
-.logo {
-  color: white;
-  font-family: Noto Serif;
-  margin-left: 50px;
-  padding-top: 10px;
-  font-size: 60px;
-}
-
 .routestyle {
-  padding-top: 12%;
+  /* padding-top: 12%; */
   /* background-color: #111; */
   height: 100%;
   margin-left: -15px;
   width: 100%;
-  position: absolute;
+  /* position: absolute; */
 }
 
 /* sidebar */
 .sidenav1 {
-  height: 85vh;
-  width: 25%;
+  height: 100%;
+  width: 100%;
 
-  position: fixed;
+  position: relative;
   /* z-index: 1; */
-  top: 15%;
-  left: 0;
+  /* top: 15%; */
+  margin-left:-15px;
   border-right: 1px solid orangered;
   background-color: #111;
   /* overflow-x: hidden; */
@@ -56,4 +42,12 @@
 .sidenav1 a:hover {
   /* color: #f1f1f1; */
   color: rgba(255, 68, 0, 0.6);
+}
+
+@media screen and (max-width:420px){
+  .sidenav1{
+    padding-top:15%;
+    padding-bottom:5%;
+    width:420px
+  }
 }

@@ -1,16 +1,33 @@
-.load-more{
-    color: white;
-    background-color: orangered;
-    width: 100vh;
-    border-radius: 10px;
-    margin-left: 20%;
+.top {
+  padding-top: 8.2%;
 }
 
-.slidebar{
-    visibility: hidden;
+.stories {
+  padding-left: 10px;
+  padding-right: 10px;
+  overflow-x: hidden;
+  text-decoration: none;
+  color: black;
 }
-@media screen and (max-width: 600px) {
-    .slidebar {
-       visibility: visible;
-     }
-   }
+.stories a{
+  text-decoration: none
+}
+.load-more {
+  color: white;
+  background-color: orangered;
+  width: 50vw;
+  border-radius: 10px;
+  margin-left: 20%;
+}
+
+.slidebar {
+  visibility: hidden;
+}
+@media screen and (max-width: 480px) {
+  .slidebar {
+    visibility: visible;
+  }
+  .top {
+    padding-top: 18%;
+  }
+}
