@@ -13,6 +13,8 @@ const entrepreneurshipRouter = require("../model/entrepreneurship");
 const videosRouter = require("../model/videos");
 const globalNewsRouter = require("../model/globalNews")
 const launchpadRouter = require("../model/launchpad")
+const mentorRouter = require("../model/mentor")
+const checkauth = require('../model/checkauth')
 
 
 
@@ -29,6 +31,9 @@ router.use("/innovation", innovationRouter);
 router.use("/entrepreneurship", entrepreneurshipRouter);
 router.use("/videos", videosRouter);
 router.use("/launchpad", launchpadRouter);
+router.use("/mentor", mentorRouter);
+router.use("/checktoken", checkauth);
+
 
 
 module.exports = router

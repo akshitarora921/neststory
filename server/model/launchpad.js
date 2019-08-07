@@ -3,6 +3,7 @@ const router = express.Router();
 const db = require("../bin/db");
 const multer = require("multer");
 const path = require("path");
+const checkauth = require("../middleware/authtoken");
 
 const storageStrategy = multer.diskStorage({
   destination: "./public/image/news",
@@ -16,7 +17,6 @@ var upload = multer({
   storage: storageStrategy
 }).fields([
   { name: "lpVideoThumbnail", maxCount: 1 },
-  { name: "mentorImage", maxCount: 1 },
   { name: "lpVideo", maxCount: 1 }
   // { name: "videoThumbnail", maxCount: 1 },
 ]);
@@ -39,16 +39,9 @@ router.post("/", async (req, res) => {
       res.status(409).send("err");
     } else {
       let sql = "";
-      // if (req.files.image == undefined && req.files.video == undefined) {
-      //   //not image not video
-      //   res; // invalid 404 err
-      // } else
-
-      sql = `insert into launchpad (launchpad_id, heading, content, video, video_thumbnail) values("${
-        req.body.lpId
-      }","${req.body.lpHeading}","${req.body.lpContent}","${
+      sql = `insert into launchpad ( heading, content, video, video_thumbnail, user_id) values("${req.body.lpHeading}","${req.body.lpContent}","${
         req.files.lpVideo[0].filename
-      }","${req.files.lpVideoThumbnail[0].filename}")`;
+      }","${req.files.lpVideoThumbnail[0].filename}","${req.body.userId}")`;
 
       db.query(sql, (err, result) => {
         if (err) {
@@ -63,67 +56,30 @@ router.post("/", async (req, res) => {
   });
 });
 
-// Mentors
-router.post("/mentor", async (req, res) => {
-  await upload(req, res, err => {
+// Launchpad get all
+router.get("/all", (req, res, next) => {
+  const sql = `select launchpad_id, heading from launchpad order by launchpad_id `;
+  db.query(sql, (err, result) => {
     if (err) {
-      console.log("Upload err: ", err);
-      res.status(409).send("err");
+      res.status(409).send("error in query function");
     } else {
-      let sql = "";
-      // if (req.files.image == undefined && req.files.video == undefined) {
-      //   //not image not video
-      //   res; // invalid 404 err
-      // } else
-
-      sql = `insert into mentors (launchpad_id, name, designation, image) values("${
-        req.body.launchpadId
-      }","${req.body.mentorName}","${req.body.mentorDesg}","${
-        req.files.mentorImage[0].filename
-      }")`;
-
-      db.query(sql, (err, result) => {
-        if (err) {
-          console.log("sql err", err);
-          res.status(409).send("error in query function");
-        } else {
-          console.log(result);
-          res.status(200).send(result);
-        }
-      });
+      console.log(result);
+      res.status(200).send(result);
     }
   });
 });
-
-// launchpad get
-router.get("/mentor/:id", (req, res, next) => {
-    let id = req.params.id
-    const sql = `select name, designation, image from mentors where launchpad_id=${id}`;
-    console.log("sql: ", sql)
-    db.query(sql, (err, result) => {
-      if (err) {
-        res.status(409).send("error in query function");
-      } else {
-        console.log(result);
-        res.status(200).send(result);
-      }
-    });
-  });
-
-
-// mentor get
+// Launchpad get
 router.get("/", (req, res, next) => {
-    const sql = `select launchpad_id, heading, content, video, video_thumbnail from launchpad order by launchpad_id desc limit 1 `;
-    db.query(sql, (err, result) => {
-      if (err) {
-        res.status(409).send("error in query function");
-      } else {
-        console.log(result);
-        res.status(200).send(result);
-      }
-    });
+  const sql = `select launchpad_id, heading, content, video, video_thumbnail from launchpad order by launchpad_id desc limit 1 `;
+  db.query(sql, (err, result) => {
+    if (err) {
+      res.status(409).send("error in query function");
+    } else {
+      console.log(result);
+      res.status(200).send(result);
+    }
   });
-  
+});
 
 // router.get("/", (req, res, next) => {
 //   const id = req.params.id;

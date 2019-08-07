@@ -1,7 +1,10 @@
 .top {
   padding-top: 8.2%;
 }
-
+.title-stories{
+  color: #f54a00;
+  margin-left: 10px;
+}
 .stories {
   padding-left: 10px;
   padding-right: 10px;
@@ -29,5 +32,8 @@
   }
   .top {
     padding-top: 18%;
+  }
+  .title-stories{
+    margin-left: 150px;
   }
 }

@@ -12,10 +12,10 @@
   font-size: vw;
   text-shadow: 0 0 20px #eee;
 }
-.subscribe{
-    border: 1px solid black;
-    padding: 2px;
-    width:100px;
+.subscribe {
+  border: 1px solid black;
+  padding: 2px;
+  width: 100px;
 }
 .newsHeaderStyle {
   background-color: white;
@@ -45,11 +45,15 @@
   transform: rotate(45deg);
 }
 /* For modals */
+
+.margin-top-bottom {
+  padding-top: 0%;
+  padding-bottom: 10%;
+}
 .topheading {
   margin-top: 35%;
   padding: 20px;
-  font-size: 2.8vw;
-  margin-left: 10%;
+  font-size: 42px;
   color: white;
 }
 .martopform {
@@ -63,14 +67,11 @@
   height: 40px;
   border-radius: 25px;
 }
-.other-login {
-  /* position: relative; */
-  /* margin-bottom: 150px; */
-  color: white;
-}
+
 .other-login-signup {
   position: relative;
-  margin-top: 15%;
+  /* margin-top: 3%; */
+  margin-bottom: 3%;
   color: white;
 }
 .login-div {
@@ -165,25 +166,24 @@
   color: wheat;
   transition: background-color 0.5s ease-out;
 }
-.user-nav a{
-  color: black 
+.user-nav a {
+  color: black;
 }
-
 
 @media (max-width: 480px) {
   .user-nav {
     /* visibility: hidden */
     position: absolute;
-    margin-left:55%;
-    margin-top:-50px;
-    color: white 
+    margin-left: 55%;
+    margin-top: -50px;
+    color: white;
   }
-  .user-nav a{
-    color: white 
+  .user-nav a {
+    color: white;
   }
-  .subscribe{
+  .subscribe {
     border: 1px solid white;
-    width:100
+    width: 100;
   }
   .tv {
     margin-left: 12% !important;
@@ -203,7 +203,7 @@
     /* position: fixed; */
     border-radius: 0px;
     height: 30px;
-    height:100;
+    height: 100;
     /* bottom: -1px; */
   }
   .headerStyle {
@@ -221,17 +221,22 @@
     font-size: 8vw;
     text-shadow: 0 0 20px #eee;
   }
-  .topheading{
-    margin-top:0px;
-    font-size: 50px
+  .topheading {
+    margin-top: 0px;
+    font-size: 50px;
   }
-  .back1{
-    height:120px
+  .back1 {
+    height: 120px;
   }
-  .update-text{
-    visibility: hidden
+  .update-text {
+    visibility: hidden;
   }
-  .tv{
-    visibility: hidden
+  .tv {
+    visibility: hidden;
+  }
+  .margin-top-bottom{
+    padding-top: 0%;
+    padding-bottom: 5%;
+  
   }
 }

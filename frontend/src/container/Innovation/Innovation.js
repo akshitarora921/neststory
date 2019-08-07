@@ -123,7 +123,7 @@ class Innovation extends React.Component {
           <button
             onClick={this.loadMore}
             type="button"
-            className="btn load-more"
+            className="btn load-more mb-2"
           >
             More
           </button>

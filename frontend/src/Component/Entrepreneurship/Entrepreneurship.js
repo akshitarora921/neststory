@@ -1,7 +1,8 @@
 import React from "react";
 import axios from "axios";
-import "../../fontawesome/css/all.css";
+// import "../../fontawesome/css/all.css";
 import "./entrepreneurship.css";
+import {Link} from 'react-router-dom'
 
 class Entrepreneurship extends React.Component {
   state = {
@@ -23,7 +24,9 @@ class Entrepreneurship extends React.Component {
   render() {
     return (
       <div className="entrepreneurship ">
+        <Link to="/entrepreneurship">
         <h2 style={{ color: "#F54A00" }}>Entrepreneurship</h2>
+        </Link>
         <hr style={{ border: "1px solid black", marginTop: "-5px" }} />
         <div className="container-fluid ">
           <div className="row ">
@@ -32,8 +35,8 @@ class Entrepreneurship extends React.Component {
               className="col-lg-4 col-12"
             >
               {this.state.entpdata.slice(0, 1).map((entp, id) => (
-                <a href={`/news/${entp.id}`}>
-                  <div key={id} className="row ">
+                <Link key={id} to={`/news/${entp.id}`}>
+                  <div className="row ">
                     <div
                       style={{
                         border: "5px solid white",
@@ -55,7 +58,7 @@ class Entrepreneurship extends React.Component {
                   <div className="row text-justify ">
                     <small>{entp.content}</small>
                   </div>
-                </a>
+                </Link>
               ))}
             </div>
             <div
@@ -63,9 +66,8 @@ class Entrepreneurship extends React.Component {
               className="col-lg-8  col-12"
             >
               {this.state.entpdata.slice(1, 4).map((entp, id) => (
-                <a href={`/news/${entp.id}`}>
+                <Link  key={id} to={`/news/${entp.id}`}>
                   <div
-                    key={id}
                     style={{ border: "5px solid white" }}
                     className="row "
                   >
@@ -91,7 +93,7 @@ class Entrepreneurship extends React.Component {
                       </div>
                     </div>
                   </div>
-                </a>
+                </Link>
               ))}
               {/* <div style={{ border: "5px solid white" }} className="row ">
                 <div

@@ -36,7 +36,7 @@ class Innovation extends React.Component {
         <div className="container-fluid">
           <div className="row">
             <div className="col-auto ">
-              <h2 style={{ color: "#F54A00", marginLeft:"30%" }}>Entrepreneurships</h2>
+              <h2 className="title-entrepreneurship">Entrepreneurships</h2>
             </div>
             <div
               style={{ paddingTop: "10px", fontSize: "13px" }}
@@ -121,7 +121,7 @@ class Innovation extends React.Component {
           <button
             onClick={this.loadMore}
             type="button"
-            className="btn load-more"
+            className="btn load-more mb-2"
           >
             More
           </button>

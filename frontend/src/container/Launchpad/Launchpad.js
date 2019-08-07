@@ -17,7 +17,7 @@ class Launchpad extends React.Component {
           launchpad: data
         });
         axios
-          .get(`http://localhost:3001/launchpad/mentor/${data[0].launchpad_id}`)
+          .get(`http://localhost:3001/mentor/${data[0].launchpad_id}`)
           .then(res => {
             let data = res.data;
             this.setState({
@@ -103,13 +103,13 @@ class Launchpad extends React.Component {
                   <div className="col-lg-2 col-1" />
                 </div>
                 <div className="row justify-content-center ">
-                  <div className="col-lg-auto col-auto px-1">
+                  <div className="col-lg-12 col-12 px-1">
                     <div id="launchpad">Launchpad</div>
                   </div>
-                  <div className="col-lg-auto col-auto px-1">
+                  <div className="col-lg-12 col-12 px-1">
                     <div id="accelerator">{lp.heading}</div>
                   </div>
-                  <div className="col-lg-auto col-auto px-1">
+                  <div className="col-lg-12 col-12 px-1">
                     <div id="fame">
                       Powered by <br />
                       Fame Technology

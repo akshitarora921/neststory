@@ -7,6 +7,10 @@
     text-decoration: none;
     color: black
   }
+  .title-entrepreneurship{
+      color: #f54a00;
+      margin-left: 10px;
+  }
   .horizontalrule {
     border: 1px solid black;
     margin-top: -5px;
@@ -40,3 +44,8 @@
     text-align: center
   }
   
+@media screen and (max-width:480px){
+  .title-entrepreneurship {
+    margin-left: 70px;
+  }
+}
