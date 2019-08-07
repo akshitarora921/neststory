@@ -7,7 +7,7 @@
   text-decoration: none;
   color: black;
 }
-.title {
+.title-global {
   color: #f54a00;
   margin-left: 10px;
 }
@@ -43,7 +43,7 @@
 }
 
 @media screen and (max-width:480px){
-  .title {
-    margin-left: 130px;
+  .title-global {
+    margin-left: 140px;
   }
 }

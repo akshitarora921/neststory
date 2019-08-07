@@ -1,5 +1,5 @@
 import React from "react";
-import "../../fontawesome/css/all.css";
+// import "../../fontawesome/css/all.css";
 // import '../Home.css'
 import "../b.css";
 import { Link } from "react-router-dom";
@@ -33,7 +33,9 @@ class LatestStories extends React.Component {
           <div className="row">
             {/* heading */}
             <div className="col-lg-2.5  ">
-              <h2 style={{ color: "#F54A00" }}>Latest Stories</h2>
+              <Link to="/stories/">
+                <h2 style={{ color: "#F54A00" }}>Latest Stories</h2>
+              </Link>
             </div>
             {/* heading extra text */}
             <div
@@ -47,12 +49,8 @@ class LatestStories extends React.Component {
           <hr className="horizontalrule" />
           {/* mapping Starts from Here */}
           {this.state.ls.slice(0, this.props.last).map((listitem, idi) => (
-            <Link to={`/news/${listitem.id}`}>
-              <div
-                key={idi}
-                style={{ minHeight: "200px" }}
-                className="row mb-4  "
-              >
+            <Link key={idi} to={`/news/${listitem.id}`}>
+              <div style={{ minHeight: "200px" }} className="row mb-4  ">
                 <div
                   style={{
                     // maxHeight: "75%",
@@ -79,7 +77,7 @@ class LatestStories extends React.Component {
                         length={500}
                         showMoreLabel=" show More"
                         showLessLabel=" Collapse"
-                        tag="a"
+                        // tag="a"
                         className="text-blue"
                         ellipsis="..."
                         style={{

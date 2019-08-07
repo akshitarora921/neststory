@@ -1,7 +1,7 @@
 import React from "react";
 import Axios from "axios";
 import "./dashboardheader.css";
-import Select from 'react-select'
+import Select from "react-select";
 class Dashboard extends React.Component {
   state = {
     heading: "",
@@ -14,23 +14,21 @@ class Dashboard extends React.Component {
     tags: "",
     category: "innovation",
     subCategory: "startup",
-    trending: "",
+    trending: ""
     // isglobal: false,
     // islocal: false,
     // isindia: false
   };
 
   handleChange1 = selectedOption => {
-    console.log("selected option: ", selectedOption)
-    let tag= ""
-    for(let i=0; i<selectedOption.length; i++){
-     
-     tag =tag + selectedOption[i].value+", "
-     
+    console.log("selected option: ", selectedOption);
+    let tag = "";
+    for (let i = 0; i < selectedOption.length; i++) {
+      tag = tag + selectedOption[i].value + ", ";
     }
     this.setState({
-      tags:tag
-    })
+      tags: tag
+    });
   };
   handleChange = e => {
     if (
@@ -57,7 +55,7 @@ class Dashboard extends React.Component {
       });
     } else
       this.setState({
-        [e.target.name]: e.target.value
+        [e.target.name]: `${e.target.value}`
       });
   };
 
@@ -101,28 +99,27 @@ class Dashboard extends React.Component {
     //   isindia: false
     // });
   };
- 
-  
+
   render() {
     const options = [
-      { value: 'global', label: 'Global' },
-      { value: 'local', label: 'Local' },
-      { value: 'india', label: 'India' }
-    ]
-    
+      { value: "global", label: "Global" },
+      { value: "local", label: "Local" },
+      { value: "india", label: "India" }
+    ];
+
     return (
-      <div >
+      <div>
         <div
           // style={{ paddingTop: "12%" }}
           className="section-content-block section-process container "
         >
           <div className="row">
-            
             <div className="col-md-12 col-sm-12 ">
               <h2 className="section-heading">News Input</h2>
             </div>
           </div>
           <form>
+         
             {/* Input heading */}
             <div className="form-group">
               <label>Heading</label>
@@ -130,9 +127,13 @@ class Dashboard extends React.Component {
                 onChange={this.handleChange}
                 name="heading"
                 type="text"
+                // pattern='^[a-zA-Z0-9.@#$()+! \"_-]+$'
                 className="form-control"
                 placeholder="Heading"
               />
+              <small style={{ color: "#aaa" }}>
+               Double Quotes are  not allowed
+              </small>
             </div>
 
             {/* Input content */}
@@ -145,6 +146,9 @@ class Dashboard extends React.Component {
                 className="form-control"
                 placeholder="Content"
               />
+              <small style={{ color: "#aaa" }}>
+                Double Quotes are not allowed
+              </small>
             </div>
 
             {/* Input Author */}
@@ -216,11 +220,7 @@ class Dashboard extends React.Component {
 
             {/* tag input */}
             <label>Tag Input</label>
-            <Select
-             isMulti 
-             onChange={this.handleChange1}
-             options={options}
-             />
+            <Select isMulti onChange={this.handleChange1} options={options} />
             {/* <div className="form-check">
               <input
                 className="form-check-input"
@@ -256,8 +256,8 @@ class Dashboard extends React.Component {
               <label className="form-check-label" htmlFor="isindia">
                 India
               </label>
-            </div>
-            <br /> */}
+            </div>*/}
+            <br /> 
 
             {/* Input category */}
             <label>Category</label>

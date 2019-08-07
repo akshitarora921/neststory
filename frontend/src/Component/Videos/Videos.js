@@ -5,10 +5,11 @@ import "./videos.css";
 // import $ from "jquery";
 import axios from "axios";
 import OwlCarousel from "react-owl-carousel";
-import "owl.carousel/dist/assets/owl.carousel.css";
-import "owl.carousel/dist/assets/owl.theme.default.css";
+// import "owl.carousel/dist/assets/owl.carousel.css";
+// import "owl.carousel/dist/assets/owl.theme.default.css";
 import Moment from "react-moment";
-import ReactPlayer from "react-player";
+import {Link} from 'react-router-dom'
+// import ReactPlayer from "react-player";
 // import 'moment/locale/fr';
 // import SingleVideo from "./SingleVideo";
 class Videos extends React.Component {
@@ -57,7 +58,9 @@ class Videos extends React.Component {
           <div className="row">
             {/* heading */}
             <div className="col-2.5 ">
-              <h2 style={{ color: "#F54A00" }}>Videos</h2>
+              <Link to="/videos" className="nav-link">
+                <h2 style={{ color: "#F54A00" }}>Videos</h2>
+              </Link>
             </div>
             {/* heading extra text */}
             <div

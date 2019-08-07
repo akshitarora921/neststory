@@ -2,7 +2,7 @@ import React from "react";
 import axios from "axios";
 // import Menu from "./Menu";
 import Sidebar from "../Sidebar/Sidebar";
-import "../../fontawesome/css/all.css";
+// import "../../fontawesome/css/all.css";
 // import "../App.css";
 import "../b.css";
 import "./banner.css";

@@ -2,15 +2,12 @@ import React from "react";
 import axios from "axios";
 class launchpadDash extends React.Component {
   state = {
-    lpId: "",
+    
     lpHeading: "",
     lpContent: "",
     lpVideo: "",
     lpVideoThumbnail: ""
-    // mentorName: [],
-    // mentorDesg: [null],
-    // mentorImage: [null],
-    // noOfMentors: 0
+    
   };
   handleChangeLP = e => {
     if (e.target.type === "file") {
@@ -24,12 +21,16 @@ class launchpadDash extends React.Component {
     }
   };
   handleSubmitLP = e => {
+    let data = localStorage.getItem("user");
+    data = JSON.parse(data);
+    let userId = data.user_id;
+
     const formData = new FormData();
-    formData.append("lpId", this.state.lpId);
     formData.append("lpHeading", this.state.lpHeading);
     formData.append("lpContent", this.state.lpContent);
     formData.append("lpVideo", this.state.lpVideo);
     formData.append("lpVideoThumbnail", this.state.lpVideoThumbnail);
+    formData.append("userId", userId);
 
     axios
       .post("http://localhost:3001/launchpad", formData, {
@@ -43,26 +44,10 @@ class launchpadDash extends React.Component {
       .catch(() => {
         console.log("FAILURE!!");
       });
-    alert(
-      `please remember your Launchpad id: ${
-        this.state.lpId
-      } to enter all the mentors details`
-    );
+ 
   };
-  // handleChangeMentor = id=> (e) => {
-  //   if (e.target.name === "mentorImage") {
-  //     this.setState(prevState => ({
-  //       mentorImage: [...prevState.mentorImage, e.target.files[0]]
-  //     }));
-  //   } else if (e.target.name === "mentorName") {
-  //     console.log("id: ", id.id)
-  //     let a = this.state.mentorName.slice(); //creates the clone of the state
-  //     a[id.id]=e.target.value
-  //     this.setState({ mentorName: a });
-  //   }
-  // };
+  
   render() {
-    // let list = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
     return (
       <div
        className="container" 
@@ -72,17 +57,6 @@ class launchpadDash extends React.Component {
               <h2 className="section-heading">Launchpad Input</h2>
             </div>
         <form>
-          {/* Input heading */}
-          <div className="form-group">
-            <label>Launchpad Id</label>
-            <input
-              onChange={this.handleChangeLP}
-              name="lpId"
-              type="text"
-              className="form-control"
-              placeholder="Launchpad Id"
-            />
-          </div>
           {/* Input heading */}
           <div className="form-group">
             <label>Heading</label>

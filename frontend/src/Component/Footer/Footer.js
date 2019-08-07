@@ -1,6 +1,7 @@
 import React from "react";
 import "./footer.css";
-import "../../fontawesome/css/all.css";
+// import "../../fontawesome/css/all.css";
+import {Link} from 'react-router-dom'
 // import "../../App.css";
 // import "../b.css";
 
@@ -9,35 +10,35 @@ class Footer extends React.Component {
     return (
       <div className="footer ">
         <nav className="navbar navbar-expand-lg navbar-expand-xs navbar-dark bg-dark">
-          <a href="#" className="navbar-brand brand">
+          <Link to="/" className="navbar-brand brand">
             Nestory 2019
-          </a>
+          </Link>
           <div className="collapse navbar-collapse ">
             <ul className="navbar-nav mx-auto text-center">
               <li className="navbar-item">
-                <a href="#" className="nav-link">
+                <Link to="#" className="nav-link">
                   ABOUT
-                </a>
+                </Link>
               </li>
               <li className="navbar-item">
-                <a href="#" className="nav-link">
+                <Link to="#" className="nav-link">
                   EVENT
-                </a>
+                </Link>
               </li>
               <li className="navbar-item">
-                <a href="#" className="nav-link">
+                <Link to="#" className="nav-link">
                   CONTACT
-                </a>
+                </Link>
               </li>
               <li className="navbar-item">
-                <a href="#" className="nav-link">
+                <Link to="#" className="nav-link">
                   TERM &amp; CONDITION
-                </a>
+                </Link>
               </li>
               <li className="navbar-item">
-                <a href="#" className="nav-link">
+                <Link to="#" className="nav-link">
                   PRIVACY POLICY
-                </a>
+                </Link>
               </li>
             </ul>
           </div>

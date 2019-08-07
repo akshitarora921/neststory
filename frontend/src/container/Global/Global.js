@@ -36,7 +36,7 @@ class Global extends React.Component {
         <div className="container-fluid">
           <div className="row">
             <div className="col-auto ">
-              <h2 className="title">Global</h2>
+              <h2 className="title-global">Global</h2>
             </div>
             <div
               style={{ paddingTop: "10px", fontSize: "13px" }}
@@ -50,9 +50,8 @@ class Global extends React.Component {
         </div>
 
         {this.state.globalNews.slice(0, this.state.visible).map((news, idi) => (
-          <Link to={`/news/${news.id}`}>
+          <Link key={idi} to={`/news/${news.id}`}>
             <div
-              key={idi}
               style={{ minHeight: "200px" }}
               className="row mb-4 global "
             >
@@ -120,7 +119,7 @@ class Global extends React.Component {
           <button
             onClick={this.loadMore}
             type="button"
-            className="btn load-more"
+            className="btn load-more mb-2"
           >
             More
           </button>

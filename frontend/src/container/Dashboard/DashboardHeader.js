@@ -3,9 +3,10 @@ import React from "react";
 import DashboardMain from "../../container/Dashboard/DashboardMain";
 import launchpadDash from "../../container/Dashboard/launchpadDash";
 import MentorDash from "../../container/Dashboard/MentorDash";
+import Sidebar from "../../component/Sidebar/Sidebar"
 
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-import "../../fontawesome/css/all.css";
+// import "../../fontawesome/css/all.css";
 import "./dashboardheader.css";
 import "../../App.css";
 import $ from "jquery";
@@ -23,7 +24,10 @@ class Dashboard extends React.Component {
   render() {
     return (
       <Router>
-        <div style={{ paddingTop: "8.2%" }} className="header-admin">
+        <div className="header-admin top">
+        <div className="slidebar">
+          <Sidebar />
+        </div>
           <div className="container-fluid">
             <div className="row">
               <div className="col-lg-3 col-12">
@@ -36,7 +40,7 @@ class Dashboard extends React.Component {
                     onClick={this.makeActive}
                   >
                     <li className="navbar-item nav-item">
-                      <Link to="/admin/dashboard/news">
+                      <Link to="/admin/dashboard/">
                         <i className="fas fa-rss" /> News
                       </Link>
                     </li>
@@ -45,7 +49,7 @@ class Dashboard extends React.Component {
                       onClick={this.makeActive}
                     >
                       <Link to="/admin/dashboard/launchpad">
-                        <i class="fas fa-memory" /> Launchpad
+                        <i className="fas fa-memory" /> Launchpad
                       </Link>
                     </li>
                     <li
@@ -53,7 +57,7 @@ class Dashboard extends React.Component {
                       onClick={this.makeActive}
                     >
                       <Link to="/admin/dashboard/mentor">
-                        <i class="fas fa-map" /> Mentor
+                        <i className="fas fa-map" /> Mentor
                       </Link>
                     </li>
                   </ul>
@@ -62,8 +66,10 @@ class Dashboard extends React.Component {
 
               <div className="col-lg-9 col-12">
                 <div className="routestyle py-4">
+                  
                   <Route
-                    path="/admin/dashboard/news"
+                    path="/admin/dashboard/"
+                    exact
                     component={DashboardMain}
                   />
                   <Route

@@ -1,11 +1,12 @@
 import React from "react";
 import NewsSlider from "./NewsSlider";
-import "../../fontawesome/css/all.css";
+// import "../../fontawesome/css/all.css";
 import "./header.css";
-import { BrowserRouter as Router} from "react-router-dom";
+import { Redirect, Link } from "react-router-dom";
 import GoogleLogin from "react-google-login";
 // import FacebookLogin from "react-facebook-login";
 import Axios from "axios";
+// import $ from 'jquery';
 // import "../../App.css";
 // import "../b.css";
 
@@ -14,17 +15,15 @@ class Header extends React.Component {
     first_name: "",
     last_name: "",
     password: "",
-    email: ""
+    email: "",
+    isLogin: false
   };
   handleLoginChange = e => {
     this.setState({
       [e.target.name]: e.target.value
     });
   };
-  componentDidMount() {
-    localStorage.setItem("token", "abc");
-    console.log(localStorage.getItem("token"));
-  }
+
   handleLoginSubmit = e => {
     e.preventDefault();
     // const today = new Date();
@@ -32,16 +31,19 @@ class Header extends React.Component {
       email: this.state.email,
       password: this.state.password
     };
-
     // console.log("datatakjsafalskf=============", userLoginData);
     Axios.post("http://localhost:3001/users/login", userLoginData)
       .then(res => {
         alert("login successful");
         localStorage.setItem("user", res.data.data);
-        // console.log("local storage: ", localStorage.getItem('user'))
-        // console.log(res);
+        this.setState({
+          isLogin: true
+        });
+        // console.log("local storage: ", localStorage.getItem("user"));
+        // console.log(res.data.data);
       })
       .catch(err => {
+        alert("error", err.err);
         console.log("catch error=", err);
       });
   };
@@ -51,7 +53,7 @@ class Header extends React.Component {
     });
   };
   handleSignupSubmit = e => {
-    e.preventDefault();
+    // e.preventDefault();
     const today = new Date();
     let userSignupData = {
       first_name: this.state.first_name,
@@ -63,13 +65,21 @@ class Header extends React.Component {
     console.log("datatakjsafalskf=============", userSignupData);
     Axios.post("http://localhost:3001/users/signup", userSignupData)
       .then(res => {
-        localStorage.setItem("token1", "dataatata");
-        console.log("local storage: ", localStorage.getItem("token1"));
+        // localStorage.setItem("token1", "dataatata");
+        // console.log("local storage: ", localStorage.getItem("token1"));
         console.log("res", res);
       })
       .catch(err => {
         console.log("catch error=", err);
       });
+  };
+  logout = () => {
+    this.setState({
+      isLogin: false
+    });
+    alert("Logout");
+    localStorage.removeItem("user");
+    return <Redirect to="/" />;
   };
   render() {
     // const responseFacebook = response => {
@@ -83,7 +93,7 @@ class Header extends React.Component {
     // };
 
     return (
-      <Router>
+      <div>
         {/* Modal starts */}
 
         {/* login Modal */}
@@ -99,10 +109,10 @@ class Header extends React.Component {
             <div className="modal-content">
               <div className="container">
                 <div className="row">
-                  <div className="col-lg-4 col-12 back1 ">
+                  <div className="col-lg-4 col-12 back1 margin-top-bottom ">
                     <div className="row">
                       <div className="col-12">
-                        <div className="topheading">Nest Story</div>
+                        <div className="topheading text-center">Nest Story</div>
                       </div>
                     </div>
                     <div className="row">
@@ -120,7 +130,7 @@ class Header extends React.Component {
                       </div>
                     </div> */}
                   </div>
-                  <div className="col-lg-8 col-12 back2  ">
+                  <div className="col-lg-8 col-12 back2 margin-top-bottom ">
                     <div className="container-fluid martopform">
                       <div className="row">
                         <div className="col-lg-2 col-1" />
@@ -136,7 +146,9 @@ class Header extends React.Component {
                                 aria-describedby="emailHelp"
                                 placeholder="Email"
                               />
-                              <br />
+                            </div>
+                            {/* <br /> */}
+                            <div className="form-group">
                               <input
                                 onChange={this.handleLoginChange}
                                 name="password"
@@ -145,7 +157,7 @@ class Header extends React.Component {
                                 placeholder="Password"
                               />
                               <small className="form-text text-muted pr-4 ">
-                                <a className="forgot-pass" href="#">
+                                <a className="forgot-pass" href="">
                                   Forgot Password?
                                 </a>
                               </small>
@@ -173,33 +185,32 @@ class Header extends React.Component {
                               </small>
                             </div>
                           </form>
-                          <div className="col-3" />
                         </div>
                         <div className="col-lg-2 col-1" />
-                        <div className="row mx-auto">
-                          <div className="col-auto">
-                            <div className="other-login h5">OR</div>
-                          </div>
-                          <div className="row mt-4 mx-auto">
-                          <div className="col-auto">
-                           
-                                <GoogleLogin
-                                clientId="622742830674-776paqvqtco2gflgbgplln8m3n6jtmgm.apps.googleusercontent.com"
-                                buttonText="Login"
-                                onSuccess={responseGoogle}
-                                onFailure={responseGoogle}
-                                cookiePolicy={"single_host_origin"}
-                              />{" "}
-                              {/* <FacebookLogin
+                      </div>
+                      <div className="row ">
+                        <div className="col text-center other-login-signup">
+                          OR
+                        </div>
+                      </div>
+                      <div className="row justify-content-center">
+                        <div className="col-auto">
+                          <GoogleLogin
+                            clientId="622742830674-776paqvqtco2gflgbgplln8m3n6jtmgm.apps.googleusercontent.com"
+                            // buttonText=
+                            theme="dark"
+                            // icon={false}
+                            onSuccess={responseGoogle}
+                            onFailure={responseGoogle}
+                            cookiePolicy={"single_host_origin"}
+                          />{" "}
+                          {/* <FacebookLogin
                                     appId="560360311166372"
                                     autoLoad={true}
                                     fields="name,email,picture"
                                     onClick={componentClicked}
                                     callback={responseFacebook}
                                   />` */}
-                            
-                          </div>
-                          </div>
                         </div>
                       </div>
                     </div>
@@ -225,9 +236,11 @@ class Header extends React.Component {
             <div className="modal-content">
               <div className="container ">
                 <div className="row">
-                  <div className="col-lg-4 col-12 back1 ">
+                  <div className="col-lg-4 col-12 back1 margin-top-bottom ">
                     <div className="row">
-                      <div className="h1 topheading">NestStory</div>
+                      <div className="col">
+                        <div className="topheading text-center">Nest Story</div>
+                      </div>
                     </div>
                     <div className="row">
                       <div className="col">
@@ -244,7 +257,7 @@ class Header extends React.Component {
                       </div>
                     </div> */}
                   </div>
-                  <div className="col-lg-8 col-12 back2  ">
+                  <div className="col-lg-8 col-12 back2 margin-top-bottom">
                     <div className="container signup-form">
                       <div className="row">
                         <div className="col-lg-2 col-1" />
@@ -260,7 +273,8 @@ class Header extends React.Component {
                                 // aria-describedby="emailHelp"
                                 placeholder="First Name"
                               />
-                              <br />
+                            </div>
+                            <div className="form-group">
                               <input
                                 type="text"
                                 onChange={this.handleSignupChange}
@@ -270,7 +284,8 @@ class Header extends React.Component {
                                 name="last_name"
                                 placeholder="Last Name"
                               />
-                              <br />
+                            </div>
+                            <div className="form-group">
                               <input
                                 type="email"
                                 onChange={this.handleSignupChange}
@@ -280,7 +295,8 @@ class Header extends React.Component {
                                 name="email"
                                 placeholder="Email"
                               />
-                              <br />
+                            </div>
+                            <div className="form-group">
                               <input
                                 type="password"
                                 onChange={this.handleSignupChange}
@@ -319,27 +335,30 @@ class Header extends React.Component {
                           </form>
                         </div>
                         <div className="col-lg-2 col-1" />
-                        <div className="row">
-                          <div className="col">
-                            <div className="other-login-signup h5 float-left">
-                              Login using
-                              {/* <i className="fab fa-facebook fa-2x fbIcon mt-2" /> */}
-                              <GoogleLogin
-                                clientId="622742830674-776paqvqtco2gflgbgplln8m3n6jtmgm.apps.googleusercontent.com"
-                                buttonText="Login"
-                                onSuccess={responseGoogle}
-                                onFailure={responseGoogle}
-                                cookiePolicy={"single_host_origin"}
-                              />
-                              {/* <FacebookLogin
+                      </div>
+                      <div className="row ">
+                        <div className="col text-center other-login-signup">
+                          OR
+                        </div>
+                      </div>
+                      <div className="row justify-content-center">
+                        <div className="col-auto">
+                          <GoogleLogin
+                            clientId="622742830674-776paqvqtco2gflgbgplln8m3n6jtmgm.apps.googleusercontent.com"
+                            // buttonText=
+                            theme="dark"
+                            // icon={false}
+                            onSuccess={responseGoogle}
+                            onFailure={responseGoogle}
+                            cookiePolicy={"single_host_origin"}
+                          />{" "}
+                          {/* <FacebookLogin
                                     appId="560360311166372"
                                     autoLoad={true}
                                     fields="name,email,picture"
                                     onClick={componentClicked}
                                     callback={responseFacebook}
-                                  /> */}
-                            </div>
-                          </div>
+                                  />` */}
                         </div>
                       </div>
                     </div>
@@ -360,21 +379,21 @@ class Header extends React.Component {
                   fontSize: "3.5vw"
                 }}
               >
-                <a
+                <Link
                   style={{
                     color: "white",
                     textDecoration: "none"
                   }}
-                  href="/"
+                  to="/"
                 >
                   {" "}
                   Nest Story
-                </a>
+                </Link>
               </div>
 
               <div className="col-12 col-lg-9">
                 <div className="row newsHeaderStyle">
-                  <div className="col-12 col-lg-9 ">
+                  <div className="col-12 col-lg-9 my-auto">
                     <NewsSlider />
                   </div>
                   <div className="col-lg-3 col-3 user-nav">
@@ -386,9 +405,40 @@ class Header extends React.Component {
                               <i className="fas fa-envelope"> Subscribe</i>
                             </div>
                           </li>
-                          <li className="navbar-item ml-2  mt-1">
-                            <a data-toggle="modal" href="#login">
-                              <i className="fas fa-user " />
+                          <li className="navbar-item ml-2 mt-1">
+                            {localStorage.getItem("user") !== null ? (
+                              <small>
+                                {
+                                  JSON.parse(localStorage.getItem("user"))
+                                    .first_name
+                                }
+                              </small>
+                            ) : (
+                              ""
+                            )}
+                          </li>
+                          <li className="navbar-item ml-2 mt-1">
+                            <a
+                              data-toggle={
+                                localStorage.getItem("user") !== null
+                                  ? ""
+                                  : "modal"
+                              }
+                              onClick={
+                                localStorage.getItem("user") !== null
+                                  ? this.logout
+                                  : null
+                              }
+                              href="#login"
+                            >
+                              <i
+                                style={
+                                  localStorage.getItem("user") !== null
+                                    ? { color: "red" }
+                                    : { color: "green" }
+                                }
+                                className="fas fa-user "
+                              />
                             </a>
                           </li>
                           <li className="navbar-item ml-2  mt-1">
@@ -404,40 +454,52 @@ class Header extends React.Component {
                     <nav className="navbar navbar-expand-lg navbar-dark">
                       <div className="collapse navbar-collapse">
                         <ul className="navbar-nav ml-auto text-center">
+                          {localStorage.getItem("user") !== null ? (
+                            <li className="navbar-item">
+                              <Link
+                                to="/admin/dashboard/"
+                                className="nav-link navtext"
+                              >
+                                DASHBOARD
+                              </Link>
+                            </li>
+                          ) : (
+                            ""
+                          )}
                           <li className="navbar-item">
-                            <a href="/" className="nav-link navtext">
+                            <Link to="/" className="nav-link navtext">
                               HOME
-                            </a>
+                            </Link>
                           </li>
                           <li className="navbar-item">
-                            <a href="/stories" className="nav-link navtext">
+                            <Link to="/stories/" className="nav-link navtext">
                               STORIES
-                            </a>
+                            </Link>
                           </li>
                           <li className="navbar-item">
-                            <a href="/global" className="nav-link navtext">
+                            <Link to="/global/" className="nav-link navtext">
                               GLOBAL
-                            </a>
+                            </Link>
                           </li>
                           <li className="navbar-item navtext">
-                            <a href="/innovation" className="nav-link">
+                            <Link to="/innovation" className="nav-link">
                               INNOVATION
-                            </a>
+                            </Link>
                           </li>
                           <li className="navbar-item navtext">
-                            <a href="/launchpad" className="nav-link">
+                            <Link to="/launchpad" className="nav-link">
                               LAUNCHPAD
-                            </a>
+                            </Link>
                           </li>
                           <li className="navbar-item navtext">
-                            <a href="/entrepreneurship" className="nav-link">
+                            <Link to="/entrepreneurship" className="nav-link">
                               ENTREPRENEURSHIP
-                            </a>
+                            </Link>
                           </li>
                           <li className="navbar-item navtext">
-                            <a href="/videos" className="nav-link">
+                            <Link to="/videos" className="nav-link">
                               VIDEOS
-                            </a>
+                            </Link>
                           </li>
                         </ul>
                       </div>
@@ -449,7 +511,7 @@ class Header extends React.Component {
           </div>
           {/* <Route path="/stories/" component={Stories} /> */}
         </div>
-      </Router>
+      </div>
     );
   }
 }

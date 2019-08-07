@@ -3,6 +3,7 @@ const router = express.Router();
 const db = require("../bin/db");
 const multer = require("multer");
 const path = require("path");
+const checkauth = require("../middleware/authtoken");
 
 const storageStrategy = multer.diskStorage({
   destination: "./public/image/news",
@@ -31,7 +32,7 @@ getDate = () => {
   return today;
 };
 
-router.post("/new", async (req, res) => {
+router.post("/new", checkauth, async (req, res) => {
   await upload(req, res, err => {
     if (err) {
       console.log("Upload err: ", err);

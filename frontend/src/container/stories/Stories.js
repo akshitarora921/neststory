@@ -37,7 +37,7 @@ class Stories extends React.Component {
         <div className="container-fluid stories">
           <div className="row">
             <div className="col-auto ">
-              <h2 className="title">Stories</h2>
+              <h2 className="title-stories">Stories</h2>
             </div>
             <div
               style={{ paddingTop: "10px", fontSize: "13px" }}
@@ -53,9 +53,9 @@ class Stories extends React.Component {
         {this.state.stories
           .slice(0, this.state.visible)
           .map((news, idi) => (
-            <Link to={`/news/${news.id}`}>
+            <Link key = {idi} to={`/news/${news.id}`}>
               <div
-                key={idi}
+                // key={idi}
                 style={{ minHeight: "200px" }}
                 className="row mb-4 stories "
               >
@@ -124,7 +124,7 @@ class Stories extends React.Component {
           <button
             onClick={this.loadMore}
             type="button"
-            className="btn load-more"
+            className="btn load-more mb-2"
           >
             More
           </button>

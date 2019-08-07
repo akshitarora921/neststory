@@ -8,6 +8,10 @@
   border-radius: 20px;
   font-size: 2.2vw;
 }
+.title-video{
+  color: #f54a00;
+  margin-left: 10px;
+}
 .slidebar{
   visibility: hidden;
 }
@@ -23,5 +27,8 @@
     color: white;
     border-radius: 20px;
     font-size: 3.5vw;
+  }
+  .title-video{
+    margin-left: 140px;
   }
 }

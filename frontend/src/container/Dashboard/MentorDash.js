@@ -3,11 +3,26 @@ import axios from "axios";
 
 class launchpadDash extends React.Component {
   state = {
+    launchpads: [],
     launchpadId: "",
     mentorName: "",
     mentorDesg: "",
     mentorImage: ""
   };
+
+  componentDidMount() {
+    axios
+      .get("http://localhost:3001/launchpad/all")
+      .then(res => {
+        let data = res.data;
+        this.setState({
+          launchpads: data
+        });
+      })
+      .catch(err => {
+        console.log("Error in axios: ", err);
+      });
+  }
 
   handleChangeMentor = e => {
     if (e.target.type === "file") {
@@ -21,14 +36,19 @@ class launchpadDash extends React.Component {
     }
   };
   handleSubmitMentor = e => {
+    let data = localStorage.getItem("user");
+    data = JSON.parse(data);
+    let userId = data.user_id;
+    
     const formData = new FormData();
     formData.append("launchpadId", this.state.launchpadId);
     formData.append("mentorName", this.state.mentorName);
     formData.append("mentorDesg", this.state.mentorDesg);
     formData.append("mentorImage", this.state.mentorImage);
+    formData.append("userId", userId);
 
     axios
-      .post("http://localhost:3001/launchpad/mentor", formData, {
+      .post("http://localhost:3001/mentor", formData, {
         header: {
           "Content-Type": "multipart/form-data"
         }
@@ -41,29 +61,34 @@ class launchpadDash extends React.Component {
       });
   };
   render() {
+    
     return (
-      <div 
-      className="container" 
-    //   style={{ paddingTop: "8.6%" }}
+      <div
+        className="container"
+        //   style={{ paddingTop: "8.6%" }}
       >
-          <div className="col-md-12 col-sm-12 ">
-              <h2 className="section-heading">Mentor Input</h2>
-            </div>
+        <div className="col-md-12 col-sm-12 ">
+          <h2 className="section-heading">Mentor Input</h2>
+        </div>
         <form>
           {/* Input Launchpad Id */}
           <div className="form-group">
-            <label>Launchpad Id</label>
-            <input
-              onChange={this.handleChangeMentor}
+            <label>Launchpad Name</label>
+            <select
               name="launchpadId"
-              type="text"
+              onChange={this.handleChangeMentor}
               className="form-control"
-              placeholder="Launchpad Id"
-            />
+            >
+              {this.state.launchpads.map((launchpad, id) => (
+                <option key={id} value={`${launchpad.launchpad_id}`}>
+                  {launchpad.heading}
+                </option>
+              ))}
+            </select>
           </div>
           {/* Input mentor name */}
           <div className="form-group">
-            <label>Heading</label>
+            <label>Name</label>
             <input
               onChange={this.handleChangeMentor}
               name="mentorName"

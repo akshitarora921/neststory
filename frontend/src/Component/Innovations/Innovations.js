@@ -1,11 +1,12 @@
 import React from "react";
-import "../../fontawesome/css/all.css";
+// import "../../fontawesome/css/all.css";
 import "../b.css";
 import "./innovation.css";
 import axios from "axios";
 import OwlCarousel from "react-owl-carousel";
 import "owl.carousel/dist/assets/owl.theme.default.css";
 import "owl.carousel/dist/assets/owl.carousel.css";
+import {Link} from 'react-router-dom'
 // import SingleInnovation from './SingleInnovation'
 // import $ from 'jquery'
 
@@ -60,7 +61,9 @@ class Innovation extends React.Component {
         <div className="container-fluid">
           <div className="row">
             <div className="col-2.5 ">
+            <Link to="/innovation">
               <h2 style={{ color: "#F54A00" }}>Innovation</h2>
+              </Link>
             </div>
             <div
               style={{ marginTop: "12px", fontSize: "13px" }}
@@ -75,8 +78,8 @@ class Innovation extends React.Component {
         {this.state.innovations.length > 0 ? (
           <OwlCarousel className="owl-theme" {...options}>
             {this.state.innovations.map((innovation, id) => (
-              <a href={`/news/${innovation.id}`}>
-                <div key={id} className="item">
+              <Link key={id} to={`/news/${innovation.id}`}>
+                <div className="item">
                   <div
                     style={{
                       minHeight: "200px",
@@ -94,7 +97,7 @@ class Innovation extends React.Component {
                     </div>
                   </div>
                 </div>
-              </a>
+              </Link>
             ))}
           </OwlCarousel>
         ) : (

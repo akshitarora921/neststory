@@ -3,8 +3,8 @@ import axios from "axios";
 // import $ from "jquery";
 import "./header.css";
 import OwlCarousel from "react-owl-carousel";
-import "owl.carousel/dist/assets/owl.carousel.css";
-import "owl.carousel/dist/assets/owl.theme.default.css";
+// import "owl.carousel/dist/assets/owl.carousel.css";
+// import "owl.carousel/dist/assets/owl.theme.default.css";
 
 class NewsSlider extends React.Component {
   state = {
@@ -54,8 +54,9 @@ class NewsSlider extends React.Component {
           <OwlCarousel className="owl-theme" {...options}>
             {this.state.newsData
             .map((newData, id) => (
-              <div key={id} className="item">
-                {newData.heading.slice(0,45)+"..."}
+              <div key={id}
+              style={{height:"25px"}} className="item">
+                {newData.heading}
               </div>
             ))}
           </OwlCarousel>

@@ -3,8 +3,8 @@ import axios from "axios";
 import Sidebar from "../../component/Sidebar/Sidebar";
 // import ReactPlayer from 'react-player'
 import OwlCarousel from "react-owl-carousel";
-import "owl.carousel/dist/assets/owl.carousel.css";
-import "owl.carousel/dist/assets/owl.theme.default.css";
+// import "owl.carousel/dist/assets/owl.carousel.css";
+// import "owl.carousel/dist/assets/owl.theme.default.css";
 import Moment from "react-moment";
 import "./videos.css";
 
@@ -50,7 +50,7 @@ class Videos extends React.Component {
         <div className="container-fluid">
           <div className="row">
             <div className="col-auto ">
-              <h2 className="title">Videos</h2>
+              <h2 className="title-video">Videos</h2>
             </div>
             <div
               style={{ paddingTop: "10px", fontSize: "13px" }}
