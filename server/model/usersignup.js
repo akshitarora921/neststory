@@ -57,7 +57,6 @@ router.post("/", (req, res) => {
           });
         } else {
           // console.log("user already exits");
-          // console.log("res============", result[0]);
           res.status(401).json({ err: "user already exists" });
         }
       }
