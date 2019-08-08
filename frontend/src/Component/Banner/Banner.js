@@ -22,7 +22,7 @@ class Banner extends React.Component {
         // console.log("data: ", data);
       })
       .catch(err => {
-        console.log("Erroorrr==========>", err);
+        // console.log("Error=>", err);
       });
   }
 

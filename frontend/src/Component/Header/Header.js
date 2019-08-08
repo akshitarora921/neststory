@@ -16,7 +16,8 @@ class Header extends React.Component {
     last_name: "",
     password: "",
     email: "",
-    isLogin: false
+    isLogin: false,
+    redirect: false
   };
   handleLoginChange = e => {
     this.setState({
@@ -79,19 +80,22 @@ class Header extends React.Component {
     });
     alert("Logout");
     localStorage.removeItem("user");
-    return <Redirect to="/" />;
+    this.setState({
+      redirect: true
+    });
   };
   render() {
-    // const responseFacebook = response => {
-    //   console.log(response);
-    // };
+
+    //for redirection after logout
+    if (this.state.redirect) {
+      this.setState({
+        redirect: false
+      });
+      return <Redirect push to="/" />;
+    }
     const responseGoogle = response => {
       console.log(response);
     };
-    // const componentClicked = response => {
-    //   console.log(response);
-    // };
-
     return (
       <div>
         {/* Modal starts */}
@@ -418,7 +422,7 @@ class Header extends React.Component {
                             )}
                           </li>
                           <li className="navbar-item ml-2 mt-1">
-                            <a
+                            <div
                               data-toggle={
                                 localStorage.getItem("user") !== null
                                   ? ""
@@ -439,7 +443,7 @@ class Header extends React.Component {
                                 }
                                 className="fas fa-user "
                               />
-                            </a>
+                            </div>
                           </li>
                           <li className="navbar-item ml-2  mt-1">
                             <i className="fas fa-search" />

@@ -45,14 +45,20 @@ class IndividualStories extends React.Component {
   render() {
     let options = {
       // loop: true,
-      margin: 10,
+      // margin: 10,
       autoHeight: true,
       // nav:true,
       responsive: {
-        100: {
+        0: {
           items: 2
         },
-        700: {
+        600: {
+          items: 2
+        },
+        800: {
+          items: 3
+        },
+        1000: {
           items: 4
         }
       }
@@ -106,12 +112,12 @@ class IndividualStories extends React.Component {
             <h2>Related News</h2>
             <OwlCarousel className="owl-theme" {...options}>
               {this.state.related.map((relatedNews, id) => (
-                <Link to={`/news/${relatedNews.id}`}>
-                  <div key={id} className="item  related-news p-2">
+                <a href={`/news/${relatedNews.id}`}>
+                  <div key={id} className="item  related-news">
                     <div
                       style={{
-                        minHeight: "175px",
-                        maxHeight: "200px",
+                        minHeight: "200px",
+                        // maxHeight: "200px",
                         // minWidth:"250px",
                         borderRadius: "20px",
                         backgroundSize: "100% 100%",
@@ -125,7 +131,7 @@ class IndividualStories extends React.Component {
                       {relatedNews.heading.slice(1, 25) + "..."}
                     </div>
                   </div>
-                </Link>
+                </a>
               ))}
             </OwlCarousel>
           </div>

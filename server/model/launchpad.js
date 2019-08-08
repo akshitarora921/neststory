@@ -20,17 +20,7 @@ var upload = multer({
   { name: "lpVideo", maxCount: 1 }
   // { name: "videoThumbnail", maxCount: 1 },
 ]);
-getDate = () => {
-  let today = new Date();
-  let dd = today.getDate();
-  let mm = today.getMonth() + 1; //gives last months so we have to add 1
-  let yyyy = today.getFullYear();
-  if (dd < 10) dd = "0" + dd;
-  if (mm < 10) mm = "0" + mm;
-  today = yyyy + "-" + mm + "-" + dd;
-  console.log("date: ", today);
-  return today;
-};
+
 
 router.post("/", async (req, res) => {
   await upload(req, res, err => {
@@ -39,9 +29,9 @@ router.post("/", async (req, res) => {
       res.status(409).send("err");
     } else {
       let sql = "";
-      sql = `insert into launchpad ( heading, content, video, video_thumbnail, user_id) values("${req.body.lpHeading}","${req.body.lpContent}","${
+      sql = `insert into launchpad ( heading, content, video, video_thumbnail, date, user_id) values("${req.body.lpHeading}","${req.body.lpContent}","${
         req.files.lpVideo[0].filename
-      }","${req.files.lpVideoThumbnail[0].filename}","${req.body.userId}")`;
+      }","${req.files.lpVideoThumbnail[0].filename}","${req.body.lpDate}","${req.body.userId}")`;
 
       db.query(sql, (err, result) => {
         if (err) {
@@ -70,7 +60,7 @@ router.get("/all", (req, res, next) => {
 });
 // Launchpad get
 router.get("/", (req, res, next) => {
-  const sql = `select launchpad_id, heading, content, video, video_thumbnail from launchpad order by launchpad_id desc limit 1 `;
+  const sql = `select launchpad_id, heading, content, video, video_thumbnail, date from launchpad order by launchpad_id desc limit 1 `;
   db.query(sql, (err, result) => {
     if (err) {
       res.status(409).send("error in query function");

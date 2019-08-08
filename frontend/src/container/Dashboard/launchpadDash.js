@@ -5,6 +5,7 @@ class launchpadDash extends React.Component {
     
     lpHeading: "",
     lpContent: "",
+    lpDate:"",
     lpVideo: "",
     lpVideoThumbnail: ""
     
@@ -28,6 +29,7 @@ class launchpadDash extends React.Component {
     const formData = new FormData();
     formData.append("lpHeading", this.state.lpHeading);
     formData.append("lpContent", this.state.lpContent);
+    formData.append("lpDate", this.state.lpDate);
     formData.append("lpVideo", this.state.lpVideo);
     formData.append("lpVideoThumbnail", this.state.lpVideoThumbnail);
     formData.append("userId", userId);
@@ -80,6 +82,19 @@ class launchpadDash extends React.Component {
               placeholder="Content"
             />
           </div>
+
+          {/* Input Date */}
+          <div className="form-group">
+            <label>Date</label>
+            <input
+              onChange={this.handleChangeLP}
+              name="lpDate"
+              type="date"
+              className="form-control"
+              placeholder="Date"
+            />
+          </div>
+
           {/* Input video  */}
           <div className="form-group">
             <div className="form-group">

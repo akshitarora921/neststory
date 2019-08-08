@@ -1,11 +1,13 @@
 import React from "react";
 import axios from "axios";
+import Moment from "react-moment";
 import Sidebar from "../../Component/Sidebar/Sidebar";
 import "./launchpad.css";
 class Launchpad extends React.Component {
   state = {
     launchpad: [],
-    mentor: []
+    mentor: [],
+    today:""
   };
 
   componentDidMount() {
@@ -32,9 +34,23 @@ class Launchpad extends React.Component {
         console.log("axios error launchpad: ", err);
       });
   }
+  componentWillMount(){
+    let today = new Date();
+    let dd = today.getDate();
+    let mm = today.getMonth() + 1; //gives last months so we have to add 1
+    let yyyy = today.getFullYear();
+    if (dd < 10) dd = "0" + dd;
+    if (mm < 10) mm = "0" + mm;
+    let t = `${yyyy}-${mm}-${dd}`;
+    this.setState({
+      today:t
+    })
+  }
   render() {
+    
     return (
       <div className="top">
+        {/* {alert(todayDate)} */}
         <div className="slidebar">
           <Sidebar />
         </div>
@@ -110,9 +126,14 @@ class Launchpad extends React.Component {
                     <div id="accelerator">{lp.heading}</div>
                   </div>
                   <div className="col-lg-12 col-12 px-1">
-                    <div id="fame">
-                      Powered by <br />
-                      Fame Technology
+                    <div id="fame">Powered by Fame Technology</div>
+                  </div>
+                  <div className="col-lg-12 col-12 px-1">
+                    <div id="launchpad-date">
+                      <Moment diff={this.state.today} unit="days" locale="en">
+                        {lp.date}
+                      </Moment>
+                      {" "}Days to Go
                     </div>
                   </div>
                 </div>

@@ -44,33 +44,24 @@ router.post("/new", checkauth, async (req, res) => {
       //   res; // invalid 404 err
       // } else
       if (req.files.image == undefined) {
-        //not image onlyvideo an video thumbnail
-
+        //not image
         //  ==============================invalid 404 err=====================
-        // sql = `insert into news (heading, content, author, date, image, video, zone, tags, category,sub_category, trending ) values("${
-        //   req.body.heading
-        //   }","${req.body.content}","${
-        //   req.body.author
-        //   }", DATE '${getDate()}',"","${req.files.video[0].filename}","${
-        //   req.files.videoThumbnail[0].filename
-        //   }", "${req.body.zone}","${req.body.tags}","${req.body.category}","${
-        //   req.body.subCategory
-        //   }","${req.body.trending}")`;
         res.status(409).json({ err: "image is not uploaded" });
       } else {
         if (req.files.video == undefined) {
           //not video
-
-          //  ==============================invalid 404 err=====================
-          sql = `insert into news (heading, content, author, date, image, video, zone, tags, category,sub_category, trending ) values("${
+          sql = `insert into news (heading, content, author, date, image, video, zone, tags, category,sub_category, trending, user_id ) values("${
             req.body.heading
           }","${req.body.content}","${req.body.author}", DATE '${getDate()}',"${
             req.files.image[0].filename
           }", "", "${req.body.zone}","${req.body.tags}","${
             req.body.category
-          }","${req.body.subCategory}","${req.body.trending}")`;
+          }","${req.body.subCategory}","${req.body.trending}","${
+            req.body.userId
+          }")`;
         } else {
-          sql = `insert into news (heading, content, author, date, image, video, zone, tags, category,sub_category, trending ) values("${
+          //both image and video
+          sql = `insert into news (heading, content, author, date, image, video, zone, tags, category,sub_category, trending, user_id ) values("${
             req.body.heading
           }","${req.body.content}","${req.body.author}", DATE '${getDate()}',"${
             req.files.image[0].filename
@@ -78,9 +69,8 @@ router.post("/new", checkauth, async (req, res) => {
             req.body.tags
           }","${req.body.category}","${req.body.subCategory}","${
             req.body.trending
-          }")`;
+          }","${req.body.userId}")`;
         }
-
         db.query(sql, (err, result) => {
           if (err) {
             console.log("sql err", err);
@@ -95,6 +85,7 @@ router.post("/new", checkauth, async (req, res) => {
   });
 });
 
+//get news of perticular id
 router.get("/data/:id", (req, res, next) => {
   const id = req.params.id;
   console.log("i am wierd ", id);

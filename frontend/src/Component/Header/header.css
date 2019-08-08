@@ -7,10 +7,10 @@
 .logo a {
   color: white;
   font-family: Noto Serif;
-  /* margin-left: 50px; */
+  margin-left: 50px;
   padding: 10px;
   font-size: vw;
-  text-shadow: 0 0 20px #eee;
+  text-shadow: 0 0 20px rgb(238, 238, 238)rgb(238, 238, 238);
 }
 .subscribe {
   border: 1px solid black;
@@ -171,6 +171,14 @@
 }
 
 @media (max-width: 480px) {
+  .logo a {
+    color: white;
+    font-family: Noto Serif;
+    /* margin-left: 50px; */
+    padding: 10px;
+    font-size: vw;
+    text-shadow: 0 0 20px #eee;
+  }
   .user-nav {
     /* visibility: hidden */
     position: absolute;

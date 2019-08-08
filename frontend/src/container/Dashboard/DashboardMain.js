@@ -61,6 +61,10 @@ class Dashboard extends React.Component {
 
   handleSubmit = e => {
     // e.preventDefault();
+    let data = localStorage.getItem("user");
+    data = JSON.parse(data);
+    let userId = data.user_id;
+
     let formData = new FormData();
     formData.append("heading", this.state.heading);
     formData.append("content", this.state.content);
@@ -73,6 +77,7 @@ class Dashboard extends React.Component {
     formData.append("category", this.state.category);
     formData.append("subCategory", this.state.subCategory);
     formData.append("trending", this.state.trending);
+    formData.append("userId", userId);
 
     Axios.post("http://localhost:3001/news/new", formData, {
       header: { "Content-Type": "multipart/form-data" }
@@ -119,7 +124,6 @@ class Dashboard extends React.Component {
             </div>
           </div>
           <form>
-         
             {/* Input heading */}
             <div className="form-group">
               <label>Heading</label>
@@ -132,7 +136,7 @@ class Dashboard extends React.Component {
                 placeholder="Heading"
               />
               <small style={{ color: "#aaa" }}>
-               Double Quotes are  not allowed
+                Double Quotes are not allowed
               </small>
             </div>
 
@@ -257,7 +261,7 @@ class Dashboard extends React.Component {
                 India
               </label>
             </div>*/}
-            <br /> 
+            <br />
 
             {/* Input category */}
             <label>Category</label>
