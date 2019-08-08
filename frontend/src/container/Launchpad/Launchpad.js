@@ -1,6 +1,6 @@
 import React from "react";
 import axios from "axios";
-import Sidebar from "../../component/Sidebar/Sidebar";
+import Sidebar from "../../Component/Sidebar/Sidebar";
 import "./launchpad.css";
 class Launchpad extends React.Component {
   state = {

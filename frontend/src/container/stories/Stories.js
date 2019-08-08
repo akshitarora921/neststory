@@ -3,7 +3,7 @@ import React from "react";
 import ShowMore from "react-simple-show-more";
 import Moment from "react-moment";
 import { Link } from "react-router-dom";
-import Sidebar from "../../component/Sidebar/Sidebar";
+import Sidebar from "../../Component/Sidebar/Sidebar";
 // import Footer from "../../component/Footer/Footer";
 import axios from "axios";
 import "./stories.css";

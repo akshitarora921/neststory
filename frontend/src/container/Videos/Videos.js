@@ -1,6 +1,6 @@
 import React from "react";
 import axios from "axios";
-import Sidebar from "../../component/Sidebar/Sidebar";
+import Sidebar from "../../Cgomponent/Sidebar/Sidebar";
 // import ReactPlayer from 'react-player'
 import OwlCarousel from "react-owl-carousel";
 // import "owl.carousel/dist/assets/owl.carousel.css";

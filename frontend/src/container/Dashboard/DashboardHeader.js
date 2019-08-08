@@ -3,7 +3,7 @@ import React from "react";
 import DashboardMain from "../../container/Dashboard/DashboardMain";
 import launchpadDash from "../../container/Dashboard/launchpadDash";
 import MentorDash from "../../container/Dashboard/MentorDash";
-import Sidebar from "../../component/Sidebar/Sidebar"
+import Sidebar from "../../Component/Sidebar/Sidebar"
 
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 // import "../../fontawesome/css/all.css";

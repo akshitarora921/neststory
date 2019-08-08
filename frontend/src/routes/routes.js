@@ -8,10 +8,10 @@ import IndividualStory from "../container/IndividualStory/IndividualStory";
 import Launchpad from "../container/Launchpad/Launchpad";
 import Videos from "../container/Videos/Videos";
 import Global from "../container/Global/Global";
-import Header from "../component/Header/Header";
-import Footer from "../component/Footer/Footer";
+import Header from "../Component/Header/Header";
+import Footer from "../Component/Footer/Footer";
 import Entrepreneurship from "../container/Entrepreneurship/Entrepreneurship";
-import WithAuth from "../component/WithAuth/WithAuth";
+import WithAuth from "../Component/WithAuth/WithAuth";
 const Routes = () => {
   return (
     <Router>

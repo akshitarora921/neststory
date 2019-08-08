@@ -1,6 +1,6 @@
 import React from "react";
 import axios from "axios";
-import Sidebar from "../../component/Sidebar/Sidebar";
+import Sidebar from "../../Component/Sidebar/Sidebar";
 import ShowMore from "react-simple-show-more";
 import Moment from "react-moment";
 import { Link } from "react-router-dom";
