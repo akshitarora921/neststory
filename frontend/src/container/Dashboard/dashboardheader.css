@@ -30,14 +30,14 @@
   color: #818181;
   display: block;
 }
-
-.active a {
+/* 
+.glow a {
   padding: 6px 8px 6px 16px;
   text-decoration: none;
   font-size: 30px;
   color: rgba(255, 68, 0, 0.9);
   display: block;
-}
+} */
 
 .sidenav1 a:hover {
   /* color: #f1f1f1; */

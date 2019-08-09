@@ -2,8 +2,7 @@ import React from "react";
 import axios from "axios";
 // import Menu from "./Menu";
 import Sidebar from "../Sidebar/Sidebar";
-// import "../../fontawesome/css/all.css";
-// import "../App.css";
+import { Link } from "react-router-dom";
 import "../b.css";
 import "./banner.css";
 class Banner extends React.Component {
@@ -39,24 +38,25 @@ class Banner extends React.Component {
             {this.state.banners.map((banner, id) => {
               //  console.log(id)
               let styleCol;
-              if (id === 0 || id === 3)
-                styleCol = "col-lg-4 col-12";
+              if (id === 0 || id === 3) styleCol = "col-lg-4 col-12";
               else styleCol = "col-lg-6 col-12";
               return (
-                //  <div className={`${styleRow}`}>
-                <div
-                  key={id}
-                  style={{
-                    backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),url(http://localhost:3001/image/news/${
-                      banner.image
-                    })`
-                  }}
-                  className={`${styleCol} bannerImage`}
-                >
-                  {banner.isVideo === 1 && (
-                    <i className="far fa-play-circle fa-3x playButton1" />
-                  )}
-                  <div className="h6 bannerHeading">{banner.heading}</div>
+                <div key={id} className={`${styleCol} image`}>
+                  <Link to={`/news/${banner.id}`}>
+                    <div
+                      style={{
+                        backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),url(http://localhost:3001/image/news/${
+                          banner.image
+                        })`
+                      }}
+                      className="bannerImage"
+                    >
+                      {banner.isVideo === 1 && (
+                        <i className="far fa-play-circle fa-3x playButton1" />
+                      )}
+                      <div className="h6 bannerHeading">{banner.heading}</div>
+                    </div>
+                  </Link>
                 </div>
               );
             })}

@@ -2,8 +2,7 @@ const express = require("express");
 const router = express.Router();
 const db = require("../bin/db");
 const multer = require("multer");
-const path = require("path");
-const checkauth = require("../middleware/authtoken");
+const authtoken = require("../middleware/authtoken");
 
 const storageStrategy = multer.diskStorage({
   destination: "./public/image/news",
@@ -31,7 +30,8 @@ getDate = () => {
 };
 
 // Mentors
-router.post("/", async (req, res) => {
+router.post("/",authtoken, async (req, res) => {
+  // console.log("req.headers.authorization",req.headers.authorization)
   await upload(req, res, err => {
     if (err) {
       console.log("Upload err: ", err);
@@ -48,7 +48,7 @@ router.post("/", async (req, res) => {
       }","${req.body.mentorName}","${req.body.mentorDesg}","${
         req.files.mentorImage[0].filename
       }","${
-        req.body.userIdx
+        req.body.userId
       }")`;
 
       db.query(sql, (err, result) => {

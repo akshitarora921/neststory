@@ -36,10 +36,11 @@ class launchpadDash extends React.Component {
     }
   };
   handleSubmitMentor = e => {
+    e.preventDefault();
     let data = localStorage.getItem("user");
     data = JSON.parse(data);
     let userId = data.user_id;
-    
+    console.log("req.headers.authorization", data.token);
     const formData = new FormData();
     formData.append("launchpadId", this.state.launchpadId);
     formData.append("mentorName", this.state.mentorName);
@@ -48,20 +49,22 @@ class launchpadDash extends React.Component {
     formData.append("userId", userId);
 
     axios
-      .post("http://localhost:3001/mentor", formData, {
-        header: {
+      .post("/mentor", formData, {
+        headers: {
+          'Authorization': `Bearer ${data.token}`,
           "Content-Type": "multipart/form-data"
         }
       })
       .then(() => {
+        alert("SUCCESS!!");
         console.log("SUCCESS!!");
       })
       .catch(() => {
+        alert("FAILURE!!");
         console.log("FAILURE!!");
       });
   };
   render() {
-    
     return (
       <div
         className="container"

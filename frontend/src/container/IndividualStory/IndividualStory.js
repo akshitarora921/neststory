@@ -6,7 +6,7 @@ import OwlCarousel from "react-owl-carousel";
 // import "owl.carousel/dist/assets/owl.carousel.css";
 import "./individualstory.css";
 
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 //fix and don't render for every page
 // import Header from "../../component/Header/Header";
 // import Footer from "../../component/Footer/Footer"
@@ -45,7 +45,7 @@ class IndividualStories extends React.Component {
   render() {
     let options = {
       // loop: true,
-      // margin: 10,
+      margin: 10,
       autoHeight: true,
       // nav:true,
       responsive: {

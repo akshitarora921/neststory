@@ -54,8 +54,8 @@ class Launchpad extends React.Component {
         <div className="slidebar">
           <Sidebar />
         </div>
-        {this.state.launchpad.map(lp => (
-          <div className="container-fluid">
+        {this.state.launchpad.map((lp, id) => (
+          <div key={id} className="container-fluid">
             <div className="row part1">
               <div className="col">
                 <div
@@ -75,14 +75,14 @@ class Launchpad extends React.Component {
                       </div>
                       <div className="col-lg-auto col-12 text-center">
                         <div className="circle mx-auto">
-                          <i class="fab fa-studiovinari fa-4x icon" />
+                          <i className="fab fa-studiovinari fa-4x icon" />
                         </div>
                         <br />
                         <h5>Studio</h5>
                       </div>
                       <div className="col-lg-auto col-12 text-center">
                         <div className="circle mx-auto">
-                          <i class="fas fa-couch fa-4x icon" />
+                          <i className="fas fa-couch fa-4x icon" />
                         </div>
                         <br />
                         <h5>Event</h5>
@@ -126,7 +126,7 @@ class Launchpad extends React.Component {
                     <div id="accelerator">{lp.heading}</div>
                   </div>
                   <div className="col-lg-12 col-12 px-1">
-                    <div id="fame">Powered by Fame Technology</div>
+                    <div id="fame">Powered by Fame Technologies</div>
                   </div>
                   <div className="col-lg-12 col-12 px-1">
                     <div id="launchpad-date">
@@ -177,7 +177,7 @@ class Launchpad extends React.Component {
                 </div>
                 <div className="row justify-content-center ">
                   {this.state.mentor.map((ment, id) => (
-                    <div className="col-lg-4 col-12">
+                    <div key={id} className="col-lg-4 col-12">
                       <div
                         className="mentor-img"
                         style={{

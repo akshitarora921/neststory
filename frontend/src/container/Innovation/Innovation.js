@@ -52,9 +52,9 @@ class Innovation extends React.Component {
         {this.state.innovations
           .slice(0, this.state.visible)
           .map((news, idi) => (
-            <Link to={`/news/${news.id}`}>
+            <Link key={idi} to={`/news/${news.id}`}>
               <div
-                key={idi}
+                
                 style={{ minHeight: "200px" }}
                 className="row mb-4 innovation "
               >
@@ -82,7 +82,7 @@ class Innovation extends React.Component {
                       length={500}
                       showMoreLabel=" show More"
                       showLessLabel=" Collapse"
-                      tag="a"
+                      // tag="a"
                       className="text-blue"
                       ellipsis="..."
                       style={{

@@ -11,20 +11,9 @@
 .slidebar {
   visibility: hidden;
 }
-/* .bannerImage {
-  height: 250px;
-  margin-left: -20px;
-  background-repeat: no-repeat;
-  /* background-size: cover;
-  /* border: 1px solid white; 
+.image{
+  padding: 0px
 }
-
-  .trans-image:hover .bannerImage,
-.trans-image:focus .bannerImage {
-  transition: all .5s;
-  z-index: 3;
-  transform: scale(1);
-} */
 .bannerHeading {
   position: absolute;
   bottom: 8px;

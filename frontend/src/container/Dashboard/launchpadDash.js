@@ -2,13 +2,11 @@ import React from "react";
 import axios from "axios";
 class launchpadDash extends React.Component {
   state = {
-    
     lpHeading: "",
     lpContent: "",
-    lpDate:"",
+    lpDate: "",
     lpVideo: "",
     lpVideoThumbnail: ""
-    
   };
   handleChangeLP = e => {
     if (e.target.type === "file") {
@@ -22,6 +20,7 @@ class launchpadDash extends React.Component {
     }
   };
   handleSubmitLP = e => {
+    e.preventDefault();
     let data = localStorage.getItem("user");
     data = JSON.parse(data);
     let userId = data.user_id;
@@ -35,9 +34,10 @@ class launchpadDash extends React.Component {
     formData.append("userId", userId);
 
     axios
-      .post("http://localhost:3001/launchpad", formData, {
+      .post("/launchpad",  formData, {
         header: {
-          "Content-Type": "multipart/form-data"
+          "Content-Type": "multipart/form-data",
+          // Authorization: `Bearer ${data.token}`
         }
       })
       .then(() => {
@@ -46,18 +46,17 @@ class launchpadDash extends React.Component {
       .catch(() => {
         console.log("FAILURE!!");
       });
- 
   };
-  
+
   render() {
     return (
       <div
-       className="container" 
-      //  style={{ paddingTop: "8.6%" }}
-       >
-         <div className="col-md-12 col-sm-12 ">
-              <h2 className="section-heading">Launchpad Input</h2>
-            </div>
+        className="container"
+        //  style={{ paddingTop: "8.6%" }}
+      >
+        <div className="col-md-12 col-sm-12 ">
+          <h2 className="section-heading">Launchpad Input</h2>
+        </div>
         <form>
           {/* Input heading */}
           <div className="form-group">

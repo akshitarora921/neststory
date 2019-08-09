@@ -1,5 +1,5 @@
 import React from "react";
-import { Switch, BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 import LandingPage from "../container/landingPage/LandingPage";
 import DashboardHeader from "../container/Dashboard/DashboardHeader";
 import Innovation from "../container/Innovation/Innovation";
@@ -15,13 +15,12 @@ import WithAuth from "../Component/WithAuth/WithAuth";
 const Routes = () => {
   return (
     <Router>
-      <Switch>
         <div>
           <Header />
           <Route path="/" exact component={LandingPage} />
           {/* protect this route */}
           <Route
-            path="/admin/dashboard/"
+            path="/admin/dashboard/" exact
             component={WithAuth(DashboardHeader)}
           />
           <Route path="/innovation/" component={Innovation} />
@@ -33,7 +32,7 @@ const Routes = () => {
           <Route path="/news/:id" component={IndividualStory} />
           <Footer />
         </div>
-      </Switch>
+     
     </Router>
   );
 };

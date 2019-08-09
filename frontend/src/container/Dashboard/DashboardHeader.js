@@ -18,7 +18,7 @@ class Dashboard extends React.Component {
       $("li").removeClass();
       $(this)
         .parent()
-        .addClass("active");
+        .addClass("glow");
     });
   };
   render() {

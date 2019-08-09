@@ -41,7 +41,6 @@ class Videos extends React.Component {
         }
       }
     };
-    console.log("videos:", this.state.videos);
     return (
       <div className="top">
         <div className="slidebar">

@@ -39,7 +39,7 @@ class Innovation extends React.Component {
     let options = {
       // loop: true,
       margin: 10,
-      autoHeight: true,
+      // autoHeight: true,
       // nav:true,
       responsive: {
         0: {

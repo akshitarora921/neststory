@@ -21,8 +21,8 @@ var upload = multer({
   // { name: "videoThumbnail", maxCount: 1 },
 ]);
 
-
 router.post("/", async (req, res) => {
+  console.log("req headers:   asdasdas", req.headers.authorization)
   await upload(req, res, err => {
     if (err) {
       console.log("Upload err: ", err);
@@ -31,7 +31,9 @@ router.post("/", async (req, res) => {
       let sql = "";
       sql = `insert into launchpad ( heading, content, video, video_thumbnail, date, user_id) values("${req.body.lpHeading}","${req.body.lpContent}","${
         req.files.lpVideo[0].filename
-      }","${req.files.lpVideoThumbnail[0].filename}","${req.body.lpDate}","${req.body.userId}")`;
+      }","${req.files.lpVideoThumbnail[0].filename}","${req.body.lpDate}","${
+        req.body.userId
+      }")`;
 
       db.query(sql, (err, result) => {
         if (err) {

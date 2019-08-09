@@ -15,10 +15,10 @@ export default function WithAuth(ComponentToProtect) {
       let data = localStorage.getItem("user");
       data = JSON.parse(data);
       // let token = data.token
-      console.log("Hehehahaha", data);
+      // console.log("Hehehahaha", data.token);
       if (data !== null) {
         Axios.get("/checktoken", {
-          headers: { Authorization: `Bearer ${data.token}` }
+          headers: { 'Authorization': `Bearer ${data.token}` }
         })
           .then(res => {
             if (res.status === 200) {

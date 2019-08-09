@@ -32,20 +32,16 @@ getDate = () => {
   return today;
 };
 
-router.post("/new", checkauth, async (req, res) => {
+router.post("/new", async (req, res) => {
+  console.log("test message")
   await upload(req, res, err => {
     if (err) {
       console.log("Upload err: ", err);
       res.status(409).send("err");
     } else {
       let sql = "";
-      // if (req.files.image == undefined && req.files.video == undefined) {
-      //   //not image not video
-      //   res; // invalid 404 err
-      // } else
       if (req.files.image == undefined) {
         //not image
-        //  ==============================invalid 404 err=====================
         res.status(409).json({ err: "image is not uploaded" });
       } else {
         if (req.files.video == undefined) {

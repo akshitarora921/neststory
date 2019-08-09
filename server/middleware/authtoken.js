@@ -13,6 +13,8 @@ module.exports = (req, res, next) => {
     console.log("PASSED");
     next();
   } catch (error) {
+
+    console.log("Mae yaha hun:",req.headers)
     return res.status(401).json({
       error: "Auth error"
     });

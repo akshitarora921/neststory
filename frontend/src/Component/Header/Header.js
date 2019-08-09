@@ -54,7 +54,7 @@ class Header extends React.Component {
     });
   };
   handleSignupSubmit = e => {
-    // e.preventDefault();
+    e.preventDefault();
     const today = new Date();
     let userSignupData = {
       first_name: this.state.first_name,
@@ -66,11 +66,11 @@ class Header extends React.Component {
     console.log("datatakjsafalskf=============", userSignupData);
     Axios.post("http://localhost:3001/users/signup", userSignupData)
       .then(res => {
-        // localStorage.setItem("token1", "dataatata");
-        // console.log("local storage: ", localStorage.getItem("token1"));
+        alert("Signup successful");
         console.log("res", res);
       })
       .catch(err => {
+        alert("error", err.err);
         console.log("catch error=", err);
       });
   };
@@ -161,9 +161,9 @@ class Header extends React.Component {
                                 placeholder="Password"
                               />
                               <small className="form-text text-muted pr-4 ">
-                                <a className="forgot-pass" href="">
+                                <Link className="forgot-pass" to="">
                                   Forgot Password?
-                                </a>
+                                </Link>
                               </small>
                             </div>
                             <div className="form-group login-div">

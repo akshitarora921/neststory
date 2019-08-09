@@ -31,11 +31,7 @@ class Dashboard extends React.Component {
     });
   };
   handleChange = e => {
-    if (
-      e.target.name === "image" ||
-      e.target.name === "video" ||
-      e.target.name === "videoThumbnail"
-    ) {
+    if (e.target.name === "image" || e.target.name === "video") {
       this.setState({
         [e.target.name]: e.target.files[0]
       });
@@ -60,7 +56,7 @@ class Dashboard extends React.Component {
   };
 
   handleSubmit = e => {
-    // e.preventDefault();
+    e.preventDefault();
     let data = localStorage.getItem("user");
     data = JSON.parse(data);
     let userId = data.user_id;
@@ -71,7 +67,7 @@ class Dashboard extends React.Component {
     formData.append("author", this.state.author);
     formData.append("image", this.state.image);
     formData.append("video", this.state.video);
-    formData.append("videoThumbnail", this.state.videoThumbnail);
+    // formData.append("videoThumbnail", this.state.videoThumbnail);
     formData.append("zone", this.state.zone);
     formData.append("tags", this.state.tags.toString());
     formData.append("category", this.state.category);
@@ -80,12 +76,17 @@ class Dashboard extends React.Component {
     formData.append("userId", userId);
 
     Axios.post("http://localhost:3001/news/new", formData, {
-      header: { "Content-Type": "multipart/form-data" }
+      header: {
+        "Content-Type": "multipart/form-data",
+        // "Authorization": `Bearer ${data.token}`
+      }
     })
       .then(res => {
+        alert("Send");
         console.log("news axios success", res);
       })
       .catch(res => {
+        alert("failed");
         console.log("news axios error", res);
       });
     // this.setState({

@@ -40,7 +40,7 @@ const path = require("path");
 // });
 
 router.get("/data", (req, res, next) => {
-  const sql = `select image, heading from news where views_count>5 order by views_count limit 4`;
+  const sql = `select id,image, heading from news where views_count>5 order by views_count limit 4`;
   db.query(sql, (err, result) => {
     if (err) {
       console.log("sql err", err);

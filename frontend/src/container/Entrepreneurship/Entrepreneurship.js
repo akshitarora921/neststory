@@ -27,7 +27,6 @@ class Innovation extends React.Component {
     });
   }
   render() {
-    console.log("entrepreneurships", this.state.entrepreneurships);
     return (
       <div className="entrepreneurship top">
         <div className="slidebar">
@@ -51,9 +50,8 @@ class Innovation extends React.Component {
 
         
         {this.state.entrepreneurships.slice(0, this.state.visible).map((news, idi) => (
-          <Link to={`/news/${news.id}`}>
+          <Link key={idi} to={`/news/${news.id}`}>
             <div
-              key={idi}
               style={{ minHeight: "200px" }}
               className="row mb-4 entrepreneurship "
             >
@@ -81,7 +79,7 @@ class Innovation extends React.Component {
                     length={500}
                     showMoreLabel=" show More"
                     showLessLabel=" Collapse"
-                    tag="a"
+                    // tag="a"
                     className="text-blue"
                     ellipsis="..."
                     style={{

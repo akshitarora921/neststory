@@ -79,7 +79,7 @@ class Global extends React.Component {
                     length={500}
                     showMoreLabel=" show More"
                     showLessLabel=" Collapse"
-                    tag="a"
+                    // tag="a"
                     className="text-blue"
                     ellipsis="..."
                     style={{

@@ -174,7 +174,7 @@
   .logo a {
     color: white;
     font-family: Noto Serif;
-    /* margin-left: 50px; */
+    margin-left: 0px;
     padding: 10px;
     font-size: vw;
     text-shadow: 0 0 20px #eee;
