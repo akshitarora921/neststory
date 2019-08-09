@@ -39,6 +39,7 @@ router.post("/new", async (req, res) => {
       console.log("Upload err: ", err);
       res.status(409).send("err");
     } else {
+      console.log("j,nf,masdnf,masndg,absdgasbdgasdbf",req.body.content)
       let sql = "";
       if (req.files.image == undefined) {
         //not image
@@ -100,12 +101,7 @@ router.get("/data/:id", (req, res, next) => {
     if (err) {
       res.status(409).send("error in query function");
     } else {
-      // console.log(result[0]);
-      // result = JSON.stringify(result)
-      // // console.log("stringify",result );
-      // result = JSON.parse(result)
-      // // console.log("parsed",result );
-      res.status(200).send(result[0]);
+      res.status(200).send(result);
     }
   });
 });
@@ -138,11 +134,6 @@ router.get("/data/related/:id", (req, res, next) => {
         if (err) {
           res.status(409).send("error in query function");
         } else {
-          // console.log(result[0]);
-          // result = JSON.stringify(result)
-          // // console.log("stringify",result );
-          // result = JSON.parse(result)
-          // // console.log("parsed",result );
           res.status(200).send(result);
         }
       });

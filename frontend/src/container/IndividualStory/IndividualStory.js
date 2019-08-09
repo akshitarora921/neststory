@@ -13,17 +13,16 @@ import "./individualstory.css";
 
 class IndividualStories extends React.Component {
   state = {
-    story: [],
+    stories: [],
     related: []
   };
   async componentDidMount() {
     await axios
       .get(`http://localhost:3001/news/data/${this.props.match.params.id}`) //get data for perticular id
       .then(res => {
-        let data = res.data;
-        console.log("Data", data.id);
+        let data = res.data;;
         this.setState({
-          story: data
+          stories: data
         });
       })
       .catch(res => {
@@ -32,15 +31,20 @@ class IndividualStories extends React.Component {
     //async await
     //get realted data
     // let s = this.state.story;
-    console.log("request ", this.state.story.tags);
-    axios
-      .get(`http://localhost:3001/news/data/related/${this.state.story.id}`) //get data for perticular id
-      .then(res => {
-        let data = res.data;
-        this.setState({
-          related: data
-        });
-      });
+    this.state.stories.map(story=>{
+      axios
+        .get(`http://localhost:3001/news/data/related/${story.id}`) //get data for perticular id
+        .then(res => {
+          let data = res.data;
+          this.setState({
+            related: data
+          });
+        })
+        .catch(err=>{
+          console.log("axios related news err:", err )
+        })
+        return(null)
+    })
   }
   render() {
     let options = {
@@ -78,66 +82,72 @@ class IndividualStories extends React.Component {
         {/* <Header /> */}
         {/* <h1>{this.state.story.id}</h1> */}
         {/* {this.state.story.map(story1 => ( */}
-        <div>
-          <div className="slidebar">
-            <Sidebar />
-          </div>
-          <div className="heading-div">
-            <h1 className="heading">{this.state.story.heading}</h1>
-          </div>
-          <div className="container">
-            {/* <OwlCarousel className="owl-theme" margin={10} items={1}> */}
-            <div className="item ">
-              <div
-                style={{
-                  minHeight: "400px",
-                  // minWidth:"250px",
-                  borderRadius: "5px",
-                  backgroundPosition: "center",
-                  // backgroundSize: " 1000px",
-                  backgroundRepeat: "no-repeat",
-                  // backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),url(http://localhost:3001/image/news/${this.state.story.image})`
-                  backgroundImage: `url(http://localhost:3001/image/news/${
-                    this.state.story.image
-                  })`
-                }}
-              />
-            </div>
-            {/* </OwlCarousel> */}
-            <h6 className="text-justify">{this.state.story.content}</h6>
-          </div>
+
+        <div className="slidebar">
+          <Sidebar />
         </div>
-        {this.state.related.length > 0 ? (
-          <div>
-            <h2>Related News</h2>
-            <OwlCarousel className="owl-theme" {...options}>
-              {this.state.related.map((relatedNews, id) => (
-                <a href={`/news/${relatedNews.id}`}>
-                  <div key={id} className="item  related-news">
-                    <div
-                      style={{
-                        minHeight: "200px",
-                        // maxHeight: "200px",
-                        // minWidth:"250px",
-                        borderRadius: "20px",
-                        backgroundSize: "100% 100%",
-                        backgroundRepeat: "no-repeat",
-                        backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),url(http://localhost:3001/image/news/${
-                          relatedNews.image
-                        })`
-                      }}
-                    />
-                    <div className="h6">
-                      {relatedNews.heading.slice(1, 25) + "..."}
-                    </div>
-                  </div>
-                </a>
-              ))}
-            </OwlCarousel>
+
+        {this.state.stories.map((story, id) => (
+          <div key={id}>
+            <div className="heading-div">
+              <h1 className="heading">{story.heading}</h1>
+            </div>
+            <div className="container">
+              {/* <OwlCarousel className="owl-theme" margin={10} items={1}> */}
+              <div className="item ">
+                <div
+                  style={{
+                    minHeight: "400px",
+                    // minWidth:"250px",
+                    borderRadius: "5px",
+                    backgroundPosition: "center",
+                    // backgroundSize: " 1000px",
+                    backgroundRepeat: "no-repeat",
+                    // backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),url(http://localhost:3001/image/news/${this.state.story.image})`
+                    backgroundImage: `url(http://localhost:3001/image/news/${story.image
+                    })`
+                  }}
+                />
+              </div>
+              {/* </OwlCarousel> */}
+              <h5 className="text-justify">{story.content.split('\n').map((para,id)=>(
+                <p key={id}>{para}</p>
+              ))}</h5>
+            </div>
+
+            {this.state.related.length > 0 ? (
+              <div>
+                <h2>Related News</h2>
+                <OwlCarousel className="owl-theme" {...options}>
+                  {this.state.related.map((relatedNews, id) => (
+                    <a href={`/news/${relatedNews.id}`}>
+                      <div key={id} className="item  related-news">
+                        <div
+                          style={{
+                            minHeight: "200px",
+                            // maxHeight: "200px",
+                            // minWidth:"250px",
+                            borderRadius: "20px",
+                            backgroundSize: "100% 100%",
+                            backgroundRepeat: "no-repeat",
+                            backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),url(http://localhost:3001/image/news/${
+                              relatedNews.image
+                            })`
+                          }}
+                        />
+                        <div className="h6">
+                          {relatedNews.heading.slice(1, 25) + "..."}
+                        </div>
+                      </div>
+                    </a>
+                  ))}
+                </OwlCarousel>
+              </div>
+            ) : (
+              ""
+            )}
           </div>
-        ) : (
-          ""
-        )}
+        ))}
         {/* <Footer/> */}
       </div>
     );

@@ -1,7 +1,7 @@
 import React from "react";
 import axios from "axios";
 import Sidebar from "../../Component/Sidebar/Sidebar";
-import ShowMore from "react-simple-show-more";
+// import ShowMore from "react-simple-show-more";
 import Moment from "react-moment";
 import { Link } from "react-router-dom";
 import "./entrepreneurship.css";
@@ -74,27 +74,14 @@ class Innovation extends React.Component {
                 <h6>{news.heading} </h6>
                 <hr className="newsHR " />
                 <div className="comment more text-justify">
-                  <ShowMore
-                    text={news.content}
-                    length={500}
-                    showMoreLabel=" show More"
-                    showLessLabel=" Collapse"
-                    // tag="a"
-                    className="text-blue"
-                    ellipsis="..."
-                    style={{
-                      cursor: "pointer",
-                      color: "blue"
-                    }}
-                    enabled
-                  />
+                  {news.content.slice(0,550).split("\n")[0]+"..."}
                 </div>
 
                 <div className="row justify-content-between">
                   <div className="col-lg-7 col-12">
                     <small>
                       By <font style={{ color: "#F54A00" }}>{news.author}</font>{" "}
-                      |
+                      |{" "}
                       <Moment format="MMMM-YY" locale="en">
                         {news.date}
                       </Moment>

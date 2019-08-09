@@ -26,7 +26,7 @@ class Header extends React.Component {
   };
 
   handleLoginSubmit = e => {
-    // e.preventDefault();
+    e.preventDefault();
     // const today = new Date();
     let userLoginData = {
       email: this.state.email,
@@ -42,6 +42,7 @@ class Header extends React.Component {
         });
         // console.log("local storage: ", localStorage.getItem("user"));
         // console.log(res.data.data);
+        window.location.reload();
       })
       .catch(err => {
         alert("error", err.err);
@@ -68,6 +69,7 @@ class Header extends React.Component {
       .then(res => {
         alert("Signup successful");
         console.log("res", res);
+        window.location.reload(); 
       })
       .catch(err => {
         alert("error", err.err);
@@ -168,7 +170,7 @@ class Header extends React.Component {
                             </div>
                             <div className="form-group login-div">
                               <button
-                                type="submit"
+                                // type="submit"
                                 onClick={this.handleLoginSubmit}
                                 className="btn btnLogin "
                               >

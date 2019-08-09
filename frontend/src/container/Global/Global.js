@@ -1,7 +1,7 @@
 import React from "react";
 import axios from "axios";
 import Sidebar from "../../Component/Sidebar/Sidebar";
-import ShowMore from "react-simple-show-more";
+// import ShowMore from "react-simple-show-more";
 import Moment from "react-moment";
 import { Link } from "react-router-dom";
 import "./global.css";
@@ -74,7 +74,7 @@ class Global extends React.Component {
                 <h6>{news.heading} </h6>
                 <hr className="newsHR " />
                 <div className="comment more text-justify">
-                  <ShowMore
+                  {/* <ShowMore
                     text={news.content}
                     length={500}
                     showMoreLabel=" show More"
@@ -87,14 +87,15 @@ class Global extends React.Component {
                       color: "blue"
                     }}
                     enabled
-                  />
+                  /> */}
+                  {news.content.slice(0,550).split("\n")[0]+"..."}
                 </div>
 
                 <div className="row justify-content-between">
                   <div className="col-lg-7 col-12">
                     <small>
                       By <font style={{ color: "#F54A00" }}>{news.author}</font>{" "}
-                      |
+                      |{" "}
                       <Moment format="MMMM-YY" locale="en">
                         {news.date}
                       </Moment>

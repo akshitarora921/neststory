@@ -5,7 +5,6 @@ import "../b.css";
 import { Link } from "react-router-dom";
 import "./lateststories.css";
 import Axios from "axios";
-import ShowMore from "react-simple-show-more";
 import Moment from "react-moment";
 
 class LatestStories extends React.Component {
@@ -72,7 +71,7 @@ class LatestStories extends React.Component {
                     <h6>{listitem.heading} </h6>
                     <hr className="newsHR" />
                     <div className="comment text-justify">
-                      <ShowMore
+                      {/* <ShowMore
                         text={listitem.content}
                         length={500}
                         showMoreLabel=" show More"
@@ -85,7 +84,14 @@ class LatestStories extends React.Component {
                           color: "blue"
                         }}
                         enabled
-                      />
+                      /> */}
+                      {/* {listitem.content.slice(0,550).split("\n").map((para, id) => (
+                        <p key={id} >
+                          {para}
+                        </p>
+                      ))
+                      } */}
+                      {listitem.content.slice(0,550).split("\n")[0]+"..."}
                     </div>
                   </div>
                   <div className="row justify-content-between">

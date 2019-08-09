@@ -22,7 +22,6 @@ var upload = multer({
 ]);
 
 router.post("/", async (req, res) => {
-  console.log("req headers:   asdasdas", req.headers.authorization)
   await upload(req, res, err => {
     if (err) {
       console.log("Upload err: ", err);

@@ -4,7 +4,7 @@ import axios from "axios";
 class launchpadDash extends React.Component {
   state = {
     launchpads: [],
-    launchpadId: "",
+    launchpadId: "0",
     mentorName: "",
     mentorDesg: "",
     mentorImage: ""
@@ -36,7 +36,7 @@ class launchpadDash extends React.Component {
     }
   };
   handleSubmitMentor = e => {
-    e.preventDefault();
+    // e.preventDefault();
     let data = localStorage.getItem("user");
     data = JSON.parse(data);
     let userId = data.user_id;
@@ -51,13 +51,15 @@ class launchpadDash extends React.Component {
     axios
       .post("/mentor", formData, {
         headers: {
-          'Authorization': `Bearer ${data.token}`,
           "Content-Type": "multipart/form-data"
         }
       })
       .then(() => {
         alert("SUCCESS!!");
         console.log("SUCCESS!!");
+
+        //for reloading the page
+        window.location.reload();
       })
       .catch(() => {
         alert("FAILURE!!");
@@ -66,14 +68,12 @@ class launchpadDash extends React.Component {
   };
   render() {
     return (
-      <div
-        className="container"
-        //   style={{ paddingTop: "8.6%" }}
-      >
+      <div className="container">
         <div className="col-md-12 col-sm-12 ">
           <h2 className="section-heading">Mentor Input</h2>
         </div>
         <form>
+
           {/* Input Launchpad Id */}
           <div className="form-group">
             <label>Launchpad Name</label>
@@ -89,6 +89,7 @@ class launchpadDash extends React.Component {
               ))}
             </select>
           </div>
+
           {/* Input mentor name */}
           <div className="form-group">
             <label>Name</label>
@@ -100,6 +101,7 @@ class launchpadDash extends React.Component {
               placeholder="Name"
             />
           </div>
+
           {/* Input mentor name */}
           <div className="form-group">
             <label>Designation</label>
@@ -111,6 +113,7 @@ class launchpadDash extends React.Component {
               placeholder="Designation"
             />
           </div>
+
           {/* Input Mentor Image */}
           <div className="form-group">
             <div className="form-group">
@@ -131,7 +134,7 @@ class launchpadDash extends React.Component {
               onClick={this.handleSubmitMentor}
               className="btn-submit btn btn-primary"
             >
-              upload
+              Upload
             </button>
           </div>
         </form>

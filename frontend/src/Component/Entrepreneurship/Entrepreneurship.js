@@ -56,7 +56,12 @@ class Entrepreneurship extends React.Component {
                     <h4>{entp.heading}</h4>
                   </div>
                   <div className="row text-justify ">
-                    <small>{entp.content}</small>
+                  <small>{entp.content.slice(0,550).split("\n")[0]}...</small>
+                    {/* <small>{entp.content.slice(0,750).split("\n").map((para, id) => (
+                        <p key={id} >
+                          {para}
+                        </p>
+                      ))}</small> */}
                   </div>
                 </Link>
               ))}
@@ -89,7 +94,8 @@ class Entrepreneurship extends React.Component {
                         <h4 className="enp-content">{entp.heading}</h4>
                       </div>
                       <div className="row text-justify enp-content">
-                        <small>{entp.content}</small>
+                        {/* <small>{entp.content}</small> */}
+                        <small>{entp.content.slice(0,750).split("\n")[0]}...</small>
                       </div>
                     </div>
                   </div>

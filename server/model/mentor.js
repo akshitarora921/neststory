@@ -30,20 +30,14 @@ getDate = () => {
 };
 
 // Mentors
-router.post("/",authtoken, async (req, res) => {
-  // console.log("req.headers.authorization",req.headers.authorization)
+router.post("/", async (req, res) => {
   await upload(req, res, err => {
     if (err) {
       console.log("Upload err: ", err);
       res.status(409).send("err");
     } else {
       let sql = "";
-      // if (req.files.image == undefined && req.files.video == undefined) {
-      //   //not image not video
-      //   res; // invalid 404 err
-      // } else
-
-      sql = `insert into mentors (launchpad_id, name, designation, image, user_id) values("${
+      sql = `insert into mentors (launchpad_id, name, designation, image, user_id) values ("${
         req.body.launchpadId
       }","${req.body.mentorName}","${req.body.mentorDesg}","${
         req.files.mentorImage[0].filename

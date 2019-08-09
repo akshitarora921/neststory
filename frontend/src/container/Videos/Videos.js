@@ -61,290 +61,290 @@ class Videos extends React.Component {
           </div>
           <hr style={{ border: "1px solid black", marginTop: "-5px" }} />
 
-          <div className="row">
-            <div className="col-lg-3 col-12 mx-auto">
-              <div className="category text-center">Startup</div>
-            </div>
-            <div className="col-lg-9 col-12">
-              {this.state.videos.length > 0 ? (
-                <OwlCarousel className="owl-theme" {...options}>
-                  {this.state.videos
-                    .filter(video => {
-                      // console.log(
-                      //   "decision: ",
-                      //   video.sub_category === "startup"
-                      // );
-                      return video.sub_category === "startup";
-                    })
-                    .map((video, id) => (
-                      <div key={id} className="item">
-                        <div
-                          style={{
-                            minHeight: "200px",
-                            borderRadius: "20px",
-                            backgroundSize: "cover",
-                            backgroundPosition: "center",
-                            backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),url(http://localhost:3001/image/news/${
-                              video.image
-                            })`
-                          }}
-                        >
-                          <i className="far fa-play-circle fa-2x playButton" />
+          {/* startup Category */} 
+          {this.state.videos.filter(
+            video => video.sub_category === "startup"
+          ).length>0 ? (
+            <div className="row">
+              <div className="col-lg-3 col-12 mx-auto">
+                <div className="category text-center">Startup</div>
+              </div>
+              <div className="col-lg-9 col-12">
+                {this.state.videos.length > 0 ? (
+                  <OwlCarousel className="owl-theme" {...options}>
+                    {this.state.videos
+                      .filter(video =>video.sub_category === "startup")
+                      .map((video, id) => (
+                        <div key={id} className="item">
+                          <div
+                            style={{
+                              minHeight: "200px",
+                              borderRadius: "20px",
+                              backgroundSize: "cover",
+                              backgroundPosition: "center",
+                              backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),url(http://localhost:3001/image/news/${
+                                video.image
+                              })`
+                            }}
+                          >
+                            <i className="far fa-play-circle fa-2x playButton" />
+                          </div>
+
+                          <div className="h6">{video.heading}</div>
+
+                          <small className="text-muted author">
+                            {video.author} |{" "}
+                            <Moment format="MMMM-YY" locale="en">
+                              {video.date}
+                            </Moment>
+                          </small>
                         </div>
-
-                        <div className="h6">{video.heading}</div>
-
-                        <small className="text-muted author">
-                          {video.author} |{" "}
-                          <Moment format="MMMM-YY" locale="en">
-                            {video.date}
-                          </Moment>
-                        </small>
-                      </div>
-                    ))}
-                </OwlCarousel>
-              ) : (
-                ""
-              )}
+                      ))}
+                  </OwlCarousel>
+                ) : (
+                  ""
+                )}
+              </div>
             </div>
-          </div>
-          <div className="row">
-            <div className="col-lg-3 col-12 mx-auto">
-              <div className="category text-center">AgriTech</div>
-            </div>
-            <div className="col-lg-9 col-12">
-              {this.state.videos.length > 0 ? (
-                <OwlCarousel className="owl-theme" {...options}>
-                  {this.state.videos
-                    .filter(video => {
-                      // console.log(
-                      //   "decision: ",
-                      //   video.sub_category === "agritech"
-                      // );
-                      return video.sub_category === "agritech";
-                    })
-                    .map((video, id) => (
-                      <div key={id} className="item">
-                        <div
-                          style={{
-                            minHeight: "200px",
-                            borderRadius: "20px",
-                            backgroundSize: "cover",
-                            backgroundPosition: "center",
-                            backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),url(http://localhost:3001/image/news/${
-                              video.image
-                            })`
-                          }}
-                        >
-                          <i className="far fa-play-circle fa-2x playButton" />
+          ) : (
+            ""
+          )}
+          {/* agritech Category */}
+          {this.state.videos.filter(
+            video => video.sub_category === "agritech"
+          ).length>0 ? (
+            <div className="row">
+              <div className="col-lg-3 col-12 mx-auto">
+                <div className="category text-center">AgriTech</div>
+              </div>
+              <div className="col-lg-9 col-12">
+                {this.state.videos.length > 0 ? (
+                  <OwlCarousel className="owl-theme" {...options}>
+                    {this.state.videos
+                      .filter(video =>video.sub_category === "agritech")
+                      .map((video, id) => (
+                        <div key={id} className="item">
+                          <div
+                            style={{
+                              minHeight: "200px",
+                              borderRadius: "20px",
+                              backgroundSize: "cover",
+                              backgroundPosition: "center",
+                              backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),url(http://localhost:3001/image/news/${
+                                video.image
+                              })`
+                            }}
+                          >
+                            <i className="far fa-play-circle fa-2x playButton" />
+                          </div>
+                          <div className="h6">{video.heading}</div>
+                          <small className="text-muted author">
+                            {video.author} |{" "}
+                            <Moment format="MMMM-YY" locale="en">
+                              {video.date}
+                            </Moment>
+                          </small>
                         </div>
-                        <div className="h6">{video.heading}</div>
-                        <small className="text-muted author">
-                          {video.author} |{" "}
-                          <Moment format="MMMM-YY" locale="en">
-                            {video.date}
-                          </Moment>
-                        </small>
-                      </div>
-                    ))}
-                </OwlCarousel>
-              ) : (
-                ""
-              )}
+                      ))}
+                  </OwlCarousel>
+                ) : (
+                  ""
+                )}
+              </div>
             </div>
-          </div>
+          ) : (
+            ""
+          )}
+            {/* Robotics Category */}
+          {this.state.videos.filter(
+            video => video.sub_category === "robotics"
+          ).length>0 ? (
+            <div className="row">
+              <div className="col-lg-3 col-12 mx-auto">
+                <div className="category text-center">Robotics</div>
+              </div>
+              <div className="col-lg-9 col-12">
+                {this.state.videos.length > 0 ? (
+                  <OwlCarousel className="owl-theme" {...options}>
+                    {this.state.videos
+                      .filter(video => video.sub_category === "robotics")
+                      .map((video, id) => (
+                        <div key={id} className="item">
+                          <div
+                            style={{
+                              minHeight: "200px",
+                              borderRadius: "20px",
+                              backgroundSize: "cover",
+                              backgroundPosition: "center",
+                              backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),url(http://localhost:3001/image/news/${
+                                video.image
+                              })`
+                            }}
+                          >
+                            <i className="far fa-play-circle fa-2x playButton" />
+                          </div>
 
-          <div className="row">
-            <div className="col-lg-3 col-12 mx-auto">
-              <div className="category text-center">Robotics</div>
-            </div>
-            <div className="col-lg-9 col-12">
-              {this.state.videos.length > 0 ? (
-                <OwlCarousel className="owl-theme" {...options}>
-                  {this.state.videos
-                    .filter(video => {
-                      // console.log(
-                      //   "decision: ",
-                      //   video.sub_category === "robotics"
-                      // );
-                      return video.sub_category === "robotics";
-                    })
-                    .map((video, id) => (
-                      <div key={id} className="item">
-                        <div
-                          style={{
-                            minHeight: "200px",
-                            borderRadius: "20px",
-                            backgroundSize: "cover",
-                            backgroundPosition: "center",
-                            backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),url(http://localhost:3001/image/news/${
-                              video.image
-                            })`
-                          }}
-                        >
-                          <i className="far fa-play-circle fa-2x playButton" />
+                          <div className="h6">{video.heading}</div>
+
+                          <small className="text-muted author">
+                            {video.author} |{" "}
+                            <Moment format="MMMM-YY" locale="en">
+                              {video.date}
+                            </Moment>
+                          </small>
                         </div>
-
-                        <div className="h6">{video.heading}</div>
-
-                        <small className="text-muted author">
-                          {video.author} |{" "}
-                          <Moment format="MMMM-YY" locale="en">
-                            {video.date}
-                          </Moment>
-                        </small>
-                      </div>
-                    ))}
-                </OwlCarousel>
-              ) : (
-                ""
-              )}
+                      ))}
+                  </OwlCarousel>
+                ) : (
+                  ""
+                )}
+              </div>
             </div>
-          </div>
+          ) : (
+            ""
+          )}
+            {/* Medical Category */}
+          {this.state.videos.filter(video => video.sub_category === "medical")
+            .length > 0 ? (
+            <div className="row">
+              <div className="col-lg-3 col-12 mx-auto">
+                <div className="category text-center">Medical</div>
+              </div>
+              <div className="col-lg-9 col-12">
+                {this.state.videos.length > 0 ? (
+                  <OwlCarousel className="owl-theme" {...options}>
+                    {this.state.videos
+                      .filter(video =>video.sub_category === "medical")
+                      .map((video, id) => (
+                        <div key={id} className="item">
+                          <div
+                            style={{
+                              minHeight: "200px",
+                              borderRadius: "20px",
+                              backgroundSize: "cover",
+                              backgroundPosition: "center",
+                              backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),url(http://localhost:3001/image/news/${
+                                video.image
+                              })`
+                            }}
+                          >
+                            <i className="far fa-play-circle fa-2x playButton" />
+                          </div>
 
-          <div className="row">
-            <div className="col-lg-3 col-12 mx-auto">
-              <div className="category text-center">Medical</div>
-            </div>
-            <div className="col-lg-9 col-12">
-              {this.state.videos.length > 0 ? (
-                <OwlCarousel className="owl-theme" {...options}>
-                  {this.state.videos
-                    .filter(video => {
-                      // console.log(
-                      //   "decision: ",
-                      //   video.sub_category === "agritech"
-                      // );
-                      return video.sub_category === "medical";
-                    })
-                    .map((video, id) => (
-                      <div key={id} className="item">
-                        <div
-                          style={{
-                            minHeight: "200px",
-                            borderRadius: "20px",
-                            backgroundSize: "cover",
-                            backgroundPosition: "center",
-                            backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),url(http://localhost:3001/image/news/${
-                              video.image
-                            })`
-                          }}
-                        >
-                          <i className="far fa-play-circle fa-2x playButton" />
+                          <div className="h6">{video.heading}</div>
+
+                          <small className="text-muted author">
+                            {video.author} |{" "}
+                            <Moment format="MMMM-YY" locale="en">
+                              {video.date}
+                            </Moment>
+                          </small>
                         </div>
-
-                        <div className="h6">{video.heading}</div>
-
-                        <small className="text-muted author">
-                          {video.author} |{" "}
-                          <Moment format="MMMM-YY" locale="en">
-                            {video.date}
-                          </Moment>
-                        </small>
-                      </div>
-                    ))}
-                </OwlCarousel>
-              ) : (
-                ""
-              )}
+                      ))}
+                  </OwlCarousel>
+                ) : (
+                  ""
+                )}
+              </div>
             </div>
-          </div>
+          ) : (
+            ""
+          )}
+            {/* Science Caegory */}
+          {this.state.videos.filter(video => video.sub_category === "science")
+            .length > 0 ? (
+            <div className="row">
+              <div className="col-lg-3 col-12 mx-auto">
+                <div className="category text-center">Science</div>
+              </div>
+              <div className="col-lg-9 col-12">
+                {this.state.videos.length > 0 ? (
+                  <OwlCarousel className="owl-theme" {...options}>
+                    {this.state.videos
+                      .filter(video => video.sub_category === "science")
+                      .map((video, id) => (
+                        <div key={id} className="item">
+                          <div
+                            style={{
+                              minHeight: "200px",
+                              borderRadius: "20px",
+                              backgroundSize: "cover",
+                              backgroundPosition: "center",
+                              backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),url(http://localhost:3001/image/news/${
+                                video.image
+                              })`
+                            }}
+                          >
+                            <i className="far fa-play-circle fa-2x playButton" />
+                          </div>
 
-          <div className="row">
-            <div className="col-lg-3 col-12 mx-auto">
-              <div className="category text-center">Science</div>
-            </div>
-            <div className="col-lg-9 col-12">
-              {this.state.videos.length > 0 ? (
-                <OwlCarousel className="owl-theme" {...options}>
-                  {this.state.videos
-                    .filter(video => {
-                      // console.log(
-                      //   "decision: ",
-                      //   video.sub_category === "agritech"
-                      // );
-                      return video.sub_category === "science";
-                    })
-                    .map((video, id) => (
-                      <div key={id} className="item">
-                        <div
-                          style={{
-                            minHeight: "200px",
-                            borderRadius: "20px",
-                            backgroundSize: "cover",
-                            backgroundPosition: "center",
-                            backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),url(http://localhost:3001/image/news/${
-                              video.image
-                            })`
-                          }}
-                        >
-                          <i className="far fa-play-circle fa-2x playButton" />
+                          <div className="h6">{video.heading}</div>
+
+                          <small className="text-muted author">
+                            {video.author} |{" "}
+                            <Moment format="MMMM-YY" locale="en">
+                              {video.date}
+                            </Moment>
+                          </small>
                         </div>
-
-                        <div className="h6">{video.heading}</div>
-
-                        <small className="text-muted author">
-                          {video.author} |{" "}
-                          <Moment format="MMMM-YY" locale="en">
-                            {video.date}
-                          </Moment>
-                        </small>
-                      </div>
-                    ))}
-                </OwlCarousel>
-              ) : (
-                ""
-              )}
+                      ))}
+                  </OwlCarousel>
+                ) : (
+                  ""
+                )}
+              </div>
             </div>
-          </div>
+          ) : (
+            ""
+          )}
+            {/* Enviroment Category */}
+          {this.state.videos.filter(
+            video => video.sub_category === "enviroment"
+          ).length > 0 ? (
+            <div className="row">
+              <div className="col-lg-3 col-12 mx-auto">
+                <div className="category text-center">Enviroment</div>
+              </div>
+              <div className="col-lg-9 col-12">
+                {this.state.videos.length > 0 ? (
+                  <OwlCarousel className="owl-theme" {...options}>
+                    {this.state.videos
+                      .filter(video =>video.sub_category === "enviroment")
+                      .map((video, id) => (
+                        <div key={id} className="item">
+                          <div
+                            style={{
+                              minHeight: "200px",
+                              borderRadius: "20px",
+                              backgroundSize: "cover",
+                              backgroundPosition: "center",
+                              backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),url(http://localhost:3001/image/news/${
+                                video.image
+                              })`
+                            }}
+                          >
+                            <i className="far fa-play-circle fa-2x playButton" />
+                          </div>
 
-          <div className="row">
-            <div className="col-lg-3 col-12 mx-auto">
-              <div className="category text-center">Enviroment</div>
-            </div>
-            <div className="col-lg-9 col-12">
-              {this.state.videos.length > 0 ? (
-                <OwlCarousel className="owl-theme" {...options}>
-                  {this.state.videos
-                    .filter(video => {
-                      // console.log(
-                      //   "decision: ",
-                      //   video.sub_category === "agritech"
-                      // );
-                      return video.sub_category === "enviroment";
-                    })
-                    .map((video, id) => (
-                      <div key={id} className="item">
-                        <div
-                          style={{
-                            minHeight: "200px",
-                            borderRadius: "20px",
-                            backgroundSize: "cover",
-                            backgroundPosition: "center",
-                            backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),url(http://localhost:3001/image/news/${
-                              video.image
-                            })`
-                          }}
-                        >
-                          <i className="far fa-play-circle fa-2x playButton" />
+                          <div className="h6">{video.heading}</div>
+
+                          <small className="text-muted author">
+                            {video.author} |{" "}
+                            <Moment format="MMMM-YY" locale="en">
+                              {video.date}
+                            </Moment>
+                          </small>
                         </div>
-
-                        <div className="h6">{video.heading}</div>
-
-                        <small className="text-muted author">
-                          {video.author} |{" "}
-                          <Moment format="MMMM-YY" locale="en">
-                            {video.date}
-                          </Moment>
-                        </small>
-                      </div>
-                    ))}
-                </OwlCarousel>
-              ) : (
-                ""
-              )}
+                      ))}
+                  </OwlCarousel>
+                ) : (
+                  ""
+                )}
+              </div>
             </div>
-          </div>
+          ) : (
+            ""
+          )}
         </div>
       </div>
     );

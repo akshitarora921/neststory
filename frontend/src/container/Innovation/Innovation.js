@@ -1,7 +1,7 @@
 import React from "react";
 import axios from "axios";
 import Sidebar from "../../Component/Sidebar/Sidebar";
-import ShowMore from "react-simple-show-more";
+// import ShowMore from "react-simple-show-more";
 import Moment from "react-moment";
 import { Link } from "react-router-dom";
 import "./innovation.css";
@@ -77,7 +77,7 @@ class Innovation extends React.Component {
                   <h6>{news.heading} </h6>
                   <hr className="newsHR " />
                   <div className="comment more text-justify">
-                    <ShowMore
+                    {/* <ShowMore
                       text={news.content}
                       length={500}
                       showMoreLabel=" show More"
@@ -90,7 +90,8 @@ class Innovation extends React.Component {
                         color: "blue"
                       }}
                       enabled
-                    />
+                    /> */}
+                     {news.content.slice(0,550).split("\n")[0]+"..."}
                   </div>
 
                   <div className="row justify-content-around align-items-end">

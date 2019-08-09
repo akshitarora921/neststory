@@ -41,9 +41,13 @@ class launchpadDash extends React.Component {
         }
       })
       .then(() => {
+        alert("SUCCESS!!");
         console.log("SUCCESS!!");
+        //FOR reloading the page to clear the form
+        window.location.reload();
       })
       .catch(() => {
+        alert("FAILURE!!");
         console.log("FAILURE!!");
       });
   };
@@ -99,10 +103,10 @@ class launchpadDash extends React.Component {
             <div className="form-group">
               <label htmlFor="exampleFormControlFile1">Video Input</label>
               <input
+                onChange={this.handleChangeLP}
                 type="file"
                 name="lpVideo"
                 className="form-control-file"
-                onChange={this.handleChangeLP}
               />
             </div>
           </div>
@@ -110,13 +114,13 @@ class launchpadDash extends React.Component {
           <div className="form-group">
             <div className="form-group">
               <label htmlFor="exampleFormControlFile1">
-                Vdeo Thumbnail Input
+                Video Thumbnail Input
               </label>
               <input
+                onChange={this.handleChangeLP}
                 type="file"
                 name="lpVideoThumbnail"
                 className="form-control-file"
-                onChange={this.handleChangeLP}
               />
             </div>
           </div>
@@ -138,7 +142,7 @@ class launchpadDash extends React.Component {
               onClick={this.handleSubmitLP}
               className="btn-submit btn btn-primary"
             >
-              upload
+              Upload
             </button>
           </div>
         </form>
