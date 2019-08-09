@@ -26,7 +26,7 @@ class Header extends React.Component {
   };
 
   handleLoginSubmit = e => {
-    e.preventDefault();
+    // e.preventDefault();
     // const today = new Date();
     let userLoginData = {
       email: this.state.email,
@@ -54,7 +54,7 @@ class Header extends React.Component {
     });
   };
   handleSignupSubmit = e => {
-    e.preventDefault();
+    // e.preventDefault();
     const today = new Date();
     let userSignupData = {
       first_name: this.state.first_name,
