@@ -116,7 +116,7 @@ class IndividualStories extends React.Component {
             </div>
 
             {this.state.related.length > 0 ? (
-              <div>
+              <div className="mx-2">
                 <h2>Related News</h2>
                 <OwlCarousel className="owl-theme" {...options}>
                   {this.state.related.map((relatedNews, id) => (
@@ -136,7 +136,7 @@ class IndividualStories extends React.Component {
                           }}
                         />
                         <div className="h6">
-                          {relatedNews.heading.slice(1, 25) + "..."}
+                          {relatedNews.heading.slice(0, 25) + "..."}
                         </div>
                       </div>
                     </a>

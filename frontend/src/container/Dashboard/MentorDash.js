@@ -40,7 +40,6 @@ class launchpadDash extends React.Component {
     let data = localStorage.getItem("user");
     data = JSON.parse(data);
     let userId = data.user_id;
-    console.log("req.headers.authorization", data.token);
     const formData = new FormData();
     formData.append("launchpadId", this.state.launchpadId);
     formData.append("mentorName", this.state.mentorName);

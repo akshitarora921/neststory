@@ -20,7 +20,7 @@ class Dashboard extends React.Component {
     console.log("selected option: ", selectedOption);
     let tag = "";
     for (let i = 0; i < selectedOption.length; i++) {
-      tag = tag + selectedOption[i].value + ",";
+      tag = tag + selectedOption[i].value + " ";
     }
     this.setState({
       tags: tag
