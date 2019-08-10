@@ -1,6 +1,5 @@
 import React from "react";
 import axios from "axios";
-// import Menu from "./Menu";
 import Sidebar from "../Sidebar/Sidebar";
 import { Link } from "react-router-dom";
 import "../b.css";
@@ -18,10 +17,9 @@ class Banner extends React.Component {
         this.setState({
           banners: data
         });
-        // console.log("data: ", data);
       })
       .catch(err => {
-        // console.log("Error=>", err);
+        console.log("Error=>", err);
       });
   }
 
@@ -31,8 +29,6 @@ class Banner extends React.Component {
         <div className="slidebar">
           <Sidebar />
         </div>
-        {/* some map function we come and render the photo preview multiple times */}
-        {/* props are passed for source and caption */}
         <div className="container-fluid">
           <div className="row">
             {this.state.banners.map((banner, id) => {
@@ -51,7 +47,7 @@ class Banner extends React.Component {
                       }}
                       className="bannerImage"
                     >
-                      {banner.isVideo === 1 && (
+                      {banner.Video === 1 && (
                         <i className="far fa-play-circle fa-3x playButton1" />
                       )}
                       <div className="h6 bannerHeading">{banner.heading}</div>

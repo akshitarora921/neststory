@@ -3,7 +3,6 @@ const router = express.Router();
 const db = require("../bin/db");
 const multer = require("multer");
 const path = require("path");
-const checkauth = require("../middleware/authtoken");
 
 const storageStrategy = multer.diskStorage({
   destination: "./public/image/news",
@@ -94,7 +93,6 @@ router.get("/data/:id", (req, res, next) => {
       console.log("increaseCountSql success: ", result);
     }
   });
-
   const sql = `select * from news where id=${id} order by id desc`;
   console.log("sql: ", sql);
   db.query(sql, (err, result) => {
@@ -106,12 +104,9 @@ router.get("/data/:id", (req, res, next) => {
   });
 });
 
+// to get related News
 router.get("/data/related/:id", (req, res, next) => {
   const id = req.params.id;
-  // const tags = req.params.tags;
-  // let ress = tags.split(",")
-  // // let tag = string(ress)
-  // console.log("i am wierd ", ress);
   const sql = `select * from news where id = ${id} order by id desc`;
   console.log("sql: ", sql);
   db.query(sql, (err, result) => {

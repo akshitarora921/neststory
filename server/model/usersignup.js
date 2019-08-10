@@ -49,15 +49,12 @@ router.post("/", (req, res) => {
           }", DATE '${getDate()}')`;
           db.query(sql, (err, result) => {
             if (err) {
-              // console.log("sql err", err);
               res.status(409).json({ err: err });
             } else {
               res.status(200).json({ msg: "user created successfully" });
             }
           });
         } else {
-          // console.log("user already exits");
-          // console.log("res============", result[0]);
           res.status(401).json({ err: "user already exists" });
         }
       }

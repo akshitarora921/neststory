@@ -3,6 +3,7 @@ import React from "react";
 import DashboardMain from "../../container/Dashboard/DashboardMain";
 import launchpadDash from "../../container/Dashboard/launchpadDash";
 import MentorDash from "../../container/Dashboard/MentorDash";
+import MentorEditDash from "../../container/Dashboard/MentorEditDash";
 import Sidebar from "../../Component/Sidebar/Sidebar"
 
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
@@ -60,6 +61,14 @@ class Dashboard extends React.Component {
                         <i className="fas fa-map" /> Mentor
                       </Link>
                     </li>
+                    <li
+                      className="navbar-item nav-item"
+                      onClick={this.makeActive}
+                    >
+                      <Link to="/admin/dashboard/editmentor">
+                        <i className="fas fa-rocket" /> Edit Mentor
+                      </Link>
+                    </li>
                   </ul>
                 </div>
               </div>
@@ -79,6 +88,10 @@ class Dashboard extends React.Component {
                   <Route
                     path="/admin/dashboard/mentor"
                     component={MentorDash}
+                  />
+                  <Route
+                    path="/admin/dashboard/editmentor"
+                    component={MentorEditDash}
                   />
                 </div>
               </div>

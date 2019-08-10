@@ -447,9 +447,9 @@ class Header extends React.Component {
                               />
                             </div>
                           </li>
-                          <li className="navbar-item ml-2  mt-1">
+                          {/* <li className="navbar-item ml-2  mt-1">
                             <i className="fas fa-search" />
-                          </li>
+                          </li> */}
                         </ul>
                       </div>
                     </nav>

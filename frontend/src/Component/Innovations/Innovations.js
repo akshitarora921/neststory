@@ -93,7 +93,7 @@ class Innovation extends React.Component {
                     }}
                   >
                     <div className="h6 innovationHeading">
-                      {innovation.heading}
+                      {innovation.heading.slice(0,70)+"..."}
                     </div>
                   </div>
                 </div>

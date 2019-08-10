@@ -129,6 +129,9 @@
   font-weight: bold;
   color: white;
 }
+.launchpad-video {
+  margin-left: 4%;
+}
 
 @media screen and (max-width: 480px) {
   .mentor-img {
@@ -156,7 +159,7 @@
     color: #222;
   }
   .launchpad-video {
-    margin-left: 10%;
+    margin-left: 4%;
   }
   .mentor-heading {
     padding-top: 50px;

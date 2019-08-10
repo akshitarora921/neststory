@@ -36,7 +36,7 @@ class launchpadDash extends React.Component {
     }
   };
   handleSubmitMentor = e => {
-    // e.preventDefault();
+    e.preventDefault();
     let data = localStorage.getItem("user");
     data = JSON.parse(data);
     let userId = data.user_id;

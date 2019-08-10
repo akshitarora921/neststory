@@ -148,7 +148,9 @@ class Launchpad extends React.Component {
                     </div>
                     <div className="row">
                       <div className="col-12">
-                        <p className="text-justify">{lp.content}</p>
+                        <p className="text-justify">{lp.content.split('\n').map((para,id)=>(
+                <p key={id}>{para}</p>
+              ))}</p>
                       </div>
                     </div>
                   </div>
@@ -156,8 +158,8 @@ class Launchpad extends React.Component {
                     <div
                       className="p-2 col-4 launchpad-video"
                       style={{
-                        minHeight: "200px",
-                        minWidth: "300px",
+                        minHeight: "250px",
+                        minWidth: "350px",
                         borderRadius: "15px",
                         backgroundSize: "cover",
                         backgroundPosition: "center",
@@ -166,7 +168,7 @@ class Launchpad extends React.Component {
                         })`
                       }}
                     >
-                      <i className="far fa-play-circle fa-2x playButton" />
+                      <i className="far fa-play-circle fa-4x playButton" />
                     </div>
                   </div>
                 </div>
