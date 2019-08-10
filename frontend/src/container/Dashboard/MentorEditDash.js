@@ -40,7 +40,6 @@ class launchpadDash extends React.Component {
 
    editMentor = async(mentor) => {
       let mentorId = mentor.mentor_id;
-
       const { value: formValues } = await Swal.fire({
         title: `Mentor Id: ${mentorId}`,
         html:`<label class="float-left h4">Name</label>`+
@@ -55,8 +54,8 @@ class launchpadDash extends React.Component {
           ]
         }
       })
-      console.log(formValues)
-      console.log(formValues[0])
+      // console.log(formValues)
+      // console.log(formValues[0])
        if (formValues[0] === "")
             {formValues[0]=mentor.name}
        if (formValues[1] === "")
@@ -66,7 +65,7 @@ class launchpadDash extends React.Component {
            name: formValues[0],
            designation:formValues[1]
        }
-       console.log(mentorData)
+      //  console.log(mentorData)
        axios.post(`/mentor/edit/${mentorId}`, mentorData)
            .then(res => {
            console.log("Mentor edit success: ", res)
@@ -74,9 +73,15 @@ class launchpadDash extends React.Component {
            .catch(err => {
            console.log("mentor edit err: ", err)
        })
-     
-      
   };
+
+  deleteMentor = (mentor) =>{
+    axios.delete(`/mentor/${mentor.mentor_id}`)
+      .then(result => {
+        alert("success")
+      console.log("Success delete mentor", result)
+    })
+  }
 
   render() {
     return (
@@ -109,6 +114,15 @@ class launchpadDash extends React.Component {
                           }}
                         >
                           Edit
+                        </button> 
+                        {" "}
+                        <button
+                          className=" btn btn-danger"
+                          onClick={() => {
+                            this.deleteMentor(mentor);
+                          }}
+                        >
+                          Delete
                         </button>
                       </td>
                     </tr>

@@ -89,7 +89,7 @@ router.get("/:id", (req, res, next) => {
 });
 
 // Mentors edit
-router.post("/edit/:id", async (req, res) => {
+router.post("/edit/:id", (req, res) => {
   const id = req.params.id;
   const sql = `update mentors set name="${req.body.name}",designation="${req.body.designation}" where mentor_id=${id}`
   console.log("Sql: ", sql)
@@ -104,4 +104,17 @@ router.post("/edit/:id", async (req, res) => {
   })
 });
 
+router.delete("/:id", (req, res) => {
+  const id = req.params.id;
+  const sql = `delete from mentors where mentor_id=${id}`
+  db.query(sql, (err, result) => {
+    if (err) {
+      res.status(409).send(err)
+    }
+    else {
+      console.log(result);
+      res.status(200).send(result);
+    }
+  })
+})
 module.exports = router;
