@@ -15,24 +15,25 @@ import WithAuth from "../Component/WithAuth/WithAuth";
 const Routes = () => {
   return (
     <Router>
-        <div>
-          <Header />
-          <Route path="/" exact component={LandingPage} />
-          {/* protect this route */}
-          <Route
-            path="/admin/dashboard/" exact
-            component={WithAuth(DashboardHeader)}
-          />
-          <Route path="/innovation/" component={Innovation} />
-          <Route path="/stories/" component={Stories} />
-          <Route path="/global" component={Global} />
-          <Route path="/entrepreneurship" component={Entrepreneurship} />
-          <Route path="/launchpad/" component={Launchpad} />
-          <Route path="/videos/" component={Videos} />
-          <Route path="/news/:id" component={IndividualStory} />
-          <Footer />
-        </div>
-     
+      <div>
+        <Header />
+        <Route path="/" exact component={LandingPage} />
+        {/* protect this route */}
+        <Route
+          path="/admin/dashboard/"
+          exact
+          component={WithAuth(DashboardHeader)}
+        />
+        <Route path="/innovation/" component={Innovation} />
+        <Route path="/stories/" component={Stories} />
+        <Route path="/global" component={Global} />
+        <Route path="/entrepreneurship" component={Entrepreneurship} />
+        <Route path="/launchpad/" component={Launchpad} />
+        <Route path="/videos/" component={Videos} />
+        <Route path="/news/:id" component={IndividualStory} />
+
+        <Footer />
+      </div>
     </Router>
   );
 };

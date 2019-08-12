@@ -1,7 +1,4 @@
 import React from "react";
-// import "../../fontawesome/css/all.css";
-// import '../Home.css'
-import "../b.css";
 import { Link } from "react-router-dom";
 import "./lateststories.css";
 import Axios from "axios";
@@ -21,7 +18,7 @@ class LatestStories extends React.Component {
         });
       })
       .catch(res => {
-        console.log("latest stories axios catch:", res);
+        // console.log("latest stories axios catch:", res);
       });
   }
 
@@ -52,11 +49,9 @@ class LatestStories extends React.Component {
               <div style={{ minHeight: "200px" }} className="row mb-4  ">
                 <div
                   style={{
-                    // maxHeight: "75%",
                     minHeight: "200px",
                     maxHeight: "220px",
                     minWidth: "auto",
-                    // maxWidth:"200px",
                     backgroundPosition: "center",
                     backgroundSize: "cover",
                     backgroundImage: `url(http://localhost:3001/image/news/${
@@ -71,26 +66,6 @@ class LatestStories extends React.Component {
                     <h6>{listitem.heading} </h6>
                     <hr className="newsHR" />
                     <div className="comment text-justify">
-                      {/* <ShowMore
-                        text={listitem.content}
-                        length={500}
-                        showMoreLabel=" show More"
-                        showLessLabel=" Collapse"
-                        // tag="a"
-                        className="text-blue"
-                        ellipsis="..."
-                        style={{
-                          cursor: "pointer",
-                          color: "blue"
-                        }}
-                        enabled
-                      /> */}
-                      {/* {listitem.content.slice(0,550).split("\n").map((para, id) => (
-                        <p key={id} >
-                          {para}
-                        </p>
-                      ))
-                      } */}
                       {listitem.content.slice(0,550).split("\n")[0]+"..."}
                     </div>
                   </div>

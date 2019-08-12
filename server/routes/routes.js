@@ -1,7 +1,6 @@
 const express = require("express");
 const router = express.Router();
 
-const indexRouter = require("../model/index");
 const usersLoginRouter = require("../model/userlogin");
 const usersSignupRouter = require("../model/usersignup");
 const newsRouter = require("../model/news");
@@ -18,7 +17,6 @@ const checkauthRouter = require("../model/checkauth");
 const subscriptionRouter = require("../model/subscription");
 
 //routers
-router.use("/", indexRouter);
 router.use("/global", globalNewsRouter);
 router.use("/users/login", usersLoginRouter);
 router.use("/users/signup", usersSignupRouter);

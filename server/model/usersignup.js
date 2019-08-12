@@ -35,11 +35,11 @@ router.post("/", (req, res) => {
     let sql = `select email from users where email="${userData.email}"`;
     db.query(sql, (err, result) => {
       if (err) {
-        console.log("sql err", err);
+        // console.log("sql err", err);
         res.status(409).json({ err: err });
       } else {
         if (result.length == 0) {
-          console.log("userData", userData);
+          // console.log("userData", userData);
           const hash = bcrypt.hashSync(userData.password, 10);
           userData.password = hash;
           sql = `insert into users (first_name, last_name, email, password, created_date) values("${

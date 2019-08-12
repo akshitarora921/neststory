@@ -1,15 +1,14 @@
 import React from "react";
 import axios from "axios";
-import Swal from 'sweetalert2'
+import Swal from "sweetalert2";
+import $ from "jquery";
 
 class launchpadDash extends React.Component {
   state = {
     launchpads: [],
     mentors: [],
-    launchpadId: "0",
     mentorName: "",
-    mentorDesg: "",
-    mentorImage: ""
+    mentorDesignation: ""
   };
 
   componentDidMount() {
@@ -22,7 +21,7 @@ class launchpadDash extends React.Component {
         });
       })
       .catch(err => {
-        console.log("Error in axios: ", err);
+        // console.log("Error in axios: ", err);
       });
 
     axios
@@ -34,54 +33,72 @@ class launchpadDash extends React.Component {
         });
       })
       .catch(err => {
-        console.log("Error in axios: ", err);
+        // console.log("Error in axios: ", err);
       });
   }
 
-   editMentor = async(mentor) => {
-      let mentorId = mentor.mentor_id;
-      const { value: formValues } = await Swal.fire({
-        title: `Mentor Id: ${mentorId}`,
-        html:`<label class="float-left h4">Name</label>`+
-        `<input style="margin:0px" id="Name" placeHolder=${mentor.name} class="swal2-input">` +
-        `<label style="margin-top:10px" class="float-left h4">Designation</label>`+
-        `<input style="margin:0px" id="Designation" placeHolder=${mentor.designation} class="swal2-input">`,
-   focusConfirm: false,
-        preConfirm: () => {
-          return [
-            document.getElementById('Name').value,
-            document.getElementById('Designation').value
-          ]
-        }
-      })
-      // console.log(formValues)
-      // console.log(formValues[0])
-       if (formValues[0] === "")
-            {formValues[0]=mentor.name}
-       if (formValues[1] === "")
-           {formValues[1] = mentor.designation}
-       
-       let mentorData = {
-           name: formValues[0],
-           designation:formValues[1]
-       }
+  editMentor = async mentor => {
+    let mentorId = mentor.mentor_id;
+    //  alert(mentor.designation)
+    const { value: formValues } = await Swal.fire({
+      title: `Mentor Id: ${mentorId}`,
+      html:
+        `<label class="float-left h4">Name</label>` +
+        `<input style="margin:0px" id="Name" value="${
+          mentor.name
+        }" class="swal2-input">` +
+        `<label style="margin-top:10px" class="float-left h4">Designation</label>` +
+        `<input style="margin:0px" id="Designation" value="${
+          mentor.designation
+        }" class="swal2-input">`,
+      focusConfirm: false,
+      preConfirm: () => {
+        return [
+          document.getElementById("Name").value,
+          document.getElementById("Designation").value
+        ];
+      }
+    });
+    // console.log(formValues)
+    // console.log(formValues[0])
+    if (formValues) {
+      if (formValues[0] === "") {
+        formValues[0] = mentor.name;
+      }
+      if (formValues[1] === "") {
+        formValues[1] = mentor.designation;
+      }
+
+      let mentorData = {
+        name: formValues[0],
+        designation: formValues[1]
+      };
+      this.setState({
+        mentorName: mentorData.name,
+        mentorDesignation: mentorData.designation
+      });
       //  console.log(mentorData)
-       axios.post(`/mentor/edit/${mentorId}`, mentorData)
-           .then(res => {
-           console.log("Mentor edit success: ", res)
-           })
-           .catch(err => {
-           console.log("mentor edit err: ", err)
-       })
+      axios
+        .post(`/mentor/edit/${mentorId}`, mentorData)
+        .then(res => {
+          // alert("Mentor edit success");
+          $(`#${mentor.mentor_id}name`).html(this.state.mentorName);
+          // console.log("Mentor edit success: ", res);
+        })
+        .catch(err => {
+          // alert("mentor edit err");
+          // console.log("mentor edit err: ", err);
+        });
+    }
   };
 
-  deleteMentor = (mentor) =>{
-    axios.delete(`/mentor/${mentor.mentor_id}`)
-      .then(result => {
-        alert("success")
-      console.log("Success delete mentor", result)
-    })
-  }
+  deleteMentor = mentor => {
+    axios.delete(`/mentor/${mentor.mentor_id}`).then(result => {
+      // alert("success");
+      $(`#${mentor.mentor_id}`).remove();
+      // console.log("Success delete mentor", result);
+    });
+  };
 
   render() {
     return (
@@ -103,9 +120,9 @@ class launchpadDash extends React.Component {
                     mentor => mentor.launchpad_id === launchpad.launchpad_id
                   )
                   .map((mentor, idi) => (
-                    <tr key={idi}>
-                      <td>{mentor.name}</td>
-                      <td>{mentor.designation}</td>
+                    <tr key={idi} id={mentor.mentor_id}>
+                      <td id={`${mentor.mentor_id}name`}>{mentor.name}</td>
+                      <td>{`${mentor.designation}desig`}</td>
                       <td>
                         <button
                           className=" btn btn-primary"
@@ -114,8 +131,7 @@ class launchpadDash extends React.Component {
                           }}
                         >
                           Edit
-                        </button> 
-                        {" "}
+                        </button>{" "}
                         <button
                           className=" btn btn-danger"
                           onClick={() => {
@@ -133,77 +149,6 @@ class launchpadDash extends React.Component {
           </div>
         ))}
       </div>
-      //   <div className="container">
-      //     <div className="col-md-12 col-sm-12 ">
-      //       <h2 className="section-heading">Mentor Input</h2>
-      //     </div>
-      //     <form>
-
-      //       {/* Input Launchpad Id */}
-      //       <div className="form-group">
-      //         <label>Launchpad Name</label>
-      //         <select
-      //           name="launchpadId"
-      //           onChange={this.handleChangeMentor}
-      //           className="form-control"
-      //         >
-      //           {this.state.launchpads.map((launchpad, id) => (
-      //             <option key={id} value={`${launchpad.launchpad_id}`}>
-      //               {launchpad.heading}
-      //             </option>
-      //           ))}
-      //         </select>
-      //       </div>
-
-      //       {/* Input mentor name */}
-      //       <div className="form-group">
-      //         <label>Name</label>
-      //         <input
-      //           onChange={this.handleChangeMentor}
-      //           name="mentorName"
-      //           type="text"
-      //           className="form-control"
-      //           placeholder="Name"
-      //         />
-      //       </div>
-
-      //       {/* Input mentor name */}
-      //       <div className="form-group">
-      //         <label>Designation</label>
-      //         <input
-      //           onChange={this.handleChangeMentor}
-      //           name="mentorDesg"
-      //           type="text"
-      //           className="form-control"
-      //           placeholder="Designation"
-      //         />
-      //       </div>
-
-      //       {/* Input Mentor Image */}
-      //       <div className="form-group">
-      //         <div className="form-group">
-      //           <label htmlFor="exampleFormControlFile1">
-      //             Mentor Image Input
-      //           </label>
-      //           <input
-      //             type="file"
-      //             name="mentorImage"
-      //             className="form-control-file"
-      //             onChange={this.handleChangeMentor}
-      //           />
-      //         </div>
-      //       </div>
-
-      //       <div className="form-group">
-      //         <button
-      //           onClick={this.handleSubmitMentor}
-      //           className="btn-submit btn btn-primary"
-      //         >
-      //           Upload
-      //         </button>
-      //       </div>
-      //     </form>
-      //   </div>
     );
   }
 }

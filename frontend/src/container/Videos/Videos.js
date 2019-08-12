@@ -1,10 +1,7 @@
 import React from "react";
 import axios from "axios";
 import Sidebar from "../../Component/Sidebar/Sidebar";
-// import ReactPlayer from 'react-player'
 import OwlCarousel from "react-owl-carousel";
-// import "owl.carousel/dist/assets/owl.carousel.css";
-// import "owl.carousel/dist/assets/owl.theme.default.css";
 import Moment from "react-moment";
 import "./videos.css";
 
@@ -22,10 +19,8 @@ class Videos extends React.Component {
   }
   render() {
     let options = {
-      // loop: true,
       margin: 10,
       video: true,
-      // nav:true,
       responsive: {
         0: {
           items: 2
@@ -61,10 +56,9 @@ class Videos extends React.Component {
           </div>
           <hr style={{ border: "1px solid black", marginTop: "-5px" }} />
 
-          {/* startup Category */} 
-          {this.state.videos.filter(
-            video => video.sub_category === "startup"
-          ).length>0 ? (
+          {/* startup Category */}
+          {this.state.videos.filter(video => video.sub_category === "startup")
+            .length > 0 ? (
             <div className="row">
               <div className="col-lg-3 col-12 mx-auto">
                 <div className="category text-center">Startup</div>
@@ -73,7 +67,7 @@ class Videos extends React.Component {
                 {this.state.videos.length > 0 ? (
                   <OwlCarousel className="owl-theme" {...options}>
                     {this.state.videos
-                      .filter(video =>video.sub_category === "startup")
+                      .filter(video => video.sub_category === "startup")
                       .map((video, id) => (
                         <div key={id} className="item">
                           <div
@@ -110,9 +104,8 @@ class Videos extends React.Component {
             ""
           )}
           {/* agritech Category */}
-          {this.state.videos.filter(
-            video => video.sub_category === "agritech"
-          ).length>0 ? (
+          {this.state.videos.filter(video => video.sub_category === "agritech")
+            .length > 0 ? (
             <div className="row">
               <div className="col-lg-3 col-12 mx-auto">
                 <div className="category text-center">AgriTech</div>
@@ -121,7 +114,7 @@ class Videos extends React.Component {
                 {this.state.videos.length > 0 ? (
                   <OwlCarousel className="owl-theme" {...options}>
                     {this.state.videos
-                      .filter(video =>video.sub_category === "agritech")
+                      .filter(video => video.sub_category === "agritech")
                       .map((video, id) => (
                         <div key={id} className="item">
                           <div
@@ -155,10 +148,9 @@ class Videos extends React.Component {
           ) : (
             ""
           )}
-            {/* Robotics Category */}
-          {this.state.videos.filter(
-            video => video.sub_category === "robotics"
-          ).length>0 ? (
+          {/* Robotics Category */}
+          {this.state.videos.filter(video => video.sub_category === "robotics")
+            .length > 0 ? (
             <div className="row">
               <div className="col-lg-3 col-12 mx-auto">
                 <div className="category text-center">Robotics</div>
@@ -203,7 +195,7 @@ class Videos extends React.Component {
           ) : (
             ""
           )}
-            {/* Medical Category */}
+          {/* Medical Category */}
           {this.state.videos.filter(video => video.sub_category === "medical")
             .length > 0 ? (
             <div className="row">
@@ -214,7 +206,7 @@ class Videos extends React.Component {
                 {this.state.videos.length > 0 ? (
                   <OwlCarousel className="owl-theme" {...options}>
                     {this.state.videos
-                      .filter(video =>video.sub_category === "medical")
+                      .filter(video => video.sub_category === "medical")
                       .map((video, id) => (
                         <div key={id} className="item">
                           <div
@@ -250,7 +242,7 @@ class Videos extends React.Component {
           ) : (
             ""
           )}
-            {/* Science Caegory */}
+          {/* Science Caegory */}
           {this.state.videos.filter(video => video.sub_category === "science")
             .length > 0 ? (
             <div className="row">
@@ -297,7 +289,7 @@ class Videos extends React.Component {
           ) : (
             ""
           )}
-            {/* Enviroment Category */}
+          {/* Enviroment Category */}
           {this.state.videos.filter(
             video => video.sub_category === "enviroment"
           ).length > 0 ? (
@@ -309,7 +301,7 @@ class Videos extends React.Component {
                 {this.state.videos.length > 0 ? (
                   <OwlCarousel className="owl-theme" {...options}>
                     {this.state.videos
-                      .filter(video =>video.sub_category === "enviroment")
+                      .filter(video => video.sub_category === "enviroment")
                       .map((video, id) => (
                         <div key={id} className="item">
                           <div

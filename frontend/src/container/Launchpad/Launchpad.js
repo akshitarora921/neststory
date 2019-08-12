@@ -27,11 +27,11 @@ class Launchpad extends React.Component {
             });
           })
           .catch(err => {
-            console.log("axios error launchpad: ", err);
+            // console.log("axios error launchpad: ", err);
           });
       })
       .catch(err => {
-        console.log("axios error launchpad: ", err);
+        // console.log("axios error launchpad: ", err);
       });
   }
   componentWillMount(){
@@ -148,9 +148,9 @@ class Launchpad extends React.Component {
                     </div>
                     <div className="row">
                       <div className="col-12">
-                        <p className="text-justify">{lp.content.split('\n').map((para,id)=>(
+                        <div className="text-justify">{lp.content.split('\n').map((para,id)=>(
                 <p key={id}>{para}</p>
-              ))}</p>
+              ))}</div>
                       </div>
                     </div>
                   </div>
@@ -168,14 +168,16 @@ class Launchpad extends React.Component {
                         })`
                       }}
                     >
-                      <i className="far fa-play-circle fa-4x playButton" />
+                      <i className="far fa-play-circle fa-2x playButton" />
                     </div>
                   </div>
                 </div>
                 <div className="row">
                   <div className="col">
-                    <h2 className="text-center mentor-heading">Mentors</h2>
-                  </div>
+                    {this.state.mentor.length > 0 ? (
+                      <h2 className="text-center mentor-heading">Mentors</h2>
+                    ):("")}
+                  </div>x
                 </div>
                 <div className="row justify-content-center ">
                   {this.state.mentor.map((ment, id) => (
@@ -210,6 +212,8 @@ class Launchpad extends React.Component {
                   ))}
                 </div>
                 <br />
+
+                {/* old design or mentors */}
                 {/* 2mentors */}
                 {/* <div className="row p-2">
                   <div className="col-lg-2" />

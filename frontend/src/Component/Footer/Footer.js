@@ -1,9 +1,6 @@
 import React from "react";
 import "./footer.css";
-// import "../../fontawesome/css/all.css";
 import {Link} from 'react-router-dom'
-// import "../../App.css";
-// import "../b.css";
 
 class Footer extends React.Component {
   render() {

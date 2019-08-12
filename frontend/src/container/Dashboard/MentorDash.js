@@ -20,7 +20,7 @@ class launchpadDash extends React.Component {
         });
       })
       .catch(err => {
-        console.log("Error in axios: ", err);
+        // console.log("Error in axios: ", err);
       });
   }
 
@@ -54,15 +54,15 @@ class launchpadDash extends React.Component {
         }
       })
       .then(() => {
-        alert("SUCCESS!!");
-        console.log("SUCCESS!!");
+        // alert("SUCCESS!!");
+        // console.log("SUCCESS!!");
 
         //for reloading the page
         window.location.reload();
       })
       .catch(() => {
-        alert("FAILURE!!");
-        console.log("FAILURE!!");
+        // alert("FAILURE!!");
+        // console.log("FAILURE!!");
       });
   };
   render() {

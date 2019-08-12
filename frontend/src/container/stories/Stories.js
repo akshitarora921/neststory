@@ -1,10 +1,7 @@
 import React from "react";
-// import Header from "../../component/Header/Header";
-// import ShowMore from "react-simple-show-more";
 import Moment from "react-moment";
 import { Link } from "react-router-dom";
 import Sidebar from "../../Component/Sidebar/Sidebar";
-// import Footer from "../../component/Footer/Footer";
 import axios from "axios";
 import "./stories.css";
 
@@ -55,7 +52,6 @@ class Stories extends React.Component {
           .map((news, idi) => (
             <Link key = {idi} to={`/news/${news.id}`}>
               <div
-                // key={idi}
                 style={{ minHeight: "200px" }}
                 className="row mb-4 stories "
               >
@@ -66,7 +62,6 @@ class Stories extends React.Component {
                     minWidth: "auto",
                     backgroundSize: "cover",
                     backgroundPosition: "center",
-                    // maxWidth:"200px",
                     backgroundImage: `url(http://localhost:3001/image/news/${
                       news.image
                     })`
@@ -78,20 +73,6 @@ class Stories extends React.Component {
                   <h6>{news.heading} </h6>
                   <hr className="newsHR " />
                   <div className="comment more text-justify">
-                    {/* <ShowMore
-                      text={news.content}
-                      length={500}
-                      showMoreLabel=" show More"
-                      showLessLabel=" Collapse"
-                      tag="a"
-                      className="text-blue"
-                      ellipsis="..."
-                      style={{
-                        cursor: "pointer",
-                        color: "blue"
-                      }}
-                      enabled
-                    /> */}
                     {news.content.slice(0,550).split("\n")[0]+"..."}
                   </div>
 

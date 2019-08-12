@@ -1,17 +1,10 @@
 import React from "react";
 import "../../fontawesome/css/all.css";
-// import "../App.css";
 import "./videos.css";
-// import $ from "jquery";
 import axios from "axios";
 import OwlCarousel from "react-owl-carousel";
-// import "owl.carousel/dist/assets/owl.carousel.css";
-// import "owl.carousel/dist/assets/owl.theme.default.css";
 import Moment from "react-moment";
-import {Link} from 'react-router-dom'
-// import ReactPlayer from "react-player";
-// import 'moment/locale/fr';
-// import SingleVideo from "./SingleVideo";
+import { Link } from "react-router-dom";
 class Videos extends React.Component {
   state = {
     videos: []
@@ -76,26 +69,7 @@ class Videos extends React.Component {
         {this.state.videos.length > 0 ? (
           <OwlCarousel className="owl-theme" {...options}>
             {this.state.videos.slice(0, 10).map((v, id) => (
-              // <div className="item"><img src={`http://localhost:3001/image/videos/1563367919764_purple.png`}/></div>
               <div key={id} className="item">
-                {/* <img
-                  alt="not found"
-                  src={`http://localhost:3001/image/videos/${
-                    video.video_thumbnail
-                  }`}
-                /> */}
-                {/* <div
-               
-                  className="player-wrapper">
-                  <ReactPlayer
-                    className="react-player"
-                    light
-                    
-                          url={`http://localhost:3001/image/news/${v.video}`}                       
-                    width="100%"
-                    height="250px"
-                  />
-                </div> */}
                 <div
                   style={{
                     minHeight: "200px",
@@ -124,169 +98,9 @@ class Videos extends React.Component {
         ) : (
           ""
         )}
-
-        {/* <div className="container-fluid ">
-          {/* image slider starts 
-          <div className="main">
-            <div className="wrapper">
-              <a className="prev" onClick={this.scroll.bind(null, -1)}>
-                &#10094;
-              </a>
-              <div className="image-container">
-                {/* mydata 
-               {this.state.videos.map(video => (
-                  <div className="videoContainer">
-                    <div
-                      style={{
-                        backgroundImage:
-                          `linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),url(http://localhost:3001/image/videos/${video.video_thumbnail})`
-                      }}
-                      className="row videoThumbnail"
-                    >
-                      <i className="far fa-play-circle fa-3x playButton" />
-                    </div>
-                    <div className="row h6">{video.heading}</div>
-                    <div className="row ">
-                      <small className="text-muted author">
-                        {video.author} | this.props.datePublished
-                      </small>
-                    </div>
-                  </div>
-                ))} 
-               
-                {/* mydata end 
-
-              </div>
-              <a className="next" onClick={this.scroll.bind(null, 1)}>
-                &#10095;
-              </a>
-            </div>
-          </div>
-          {/* Image slider ends 
-        </div> */}
       </div>
     );
   }
 }
 
 export default Videos;
-
-// <div className="image1">
-// <div
-//   style={{
-//     backgroundImage:
-//       "linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),url('https://www.gstatic.com/webp/gallery3/1.sm.png')"
-//   }}
-//   className="row videoThumbnail"
-// >
-//   <i className="far fa-play-circle fa-3x playButton" />
-// </div>
-// <div className="row h6">this.props.vidoes.cation</div>
-// <div className="row ">
-//   <small className="text-muted author">
-//     this.props.auther | this.props.datePublished
-//   </small>
-// </div>
-// </div>
-// <div className="image">
-// <div
-//   style={{
-//     backgroundImage:
-//       "linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),url('https://www.gstatic.com/webp/gallery3/1.sm.png')"
-//   }}
-//   className="row videoThumbnail"
-// >
-//   <i className="far fa-play-circle fa-3x playButton" />
-// </div>
-// <div className="row h6">this.props.vidoes.cation</div>
-// <div className="row ">
-//   <small className="text-muted author">
-//     this.props.auther | this.props.datePublished
-//   </small>
-// </div>
-// </div>
-// <div className="image">
-// <div
-//   style={{
-//     backgroundImage:
-//       "linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),url('https://www.gstatic.com/webp/gallery3/1.sm.png')"
-//   }}
-//   className="row videoThumbnail"
-// >
-//   <i className="far fa-play-circle fa-3x playButton" />
-// </div>
-// <div className="row h6">this.props.vidoes.cation</div>
-// <div className="row ">
-//   <small className="text-muted author">
-//     this.props.auther | this.props.datePublished
-//   </small>
-// </div>
-// </div>
-// <div className="image">
-// <div
-//   style={{
-//     backgroundImage:
-//       "linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),url('https://www.gstatic.com/webp/gallery3/1.sm.png')"
-//   }}
-//   className="row videoThumbnail"
-// >
-//   <i className="far fa-play-circle fa-3x playButton" />
-// </div>
-// <div className="row h6">this.props.vidoes.cation</div>
-// <div className="row ">
-//   <small className="text-muted author">
-//     this.props.auther | this.props.datePublished
-//   </small>
-// </div>
-// </div>
-// <div className="image">
-// <div
-//   style={{
-//     backgroundImage:
-//       "linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),url('https://www.gstatic.com/webp/gallery3/1.sm.png')"
-//   }}
-//   className="row videoThumbnail"
-// >
-//   <i className="far fa-play-circle fa-3x playButton" />
-// </div>
-// <div className="row h6">this.props.vidoes.cation</div>
-// <div className="row ">
-//   <small className="text-muted author">
-//     this.props.auther | this.props.datePublished
-//   </small>
-// </div>
-// </div>
-// <div className="image">
-// <div
-//   style={{
-//     backgroundImage:
-//       "linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),url('https://www.gstatic.com/webp/gallery3/1.sm.png')"
-//   }}
-//   className="row videoThumbnail"
-// >
-//   <i className="far fa-play-circle fa-3x playButton" />
-// </div>
-// <div className="row h6">this.props.vidoes.cation</div>
-// <div className="row ">
-//   <small className="text-muted author">
-//     this.props.auther | this.props.datePublished
-//   </small>
-// </div>
-// </div>
-// <div className="image">
-// <div
-//   style={{
-//     backgroundImage:
-//       "linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),url('https://www.gstatic.com/webp/gallery3/1.sm.png')"
-//   }}
-//   className="row videoThumbnail"
-// >
-//   <i className="far fa-play-circle fa-3x playButton" />
-// </div>
-// <div className="row h6">this.props.vidoes.cation</div>
-// <div className="row ">
-//   <small className="text-muted author">
-//     this.props.auther | this.props.datePublished
-//   </small>
-// </div>
-// </div>

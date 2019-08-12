@@ -2,7 +2,6 @@ import React from "react";
 import axios from "axios";
 import Sidebar from "../Sidebar/Sidebar";
 import { Link } from "react-router-dom";
-import "../b.css";
 import "./banner.css";
 class Banner extends React.Component {
   state = {
@@ -19,7 +18,7 @@ class Banner extends React.Component {
         });
       })
       .catch(err => {
-        console.log("Error=>", err);
+        // console.log("Error=>", err);
       });
   }
 
@@ -47,8 +46,8 @@ class Banner extends React.Component {
                       }}
                       className="bannerImage"
                     >
-                      {banner.Video === 1 && (
-                        <i className="far fa-play-circle fa-3x playButton1" />
+                      {banner.video.length> 1 && (
+                        <i className="far fa-play-circle fa-2x playButton1" />
                       )}
                       <div className="h6 bannerHeading">{banner.heading}</div>
                     </div>

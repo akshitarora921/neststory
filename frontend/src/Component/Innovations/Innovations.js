@@ -1,26 +1,14 @@
 import React from "react";
-// import "../../fontawesome/css/all.css";
-import "../b.css";
 import "./innovation.css";
 import axios from "axios";
 import OwlCarousel from "react-owl-carousel";
 import "owl.carousel/dist/assets/owl.theme.default.css";
 import "owl.carousel/dist/assets/owl.carousel.css";
 import {Link} from 'react-router-dom'
-// import SingleInnovation from './SingleInnovation'
-// import $ from 'jquery'
-
 class Innovation extends React.Component {
   state = {
     innovations: []
   };
-
-  // scroll(direction) {
-  //   let far = ($(".image-container").width() / 2) * direction;
-  //   let pos = $(".image-container").scrollLeft() + far;
-  //   $(".image-container").animate({ scrollLeft: pos }, 1000);
-  // }
-
   componentDidMount() {
     axios
       .get("http://localhost:3001/innovation/data")
@@ -31,16 +19,13 @@ class Innovation extends React.Component {
         });
       })
       .catch(res => {
-        console.log("innovation axios catch: ", res);
+        // console.log("innovation axios catch: ", res);
       });
   }
 
   render() {
     let options = {
-      // loop: true,
       margin: 10,
-      // autoHeight: true,
-      // nav:true,
       responsive: {
         0: {
           items: 2

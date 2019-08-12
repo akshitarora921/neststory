@@ -8,7 +8,7 @@ const storageStrategy = multer.diskStorage({
   destination: "./public/image/news",
   filename: function(req, file, cb) {
     FileName = Date.now() + "_" + file.originalname;
-    console.log("===>", FileName);
+    // console.log("===>", FileName);
     cb(null, FileName);
   }
 });
@@ -27,18 +27,18 @@ getDate = () => {
   if (dd < 10) dd = "0" + dd;
   if (mm < 10) mm = "0" + mm;
   today = yyyy + "-" + mm + "-" + dd;
-  console.log("date: ", today);
+  // console.log("date: ", today);
   return today;
 };
 
 router.post("/new", async (req, res) => {
-  console.log("test message")
+  // console.log("test message")
   await upload(req, res, err => {
     if (err) {
-      console.log("Upload err: ", err);
+      // console.log("Upload err: ", err);
       res.status(409).send("err");
     } else {
-      console.log("j,nf,masdnf,masndg,absdgasbdgasdbf",req.body.content)
+      // console.log("j,nf,masdnf,masndg,absdgasbdgasdbf",req.body.content)
       let sql = "";
       if (req.files.image == undefined) {
         //not image
@@ -69,10 +69,10 @@ router.post("/new", async (req, res) => {
         }
         db.query(sql, (err, result) => {
           if (err) {
-            console.log("sql err", err);
+            // console.log("sql err", err);
             res.status(409).send("error in query function");
           } else {
-            console.log(result);
+            // console.log(result);
             res.status(200).send(result);
           }
         });
@@ -84,17 +84,17 @@ router.post("/new", async (req, res) => {
 //get news of perticular id
 router.get("/data/:id", (req, res, next) => {
   const id = req.params.id;
-  console.log("i am wierd ", id);
+  //increase the view count for banner
   const increaseCountSql = `update news set views_count = views_count + 1 where id=${id}`;
   db.query(increaseCountSql, (err, result) => {
     if (err) {
-      console.log("increaseCountSql Error: ", err);
+      // console.log("increaseCountSql Error: ", err);
     } else {
-      console.log("increaseCountSql success: ", result);
+      // console.log("increaseCountSql success: ", result);
     }
   });
   const sql = `select * from news where id=${id} order by id desc`;
-  console.log("sql: ", sql);
+  // console.log("sql: ", sql);
   db.query(sql, (err, result) => {
     if (err) {
       res.status(409).send("error in query function");
@@ -108,23 +108,23 @@ router.get("/data/:id", (req, res, next) => {
 router.get("/data/related/:id", (req, res, next) => {
   const id = req.params.id;
   const sql = `select * from news where id = ${id} order by id desc`;
-  console.log("sql: ", sql);
+  // console.log("sql: ", sql);
   db.query(sql, (err, result) => {
     if (err) {
       res.status(409).send("error in query function");
     } else {
       tags = result[0].tags;
-      console.log("Tags", tags);
+      // console.log("Tags", tags);
       ress = tags.split(",");
-      console.log("Ress", ress);
+      // console.log("Ress", ress);
       let tagsName = "";
       ress.forEach(element => {
         tagsName = tagsName + `"${element}",`;
       });
       tagsName = tagsName.slice(0, -1);
-      console.log("tagsName", tagsName);
+      // console.log("tagsName", tagsName);
       const sql = `select * from news where tags in (${tagsName}) order by id desc`;
-      console.log("sqllll ", sql);
+      // console.log("sqllll ", sql);
       db.query(sql, (err, result) => {
         if (err) {
           res.status(409).send("error in query function");

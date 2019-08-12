@@ -1,5 +1,4 @@
 import React from "react";
-// import DashboardHeader from './DashboardHeader'
 import DashboardMain from "../../container/Dashboard/DashboardMain";
 import launchpadDash from "../../container/Dashboard/launchpadDash";
 import MentorDash from "../../container/Dashboard/MentorDash";
@@ -7,11 +6,8 @@ import MentorEditDash from "../../container/Dashboard/MentorEditDash";
 import Sidebar from "../../Component/Sidebar/Sidebar"
 
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-// import "../../fontawesome/css/all.css";
 import "./dashboardheader.css";
-import "../../App.css";
 import $ from "jquery";
-// import "../b.css";
 
 class Dashboard extends React.Component {
   makeActive = () => {

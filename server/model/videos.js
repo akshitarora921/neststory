@@ -8,7 +8,7 @@ router.get("/data", (req, res, next) => {
     if (err) {
       res.status(409).send("error in query function");
     } else {
-      console.log(result);
+      // console.log(result);
       res.status(200).send(result);
     }
   });

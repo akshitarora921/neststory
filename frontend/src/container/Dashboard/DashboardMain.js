@@ -17,11 +17,13 @@ class Dashboard extends React.Component {
   };
 
   handleChange1 = selectedOption => {
-    console.log("selected option: ", selectedOption);
+    // console.log("selected option: ", selectedOption);
     let tag = "";
-    for (let i = 0; i < selectedOption.length; i++) {
-      tag = tag + selectedOption[i].value + " ";
-    }
+    if (selectedOption.length > 0) {
+      for (let i = 0; i < selectedOption.length; i++) {
+        tag = tag + selectedOption[i].value + " ";
+      }
+   }
     this.setState({
       tags: tag
     });
@@ -32,7 +34,6 @@ class Dashboard extends React.Component {
         [e.target.name]: e.target.files[0]
       });
     } else if (e.target.type === "checkbox") {
-      // have to think more
       if (e.target.value) {
         this.state.tags.push(e.target.name);
       }
@@ -70,13 +71,13 @@ class Dashboard extends React.Component {
       }
     })
       .then(res => {
-        alert("Success");
-        console.log("news axios success", res);
+        // alert("Success");
+        // console.log("news axios success", res);
         window.location.reload();
       })
       .catch(res => {
-        alert("failed");
-        console.log("news axios error", res);
+        // alert("failed");
+        // console.log("news axios error", res);
       });
   };
 

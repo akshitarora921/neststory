@@ -1,14 +1,10 @@
 import React from "react";
 import NewsSlider from "./NewsSlider";
-// import "../../fontawesome/css/all.css";
 import "./header.css";
 import { Redirect, Link } from "react-router-dom";
 import GoogleLogin from "react-google-login";
 // import FacebookLogin from "react-facebook-login";
 import Axios from "axios";
-// import $ from 'jquery';
-// import "../../App.css";
-// import "../b.css";
 
 class Header extends React.Component {
   state = {
@@ -35,7 +31,7 @@ class Header extends React.Component {
     // console.log("datatakjsafalskf=============", userLoginData);
     Axios.post("http://localhost:3001/users/login", userLoginData)
       .then(res => {
-        alert("login successful");
+        // alert("login successful");
         localStorage.setItem("user", res.data.data);
         this.setState({
           isLogin: true
@@ -45,8 +41,8 @@ class Header extends React.Component {
         window.location.reload();
       })
       .catch(err => {
-        alert("error", err.err);
-        console.log("catch error=", err);
+        // alert("error", err.err);
+        // console.log("catch error=", err);
       });
   };
   handleSignupChange = e => {
@@ -64,30 +60,29 @@ class Header extends React.Component {
       password: this.state.password,
       created: today
     };
-    console.log("datatakjsafalskf=============", userSignupData);
+    // console.log("datatakjsafalskf=============", userSignupData);
     Axios.post("http://localhost:3001/users/signup", userSignupData)
       .then(res => {
-        alert("Signup successful");
-        console.log("res", res);
-        window.location.reload(); 
+        // alert("Signup successful");
+        // console.log("res", res);
+        window.location.reload();
       })
       .catch(err => {
-        alert("error", err.err);
-        console.log("catch error=", err);
+        // alert("error", err.err);
+        // console.log("catch error=", err);
       });
   };
   logout = () => {
     this.setState({
       isLogin: false
     });
-    alert("Logout");
+    // alert("Logout");
     localStorage.removeItem("user");
     this.setState({
       redirect: true
     });
   };
   render() {
-
     //for redirection after logout
     if (this.state.redirect) {
       this.setState({
@@ -96,7 +91,7 @@ class Header extends React.Component {
       return <Redirect push to="/" />;
     }
     const responseGoogle = response => {
-      console.log(response);
+      // console.log(response);
     };
     return (
       <div>
@@ -250,18 +245,13 @@ class Header extends React.Component {
                     </div>
                     <div className="row">
                       <div className="col">
-                        {/* <div className="h3 update-text">Updates</div> */}
                         <div
                           className="tv"
                           compitition-details="Neststory Discription"
                         />
                       </div>
                     </div>
-                    {/* <div className="row">
-                      <div className="col">
-                        <h2 className="login-text">Signup</h2>
-                      </div>
-                    </div> */}
+                    
                   </div>
                   <div className="col-lg-8 col-12 back2 margin-top-bottom">
                     <div className="container signup-form">
@@ -274,9 +264,7 @@ class Header extends React.Component {
                                 type="text"
                                 onChange={this.handleSignupChange}
                                 className="modalInput form-control "
-                                // id="exampleInputfirstname1"
                                 name="first_name"
-                                // aria-describedby="emailHelp"
                                 placeholder="First Name"
                               />
                             </div>

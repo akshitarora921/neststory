@@ -34,21 +34,21 @@ class launchpadDash extends React.Component {
     formData.append("userId", userId);
 
     axios
-      .post("/launchpad",  formData, {
+      .post("/launchpad", formData, {
         header: {
-          "Content-Type": "multipart/form-data",
+          "Content-Type": "multipart/form-data"
           // Authorization: `Bearer ${data.token}`
         }
       })
       .then(() => {
-        alert("SUCCESS!!");
-        console.log("SUCCESS!!");
+        // alert("SUCCESS!!");
+        // console.log("SUCCESS!!");
         //FOR reloading the page to clear the form
         window.location.reload();
       })
       .catch(() => {
-        alert("FAILURE!!");
-        console.log("FAILURE!!");
+        // alert("FAILURE!!");
+        // console.log("FAILURE!!");
       });
   };
 

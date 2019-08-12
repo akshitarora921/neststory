@@ -8,7 +8,7 @@ router.get("/", (req, res, next) => {
       if (err) {
         res.status(409).send("error in query function");
       } else {
-        console.log("Abcd: ", result);
+        // console.log("Abcd: ", result);
         res.status(200).send(result);
       }
     });

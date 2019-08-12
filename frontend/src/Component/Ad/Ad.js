@@ -1,5 +1,4 @@
 import React from 'react'
-import '../App.css'
 
 class Ad extends React.Component{
     render(){

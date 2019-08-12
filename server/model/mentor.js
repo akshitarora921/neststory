@@ -8,7 +8,7 @@ const storageStrategy = multer.diskStorage({
   destination: "./public/image/news",
   filename: function(req, file, cb) {
     FileName = Date.now() + "_" + file.originalname;
-    console.log("===>", FileName);
+    // console.log("===>", FileName);
     cb(null, FileName);
   }
 });
@@ -25,7 +25,7 @@ getDate = () => {
   if (dd < 10) dd = "0" + dd;
   if (mm < 10) mm = "0" + mm;
   today = yyyy + "-" + mm + "-" + dd;
-  console.log("date: ", today);
+  // console.log("date: ", today);
   return today;
 };
 
@@ -33,7 +33,7 @@ getDate = () => {
 router.post("/", async (req, res) => {
   await upload(req, res, err => {
     if (err) {
-      console.log("Upload err: ", err);
+      // console.log("Upload err: ", err);
       res.status(409).send("err");
     } else {
       let sql = "";
@@ -47,10 +47,10 @@ router.post("/", async (req, res) => {
 
       db.query(sql, (err, result) => {
         if (err) {
-          console.log("sql err", err);
+          // console.log("sql err", err);
           res.status(409).send("error in query function");
         } else {
-          console.log(result);
+          // console.log(result);
           res.status(200).send(result);
         }
       });
@@ -62,27 +62,27 @@ router.post("/", async (req, res) => {
 router.get("/all", (req, res, next) => {
   let id = req.params.id;
   const sql = `select * from mentors`;
-  console.log("sql: ", sql);
+  // console.log("sql: ", sql);
   db.query(sql, (err, result) => {
     if (err) {
       res.status(409).send("error in query function");
     } else {
-      console.log(result);
+      // console.log(result);
       res.status(200).send(result);
     }
   });
 });
 
-// Mentor get perticular id
+// Mentor get perticular launchpad id
 router.get("/:id", (req, res, next) => {
   let id = req.params.id;
   const sql = `select name, designation, image from mentors where launchpad_id=${id}`;
-  console.log("sql: ", sql);
+  // console.log("sql: ", sql);
   db.query(sql, (err, result) => {
     if (err) {
       res.status(409).send("error in query function");
     } else {
-      console.log(result);
+      // console.log(result);
       res.status(200).send(result);
     }
   });
@@ -92,13 +92,13 @@ router.get("/:id", (req, res, next) => {
 router.post("/edit/:id", (req, res) => {
   const id = req.params.id;
   const sql = `update mentors set name="${req.body.name}",designation="${req.body.designation}" where mentor_id=${id}`
-  console.log("Sql: ", sql)
+  // console.log("Sql: ", sql)
   db.query(sql, (err, result) => {
     if (err) {
       res.status(409).send(err)
     }
     else {
-      console.log(result);
+      // console.log(result);
       res.status(200).send(result);
     }
   })
@@ -112,7 +112,7 @@ router.delete("/:id", (req, res) => {
       res.status(409).send(err)
     }
     else {
-      console.log(result);
+      // console.log(result);
       res.status(200).send(result);
     }
   })

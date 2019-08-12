@@ -1,6 +1,5 @@
 import React from "react";
 import axios from "axios";
-// import "../../fontawesome/css/all.css";
 import "./entrepreneurship.css";
 import {Link} from 'react-router-dom'
 
@@ -18,7 +17,7 @@ class Entrepreneurship extends React.Component {
         });
       })
       .catch(err => {
-        console.log("Erroorrr==========>", err);
+        // console.log("Erroorrr==========>", err);
       });
   }
   render() {
@@ -101,27 +100,6 @@ class Entrepreneurship extends React.Component {
                   </div>
                 </Link>
               ))}
-              {/* <div style={{ border: "5px solid white" }} className="row ">
-                <div
-                  style={{
-                    height: "200px",
-                    width: "200px",
-                    backgroundImage:
-                      "linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),url('https://www.gstatic.com/webp/gallery3/1.sm.png')",
-                    backgroundRepeat: "no-repeat",
-                    backgroundSize: "100% 100%"
-                  }}
-                  className="col-4 "
-                />
-                <div style={{ marginLeft: "15px" }} className="col ">
-                  <div className="row ">
-                    <h4>Heading</h4>
-                  </div>
-                  <div className="row">
-                    <small>Some random text for the image</small>
-                  </div>
-                </div>
-              </div> */}
             </div>
           </div>
         </div>
