@@ -1,11 +1,10 @@
 # neststory
+
 Alpha version of Neststory
 
 [![Build Status](https://travis-ci.org/crsandeep/simple-react-full-stack.svg?branch=master)](https://travis-ci.org/crsandeep/simple-react-full-stack)
 
-
 Nest Story is an informational website for all techies.
-
 
 ## Quick Start
 
@@ -24,9 +23,9 @@ cd neststory
    ```js
    app.use(function(req, res, next) {
      res.locals.connection = mysql.createConnection({
-       host     : 'your_host',
-       user     : 'your_root',
-       database : 'your_database_name',
+       host: "your_host",
+       user: "your_root",
+       database: "your_database_name",
        password: "your_password_here"
      });
      res.locals.connection.connect();
@@ -37,18 +36,32 @@ cd neststory
 2. Do `npm install` - This will install all the dependencies listed in the package.json.
 3. `npm start` will start the server on localhost:3001
 
-
 **Starting the react application /frontend:**
 
 1. From the root directory, go to frontend folder. Do `npm install` in the frontend folder.
 2. Do `npm start` and the client will be started at localhost:3000. The proxy is already configured to make all the requests to localhost:3001
 
-
-
-
 ## Documentation
 
-## Folder Structure 
+### Important Components
+
+#### Dashboard
+
+It is the Admin panel where admin can add news, launchpad and mentors details and can edit mentors.
+
+#### Landing Page
+
+It is the first page which users can see when they open the website. It is build up with small components.
+
+#### Launchpad
+
+This page contains all the launchpad details with all the mentors.
+
+#### User Login/Registration
+
+let the user do login and registration and on registration, the password is encrypted using SHA45 and then stored to the database.
+
+## Folder Structure
 
 ```
 neststory
@@ -179,64 +192,64 @@ neststory
       └─ layout.jade
 
 ```
+
 ### Table Structures
+
 #### News
 
-| Field           | Type         |         
-|-----------------|--------------|
+| Field           | Type         |
+| --------------- | ------------ |
 | id              | int(11)      |
-| heading         | varchar(255) |            
-| content         | mediumtext   |             
-| author          | varchar(45)  |              
-| image           | varchar(255) |              
-| video           | varchar(255) |             
-| video_thumbnail | varchar(255) | 
-| date            | date         | 
-| zone            | varchar(45)  | 
-| tags            | varchar(255) | 
-| category        | varchar(45)  | 
-| trending        | varchar(45)  | 
-| sub_category    | varchar(45)  | 
-| views_count     | int(11)      | 
-
+| heading         | varchar(255) |
+| content         | mediumtext   |
+| author          | varchar(45)  |
+| image           | varchar(255) |
+| video           | varchar(255) |
+| video_thumbnail | varchar(255) |
+| date            | date         |
+| zone            | varchar(45)  |
+| tags            | varchar(255) |
+| category        | varchar(45)  |
+| trending        | varchar(45)  |
+| sub_category    | varchar(45)  |
+| views_count     | int(11)      |
 
 ### User
 
-| Field        | Type         | 
-|--------------|--------------|
+| Field        | Type         |
+| ------------ | ------------ |
 | id           | int(11)      |
 | first_name   | varchar(45)  |
-| last_name    | varchar(45)  | 
-| email        | varchar(45)  | 
-| password     | varchar(255) | 
-| created_date | date         | 
-| isadmin      | tinyint(4)   | 
-| phone        | varchar(45)  | 
+| last_name    | varchar(45)  |
+| email        | varchar(45)  |
+| password     | varchar(255) |
+| created_date | date         |
+| isadmin      | tinyint(4)   |
+| phone        | varchar(45)  |
 
 ### Subscription
 
-| Field | Type         | 
-|-------|--------------|
-| id    | int(11)      | 
+| Field | Type         |
+| ----- | ------------ |
+| id    | int(11)      |
 | email | varchar(100) |
 
 ### Launchpad
-| Field           | Type         | 
-|-----------------|--------------|
+
+| Field           | Type         |
+| --------------- | ------------ |
 | launchpad_id    | int(11)      |
-| heading         | varchar(55)  | 
-| content         | mediumtext   | 
-| video           | varchar(255) | 
-| video_thumbnail | varchar(255) | 
+| heading         | varchar(55)  |
+| content         | mediumtext   |
+| video           | varchar(255) |
+| video_thumbnail | varchar(255) |
 
 ### Mentor
-| Field        | Type         | 
-|--------------|--------------|
-| mentor_id    | int(11)      | 
+
+| Field        | Type         |
+| ------------ | ------------ |
+| mentor_id    | int(11)      |
 | name         | varchar(25)  |
 | designation  | varchar(100) |
-| image        | varchar(255) | 
-| launchpad_id | int(11)      | 
-
-
-
+| image        | varchar(255) |
+| launchpad_id | int(11)      |
