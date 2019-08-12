@@ -51,34 +51,26 @@ cd neststory
 ## Folder Structure 
 
 ```
-nest-story
-├─ .git
+neststory
 ├─ frontend
-│  ├─ .gitignore
-│  ├─ debug.log
-│  ├─ node_modules
-│  ├─ package-lock.json
-│  ├─ package.json
 │  ├─ public
+│  │  ├─ image
+│  │  │  └─ favicon.png
 │  │  └─ index.html
 │  ├─ README.md
 │  └─ src
-│     ├─ App.css
-│     ├─ App.js
-│     ├─ App.test.js
 │     ├─ Assets
-│     │  ├─ 1.MP4
 │     │  ├─ footer.png
 │     │  ├─ modal-back1.png
-│     │  └─ modal-back2.png
-│     ├─ component
-│     │  ├─ Ad.js
-│     │  ├─ b.css
+│     │  ├─ modal-back111.png
+│     │  ├─ modal-back2.png
+│     │  └─ modal-back21.png
+│     ├─ Component
+│     │  ├─ Ad
+│     │  │  └─ Ad.js
 │     │  ├─ Banner
 │     │  │  ├─ banner.css
 │     │  │  └─ Banner.js
-│     │  ├─ css
-│     │  │  └─ modalstyle.css
 │     │  ├─ Entrepreneurship
 │     │  │  ├─ entrepreneurship.css
 │     │  │  └─ Entrepreneurship.js
@@ -91,24 +83,26 @@ nest-story
 │     │  │  └─ NewsSlider.js
 │     │  ├─ Innovations
 │     │  │  ├─ innovation.css
-│     │  │  ├─ Innovations.js
+│     │  │  └─ Innovations.js
 │     │  ├─ LatestStories
 │     │  │  ├─ lateststories.css
 │     │  │  └─ LatestStories.js
 │     │  ├─ Sidebar
 │     │  │  ├─ sidebar.css
 │     │  │  └─ Sidebar.js
-│     │  └─ Videos
-│     │     ├─ videos.css
-│     │     └─ Videos.js
+│     │  ├─ Videos
+│     │  │  ├─ videos.css
+│     │  │  └─ Videos.js
+│     │  └─ WithAuth
+│     │     └─ WithAuth.js
 │     ├─ container
 │     │  ├─ Dashboard
-│     │  │  ├─ Dashboard1.js
 │     │  │  ├─ dashboardheader.css
 │     │  │  ├─ DashboardHeader.js
 │     │  │  ├─ DashboardMain.js
 │     │  │  ├─ launchpadDash.js
-│     │  │  └─ MentorDash.js
+│     │  │  ├─ MentorDash.js
+│     │  │  └─ MentorEditDash.js
 │     │  ├─ Entrepreneurship
 │     │  │  ├─ entrepreneurship.css
 │     │  │  └─ Entrepreneurship.js
@@ -132,15 +126,13 @@ nest-story
 │     │  └─ Videos
 │     │     ├─ videos.css
 │     │     └─ Videos.js
-│     ├─ Home.css
 │     ├─ index.css
 │     ├─ index.js
 │     ├─ routes
 │     │  └─ routes.js
 │     └─ serviceWorker.js
+├─ README.md
 └─ server
-   ├─ .config
-   │  └─ .env
    ├─ .gitignore
    ├─ app.js
    ├─ bin
@@ -153,35 +145,40 @@ nest-story
    │  └─ authtoken.js
    ├─ model
    │  ├─ banner.js
+   │  ├─ checkauth.js
    │  ├─ entrepreneurship.js
    │  ├─ globalNews.js
-   │  ├─ index.js
    │  ├─ innovation.js
    │  ├─ latestStories.js
    │  ├─ launchpad.js
+   │  ├─ mentor.js
    │  ├─ news.js
    │  ├─ newsheader.js
+   │  ├─ subscription.js
    │  ├─ userlogin.js
    │  ├─ usersignup.js
    │  └─ videos.js
    ├─ node_modules
-   ├─ package.json
    ├─ public
    │  ├─ image
-   │  │  ├─ news
+   │  │  └─ news
    │  ├─ javascripts
    │  └─ stylesheets
    │     └─ style.css
    ├─ routes
    │  └─ routes.js
+   ├─ sql
+   │  ├─ neststory_launchpad.sql
+   │  ├─ neststory_mentors.sql
+   │  ├─ neststory_news.sql
+   │  ├─ neststory_subscription.sql
+   │  └─ neststory_users.sql
    └─ views
       ├─ error.jade
       ├─ index.jade
       └─ layout.jade
 
 ```
-
-
 ### Table Structures
 #### News
 
@@ -240,5 +237,6 @@ nest-story
 | designation  | varchar(100) |
 | image        | varchar(255) | 
 | launchpad_id | int(11)      | 
+
 
 
