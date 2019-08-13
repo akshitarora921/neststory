@@ -84,11 +84,11 @@ class LatestStories extends React.Component {
                     </div>
                     {listitem.trending.length > 0 ? (
                       <div className="trending col-lg-3 col-12">
-                        {" "}
+                
                         TRENDING:
                         <font style={{ color: "#ffffff", fontSize: "small" }}>
-                          {" "}
-                          {listitem.trending}{" "}
+                          {" "}{listitem.trending}{" "}
+                        
                         </font>
                       </div>
                     ) : (
