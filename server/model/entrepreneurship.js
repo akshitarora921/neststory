@@ -4,7 +4,7 @@ const db = require("../bin/db");
 const multer = require("multer");
 
 router.get("/data", (req, res, next) => {
-  const sql = `select id, image, heading, content from news where category="entrepreneurship" order by id desc limit 3`;
+  const sql = `select id, image, heading, content, trending from news where category="entrepreneurship" order by id desc limit 3`;
   db.query(sql, (err, result) => {
     if (err) {
       // console.log("sql err", err);
