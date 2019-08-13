@@ -394,7 +394,7 @@ class Header extends React.Component {
                     <nav className="navbar navbar-expand-lg navbar-expand">
                       <div className="navbar-collapse collapse">
                         <ul className="navbar-nav ml-auto ">
-                          <li className="navbar-item subscribe">
+                          <li className="navbar-item subscribe1">
                             <div>
                               <i className="fas fa-envelope"> Subscribe</i>
                             </div>

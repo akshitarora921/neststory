@@ -12,7 +12,7 @@
   font-size: vw;
   text-shadow: 0 0 20px rgb(238, 238, 238)rgb(238, 238, 238);
 }
-.subscribe {
+.subscribe1 {
   border: 1px solid black;
   padding: 2px;
   width: 100px;
@@ -189,7 +189,7 @@
   .user-nav a {
     color: white;
   }
-  .subscribe {
+  .subscribe1 {
     border: 1px solid white;
     width: 100;
   }

@@ -4,7 +4,7 @@ import axios from "axios";
 class launchpadDash extends React.Component {
   state = {
     launchpads: [],
-    launchpadId: "0",
+    launchpadId: "",
     mentorName: "",
     mentorDesg: "",
     mentorImage: ""
@@ -81,6 +81,7 @@ class launchpadDash extends React.Component {
               onChange={this.handleChangeMentor}
               className="form-control"
             >
+              <option value="" selected disabled hidden>Choose here</option>
               {this.state.launchpads.map((launchpad, id) => (
                 <option key={id} value={`${launchpad.launchpad_id}`}>
                   {launchpad.heading}
